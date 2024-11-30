@@ -1,14 +1,13 @@
 import { Component, Output } from '@angular/core';
-import { AppLayoutComponent } from "../../layouts/app-layout/app-layout.component";
 import { IonIcon } from "@ionic/angular/standalone";
 import { addIcons } from 'ionicons';
 import * as icons from 'ionicons/icons';
-import { EmplacementsCardComponent } from "../../components/organisms/emplacement-card/emplacement-card.component";
+import { EmplacementCardComponent } from 'src/app/molecule/emplacement-card/emplacement-card.component';
 
 @Component({
   selector: 'app-stock-page',
   standalone: true,
-  imports: [IonIcon, AppLayoutComponent, EmplacementsCardComponent],
+  imports: [IonIcon, EmplacementCardComponent],
   templateUrl: './stock-page.component.html',
   styleUrl: './stock-page.component.scss'
 })
