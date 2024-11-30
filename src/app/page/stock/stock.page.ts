@@ -1,18 +1,16 @@
-import { Component, Output } from '@angular/core';
-import { IonIcon } from "@ionic/angular/standalone";
+import { Component, OnInit, Output } from '@angular/core';
+import { IonIcon, IonItem, IonLabel, IonButton, IonRow, IonList } from "@ionic/angular/standalone";
 import { addIcons } from 'ionicons';
 import * as icons from 'ionicons/icons';
-import { EmplacementCardComponent } from 'src/app/molecule/emplacement-card/emplacement-card.component';
 
 @Component({
-  selector: 'app-stock-page',
-  standalone: true,
-  imports: [IonIcon, EmplacementCardComponent],
-  templateUrl: './stock-page.component.html',
-  styleUrl: './stock-page.component.scss'
+  selector: 'app-stock',
+  templateUrl: './stock.page.html',
+  styleUrls: ['./stock.page.scss'],
 })
-export class StockPageComponent {
+export class StockPage implements OnInit {
 
+  
   constructor() {
     addIcons({ ...icons })
   }
@@ -42,5 +40,7 @@ export class StockPageComponent {
     { name: 'Féculent' },
   ]
 
+  ngOnInit() {
+  }
 
 }

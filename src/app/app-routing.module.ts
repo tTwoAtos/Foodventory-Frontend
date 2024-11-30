@@ -9,7 +9,11 @@ const routes: Routes = [
   {
     path: 'stock-content',
     loadChildren: () => import('./page/stock-content/stock-content.module').then(m => m.StockContentPageModule)
+  },  {
+    path: 'stock',
+    loadChildren: () => import('./page/stock/stock.module').then( m => m.StockPageModule)
   }
+
 
 ];
 @NgModule({
