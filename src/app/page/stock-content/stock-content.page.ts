@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { IonIcon, IonItem, IonLabel, IonButton, IonRow, IonList } from "@ionic/angular/standalone";
 import { addIcons } from 'ionicons';
 import * as icons from 'ionicons/icons';
 

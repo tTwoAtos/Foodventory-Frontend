@@ -11,7 +11,7 @@ import { IonIcon, IonButton, IonText } from "@ionic/angular/standalone";
 })
 export class EmplacementCardComponent {
   @Input() name: string = "Test";
-  @Input() productAmount: number = 0;
+  @Input() productTotal: number = 0;
   @Input() contentPath: string = 'content'; // must redirect following content ID
 }
 
