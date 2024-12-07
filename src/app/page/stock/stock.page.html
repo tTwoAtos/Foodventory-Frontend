@@ -1,35 +1,42 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>stock</ion-title>
+    <ion-title>[Nom de la communauté]</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">stock</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <div class="stock-page">
+
+    <ion-text class="stock-title">
+      <h2>Votre stock</h2>
+    </ion-text>
+
+    <ion-list class="stock-list">
+      <emplacement-card [name]="data.name" [productAmount]="data.productAmount"
+        *ngFor="let data of mockDatas"></emplacement-card>
+    </ion-list>
+
+    <div class="category-resume">
+
+      <ion-text class="category-title">
+        <h3>Les produits categorisés</h3>
+      </ion-text>
+
+      <ion-list class="category-list">
+        <div class="category-item" *ngFor="let category of selectedCategories">
+          <ion-icon class="category-icon" name="fast-food-outline" size="large"></ion-icon>
+          <ion-text class="category-name">
+            {{category.name}}
+          </ion-text>
+        </div>
+      </ion-list>
+
+    </div>
+  </div>
 </ion-content>
 
-<!-- <div class="stock-page">
-        <h2 class="stock-title">Votre stock</h2>
-        <div class="stock-list">
-            <ul>
-                @for (data of mockDatas; track data.name) {
-                <emplacement-card [name]="data.name" [productAmount]="data.productAmount"></emplacement-card>
-                }
-            </ul>
-        </div>
-        <div class="category-resume">
-            <h3 class="category-title">Les produits categorisés</h3>
-            <div class="category-list">
-                @for (category of selectedCategories; track category.name) {
-                <div class="category-item">
-                    <ion-icon class="category-icon" name="fast-food-outline" size="large"></ion-icon>
-                    <div class="category-name">{{category.name}}</div>
-                </div>
-                }
-            </div>
-        </div>
-    </div> -->
+<ion-footer>
+  <ion-toolbar>
+    <ion-title>[Nav buttons]</ion-title>
+  </ion-toolbar>
+</ion-footer>

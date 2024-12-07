@@ -26,6 +26,12 @@ export class StockContentPage implements OnInit {
     { name: "Prince de LU", amount: 10 },
     { name: "Steak haché - 100g", amount: 2 },
     { name: "Prince de LU", amount: 10 },
+    { name: "Steak haché - 100g", amount: 2 },
+    { name: "Prince de LU", amount: 10 },
+    { name: "Steak haché - 100g", amount: 2 },
+    { name: "Prince de LU", amount: 10 },
+    { name: "Steak haché - 100g", amount: 2 },
+    { name: "Prince de LU", amount: 10 },
 
   ]
 

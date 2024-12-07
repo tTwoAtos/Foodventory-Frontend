@@ -5,32 +5,26 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">stock-content</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <div class="stock-content-page">
+
+    <div class="search-bar"></div>
+
+    <ion-list class="product-list">
+      <ion-row class="product-card" *ngFor="let product of productCards">
+        <ion-icon class="product-icon" name="fast-food-outline"></ion-icon>
+        <div class="product-name">{{product.name}}</div>
+        <div class="product-amount">
+          <ion-button size="large" fill="clear" class="mock-rounded-button">
+            <ion-icon name="add-circle-outline"></ion-icon>
+          </ion-button>
+
+          <div class="product-number">{{product.amount}} </div>
+          <ion-button size="large" fill="clear" class="mock-rounded-button">
+            <ion-icon name="remove-circle-outline"></ion-icon>
+          </ion-button>
+
+        </div>
+      </ion-row>
+    </ion-list>
+  </div>
 </ion-content>
-
-<!--     <div class="stock-content-page">
-        <div class="search-bar"></div>
-        <ion-list class="product-list">
-            @for (product of productCards; track product.name) {
-            <ion-row class="product-card">
-                <ion-icon class="product-icon" name="fast-food-outline"></ion-icon>
-                <div class="product-name">{{product.name}}</div>
-                <div class="product-amount">
-                    <ion-button size="large" fill="clear" class="mock-rounded-button">
-                        <ion-icon name="add-circle-outline"></ion-icon>
-                    </ion-button>
-
-                    <div class="product-number">{{product.amount}} </div>
-                    <ion-button size="large" fill="clear" class="mock-rounded-button">
-                        <ion-icon name="remove-circle-outline"></ion-icon>
-                    </ion-button>
-
-                </div>
-            </ion-row>
-            }
-        </ion-list>
-    </div> -->

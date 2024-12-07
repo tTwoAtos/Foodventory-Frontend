@@ -10,7 +10,6 @@ import * as icons from 'ionicons/icons';
 })
 export class StockPage implements OnInit {
 
-  
   constructor() {
     addIcons({ ...icons })
   }
@@ -31,6 +30,13 @@ export class StockPage implements OnInit {
   ];
 
   selectedCategories = [
+    { name: 'Viande' },
+    { name: 'Dessert' },
+    { name: 'Poisson' },
+    { name: 'Fruit' },
+    { name: 'Légume' },
+    { name: 'Boisson' },
+    { name: 'Féculent' },
     { name: 'Viande' },
     { name: 'Dessert' },
     { name: 'Poisson' },
