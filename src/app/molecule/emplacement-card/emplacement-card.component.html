@@ -1,5 +1,9 @@
 <div class="emplacement-card">
-  <div class="emplacement-card-name">{{name}}</div>
-  <div class="emplacement-card-amount">{{productAmount}}</div>
-  <ion-icon class="emplacement-card-button" name="caret-forward-outline" size="large"></ion-icon>
+  <ion-text class="emplacement-card-name">{{name}}</ion-text>
+
+  <ion-text class="emplacement-card-amount">{{productAmount}}</ion-text>
+
+  <ion-button class="emplacement-card-button" routerLink="{{contentPath}}">
+    <ion-icon name="caret-forward-outline" size="large"></ion-icon>
+  </ion-button>
 </div>
