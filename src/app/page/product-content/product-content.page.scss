@@ -1,0 +1,44 @@
+.product-details-page {
+
+    display: flex;
+    font-family: "Itim", cursive;
+    font-weight: 400;
+    font-style: normal;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .product-image {
+        padding: 20px;
+    }
+
+    .product-details-resume {
+        margin-top: 20px;
+        margin-left: 20px;
+        margin-right: 20px;
+
+        .product-details-title {}
+
+        .product-details-list {
+            margin-top: 0px;
+            border: 1.5px solid black;
+            border-radius: 10px;
+            padding: 10px;
+
+            .product-details-item-texts {
+                display: flow;
+                text-align: justify;
+                margin-top: 5px;
+                margin-bottom: 5px;
+
+                .product-details-item-title {
+                    font-weight: bold;
+                    font-style: italic;
+                }
+            }
+
+        }
+    }
+
+
+}

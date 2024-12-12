@@ -7,7 +7,11 @@ const routes: Routes = [
   {
     path: '',
     component: StockContentPage
-  }
+  },
+  {
+    path: 'product',
+    loadChildren: () => import('./../product-content/product-content.module').then(m => m.ProductContentPageModule)
+  },
 ];
 
 @NgModule({
