@@ -41,11 +41,44 @@
         margin-right: 1em;
 
         .mock-rounded-button {
-            width: 1.25em !important;
-            height: 1.25em !important;
-            --ripple-color: transparent; // TODO : Check with mobile, some functionnalities doesn't work well on laptop
-            --border-color: none;
-            --border-width: 0px !important;
+
+            margin-right: 5px;
+            margin-left: 0px;
+
+
+            --box-shadow: 0;
+
+            --border-radius: 0px !important;
+            --padding-top: 0px !important;
+            --padding-bottom: 0px !important;
+            --padding-start: 0em !important;
+            --padding-end: 0em !important;
+
+            --background: transparent;
+            --background-hover: transparent;
+            --background-activated: transparent;
+            --background-focused: transparent;
+            --color: #000000;
+
+
+            :host(.button-solid) {
+                --border-radius: 0px !important;
+                --padding-top: 0px !important;
+                --padding-bottom: 0px !important;
+                --padding-start: 0em !important;
+                --padding-end: 0em !important;
+                -webkit-margin-start: 0px;
+                margin-inline-start: 0px;
+                -webkit-margin-end: 0px;
+                margin-inline-end: 0px;
+                margin-top: 0px;
+                margin-bottom: 0px;
+                min-height: 0px;
+                font-size: 0rem;
+                font-weight: 0;
+                letter-spacing: 0em;
+                text-transform: none;
+            }
         }
 
         .product-number {
