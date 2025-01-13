@@ -7,7 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { StockPageRoutingModule } from './stock-routing.module';
 
 import { StockPage } from './stock.page';
-import { EmplacementCardComponent } from "../../molecule/emplacement-card/emplacement-card.component";
+import { InfoCardComponent } from '../../molecule/info-card/info-card.component';
 
 @NgModule({
   imports: [
@@ -15,8 +15,8 @@ import { EmplacementCardComponent } from "../../molecule/emplacement-card/emplac
     FormsModule,
     IonicModule,
     StockPageRoutingModule,
-    EmplacementCardComponent
-],
-  declarations: [StockPage]
+    InfoCardComponent,
+  ],
+  declarations: [StockPage],
 })
-export class StockPageModule { }
+export class StockPageModule {}

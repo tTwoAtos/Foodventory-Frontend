@@ -1,4 +1,4 @@
-.emplacement-card {
+.info-card {
     display: flex;
     padding-top: 15px;
     padding-bottom: 15px;
@@ -9,13 +9,13 @@
     align-items: center;
     justify-content: space-between;
 
-    .emplacement-card-name {
+    .info-card-name {
         margin-right: 5px;
         margin-left: 20px;
         font-size: clamp(20px, 2vw, 30px);
     }
 
-    .emplacement-card-amount {
+    .info-card-amount {
         margin-right: 30px;
         margin-left: 15px;
         font-size: clamp(30px, 2vw, 40px);
@@ -23,7 +23,7 @@
         text-align: end;
     }
 
-    .emplacement-card-button {
+    .info-card-button {
         margin-right: 5px;
         margin-left: 0px;
 

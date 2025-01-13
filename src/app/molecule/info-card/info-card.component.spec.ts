@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
-import { EmplacementCardComponent } from './emplacement-card.component';
+import { InfoCardComponent } from './info-card.component';
 
-describe('EmplacementCardComponent', () => {
-  let component: EmplacementCardComponent;
-  let fixture: ComponentFixture<EmplacementCardComponent>;
+describe('InfoCardComponent', () => {
+  let component: InfoCardComponent;
+  let fixture: ComponentFixture<InfoCardComponent>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ EmplacementCardComponent ],
-      imports: [IonicModule.forRoot()]
+      declarations: [InfoCardComponent],
+      imports: [IonicModule.forRoot()],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(EmplacementCardComponent);
+    fixture = TestBed.createComponent(InfoCardComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));

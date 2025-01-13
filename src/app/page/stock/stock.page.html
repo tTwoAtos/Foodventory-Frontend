@@ -6,18 +6,21 @@
 
 <ion-content [fullscreen]="true">
   <div class="stock-page">
-
     <ion-text class="stock-title">
       <h2>Votre stock</h2>
     </ion-text>
 
     <ion-list class="stock-list">
-      <emplacement-card [name]="data.name" [productTotal]="data.productAmount"
-        *ngFor="let data of mockDatas"></emplacement-card>
+      <info-card
+        [name]="data.name"
+        [productTotal]="data.productAmount"
+        *ngFor="let data of mockDatas"
+        (click)="redirectToStockContent(data.id)"
+        [routerLink]="['content', data.id]"
+      ></info-card>
     </ion-list>
 
     <div class="category-resume">
-
       <ion-text class="category-title">
         <h3>Les produits categorisés</h3>
       </ion-text>
@@ -25,13 +28,14 @@
       <ion-list class="category-list">
         <!-- TODO : Change <div> par <ion-row> -->
         <div class="category-item" *ngFor="let category of selectedCategories">
-          <ion-icon class="category-icon" name="fast-food-outline" size="large"></ion-icon>
-          <ion-text class="category-name">
-            {{category.name}}
-          </ion-text>
+          <ion-icon
+            class="category-icon"
+            name="fast-food-outline"
+            size="large"
+          ></ion-icon>
+          <ion-text class="category-name"> {{category.name}} </ion-text>
         </div>
       </ion-list>
-
     </div>
   </div>
 </ion-content>

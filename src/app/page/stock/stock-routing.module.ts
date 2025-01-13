@@ -7,11 +7,14 @@ import { StockContentPage } from '../stock-content/stock-content.page';
 const routes: Routes = [
   {
     path: '',
-    component: StockPage
+    component: StockPage,
   },
   {
-    path: 'content',
-    loadChildren: () => import('./../stock-content/stock-content.module').then(m => m.StockContentPageModule)
+    path: 'content/:stockId',
+    loadChildren: () =>
+      import('./../stock-content/stock-content.module').then(
+        (m) => m.StockContentPageModule
+      ),
   },
 ];
 
@@ -19,4 +22,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class StockPageRoutingModule { }
+export class StockPageRoutingModule {}

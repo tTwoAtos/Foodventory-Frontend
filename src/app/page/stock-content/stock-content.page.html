@@ -6,11 +6,14 @@
 
 <ion-content [fullscreen]="true">
   <div class="stock-content-page">
-
     <div class="search-bar"></div>
 
     <ion-list class="product-list">
-      <product-card *ngFor="let product of productCards" [name]="product.name" [amount]="product.amount"></product-card>
+      <product-card
+        *ngFor="let product of productCards"
+        [name]="product.name"
+        [amount]="product.amount"
+      ></product-card>
     </ion-list>
   </div>
 </ion-content>
