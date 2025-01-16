@@ -68,3 +68,8 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+
+# Environments vars
+src/environments/**
+# open api generator
+src/app/apis/*
