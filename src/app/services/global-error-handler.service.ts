@@ -2,7 +2,7 @@ import { HttpErrorResponse } from "@angular/common/http"
 import { Injectable } from "@angular/core"
 import { Router } from "@angular/router"
 // import { Toaster } from "@app/utils/toaster"
-import { ExceptionCode } from "@capacitor/core"
+// import { ExceptionCode } from "@capacitor/core"
 
 @Injectable({
     providedIn: "root",
