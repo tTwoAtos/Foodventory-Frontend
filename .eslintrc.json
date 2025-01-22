@@ -42,6 +42,7 @@
                     }
                 ],
                 "@typescript-eslint/explicit-module-boundary-types": "off",
+                "@angular-eslint/component-class-suffix": "off",
                 "indent": ["warn", 4]
             }
         },

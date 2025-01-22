@@ -1,1 +1,1 @@
-export const TOASTER_DURATION = 2000
+export const TOASTER_DURATION = 5000
