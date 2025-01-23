@@ -9,9 +9,9 @@ import { TokenService } from "../token-service/token.service"
 })
 export class AuthService {
     constructor(
-        private http: HttpClient,
+        // private http: HttpClient,
         private tokenService: TokenService,
-        private notificationService: NotificationService,
+        // private notificationService: NotificationService,
         private router: Router
     ) {}
 
