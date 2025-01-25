@@ -2,12 +2,14 @@ import { Component, OnInit } from "@angular/core"
 import { ActivatedRoute } from "@angular/router"
 import { addIcons } from "ionicons"
 import * as icons from "ionicons/icons"
-import { StockContentService } from "@assets/stock-content.service"
+import { HttpClient } from "@angular/common/http"
+import { StockContentService } from "@app/services/stock-content-service/stock-content.service"
 
 @Component({
     selector: "app-stock-content",
     templateUrl: "./stock-content.page.html",
     styleUrls: ["./stock-content.page.scss"],
+    providers: [HttpClient],
 })
 export class StockContentPage implements OnInit {
     constructor(

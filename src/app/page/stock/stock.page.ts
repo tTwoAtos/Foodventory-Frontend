@@ -1,12 +1,14 @@
+import { HttpClient } from "@angular/common/http"
 import { Component, Output } from "@angular/core"
+import { StockService } from "@app/services/stock-service/stock.service"
 import { addIcons } from "ionicons"
 import * as icons from "ionicons/icons"
-import { StockService } from "@assets/stock.service"
 
 @Component({
     selector: "app-stock",
     templateUrl: "./stock.page.html",
     styleUrls: ["./stock.page.scss"],
+    providers: [HttpClient],
 })
 export class StockPage {
     constructor(private stockService: StockService) {
