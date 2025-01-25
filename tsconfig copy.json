@@ -1,0 +1,42 @@
+{
+    "compileOnSave": false,
+    "compilerOptions": {
+        "baseUrl": "./",
+        "outDir": "./dist/out-tsc",
+        "forceConsistentCasingInFileNames": true,
+        "strict": true,
+        "noImplicitOverride": true,
+        "noPropertyAccessFromIndexSignature": true,
+        "noImplicitReturns": true,
+        "noFallthroughCasesInSwitch": true,
+        "sourceMap": true,
+        "declaration": false,
+        "downlevelIteration": true,
+        "experimentalDecorators": true,
+        "moduleResolution": "node",
+        "importHelpers": true,
+        "target": "es2022",
+        "module": "es2020",
+        "lib": ["es2018", "dom"],
+        "paths": {
+            "@app/*": ["src/app/*"],
+            "@environments/*": ["src/app/environments/*"],
+            "@layouts/*": ["src/app/layouts/*"],
+            "@guards/*": ["src/app/guards/*"],
+            "@pages/*": ["src/app/pages/*"],
+            "@services/*": ["src/app/services/*"],
+            "@api/*": ["src/app/api/*"],
+            "@atoms/*": ["src/app/components/atoms/*"],
+            "@molecules/*": ["src/app/components/molecules/*"],
+            "@organisms/*": ["src/app/components/organisms/*"],
+            "@assets/*": ["src/assets/*"]
+        },
+        "useDefineForClassFields": false
+    },
+    "angularCompilerOptions": {
+        "enableI18nLegacyMessageIdFormat": false,
+        "strictInjectionParameters": true,
+        "strictInputAccessModifiers": true,
+        "strictTemplates": true
+    }
+}
