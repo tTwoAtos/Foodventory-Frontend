@@ -1,16 +1,6 @@
-import { Component, OnInit, Output } from "@angular/core"
-import { RouterLink } from "@angular/router"
-import {
-    IonIcon,
-    IonItem,
-    IonLabel,
-    IonButton,
-    IonRow,
-    IonList,
-} from "@ionic/angular/standalone"
+import { Component, Output } from "@angular/core"
 import { addIcons } from "ionicons"
 import * as icons from "ionicons/icons"
-import { isEmpty } from "rxjs"
 import { StockService } from "src/assets/stock.service"
 
 @Component({

@@ -1,5 +1,4 @@
 import { Component, Input } from "@angular/core"
-import { Router, RouterLink } from "@angular/router"
 import { IonIcon, IonButton, IonText } from "@ionic/angular/standalone"
 
 @Component({
