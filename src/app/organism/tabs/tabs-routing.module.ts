@@ -4,6 +4,10 @@ import { TabsPage } from './tabs.page';
 
 const routes: Routes = [
   {
+    path: 'community',
+    loadChildren: () => import('../../page/community/community.module').then(m => m.CommunityPageModule)
+  },
+  {
     path: 'tabs',
     component: TabsPage,
     children: [
