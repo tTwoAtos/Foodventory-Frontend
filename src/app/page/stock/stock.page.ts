@@ -1,7 +1,7 @@
 import { Component, Output } from "@angular/core"
 import { addIcons } from "ionicons"
 import * as icons from "ionicons/icons"
-import { StockService } from "src/assets/stock.service"
+import { StockService } from "@assets/stock.service"
 
 @Component({
     selector: "app-stock",

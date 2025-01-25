@@ -2,7 +2,7 @@ import { Component, OnInit } from "@angular/core"
 import { ActivatedRoute } from "@angular/router"
 import { addIcons } from "ionicons"
 import * as icons from "ionicons/icons"
-import { StockContentService } from "src/assets/stock-content.service"
+import { StockContentService } from "@assets/stock-content.service"
 
 @Component({
     selector: "app-stock-content",
