@@ -7,7 +7,23 @@ const routes: Routes = [
         path: "",
         loadChildren: () =>
             import("./organism/tabs/tabs.module").then((m) => m.TabsPageModule),
-        canActivate: [AuthGuard],
+        // canActivate: [AuthGuard],
+    },
+    {
+        path: "scan",
+        loadChildren: () =>
+            import("./page/page-scanner/page-scanner.module").then(
+                (m) => m.PageScannerPageModule
+            ),
+        // canActivate: [AuthGuard],
+    },
+    {
+        path: "basket",
+        loadChildren: () =>
+            import("./page/basket/basket.module").then(
+                (m) => m.BasketPageModule
+            ),
+        // canActivate: [AuthGuard],
     },
 ]
 @NgModule({

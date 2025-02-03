@@ -1,0 +1,28 @@
+<ion-header [translucent]="true">
+    <ion-toolbar>
+        <ion-title>page-scanner</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+    <div>
+        <div class="scanner">
+            <!-- Camera -->
+        </div>
+
+        <!-- Back to the previous page -->
+        <ion-button class="exit-button">
+            <ion-icon name="close-outline"></ion-icon>
+        </ion-button>
+
+        <app-add-product-modal
+            [isModalOpen]="isModalOpen"
+            (closeEvent)="setOpen(false)"
+            (cancelEvent)="setOpen(false)"
+        ></app-add-product-modal>
+
+        <ion-button class="digicode-button" (click)="setOpen(true)">
+            <ion-icon name="keypad-outline"></ion-icon>
+        </ion-button>
+    </div>
+</ion-content>

@@ -1,0 +1,22 @@
+<ion-modal [isOpen]="modalIsOpen">
+    <ng-template>
+        <ion-text class="modal-title">{{ title }}</ion-text>
+
+        <ion-content class="ion-padding modal-content">
+            <ng-container *ngTemplateOutlet="contentTemplate"></ng-container>
+        </ion-content>
+
+        <div>
+            <ion-button class="modal-exit-button" (click)="cancel()">
+                Retour
+            </ion-button>
+            <ion-button
+                *ngIf="haveConfirmButton"
+                class="modal-exit-button"
+                (click)="confirm()"
+            >
+                Valider
+            </ion-button>
+        </div>
+    </ng-template>
+</ion-modal>

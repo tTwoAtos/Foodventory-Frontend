@@ -1,0 +1,36 @@
+<app-modal
+    [title]="'Ajouter un produit'"
+    [modalIsOpen]="isModalOpen"
+    [contentTemplate]="content"
+    (cancelEvent)="cancel()"
+>
+</app-modal>
+
+<ng-template #content>
+    <ion-grid>
+        <ion-row class="ion-justify-content-between">
+            <ion-col class="item">
+                <ion-button class="modal-button" size="large">
+                    <ion-icon name="barcode-outline"></ion-icon>
+                </ion-button>
+                <ion-text class="modal-text">Scanner</ion-text>
+            </ion-col>
+            <ion-col class="item">
+                <ion-button
+                    class="modal-button"
+                    size="large"
+                    (click)="openBarcodeModal(true)"
+                >
+                    <ion-icon name="keypad-outline"></ion-icon>
+                </ion-button>
+                <ion-text class="modal-text">Taper</ion-text>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ng-template>
+
+<app-barcode-entry-modal
+    [isModalOpen]="isBarecodeModalOpen"
+    (confirmEvent)="openBarcodeModal(false)"
+    (cancelEvent)="openBarcodeModal(false)"
+></app-barcode-entry-modal>

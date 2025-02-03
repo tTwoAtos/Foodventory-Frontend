@@ -1,0 +1,19 @@
+<ng-template #content>
+    <ion-input
+        id="barcode-input"
+        type="number"
+        placeholder="_ _ _ _ _ _ _ _ _ _ _ _ _"
+        [(ngModel)]="barcode"
+        (keydown)="onKeyDown($event)"
+    ></ion-input>
+</ng-template>
+
+<app-modal
+    [title]="'Entrer le code barre'"
+    [modalIsOpen]="isModalOpen"
+    [contentTemplate]="content"
+    (confirmEvent)="confirm()"
+    (cancelEvent)="cancel()"
+    [haveConfirmButton]="true"
+>
+</app-modal>
