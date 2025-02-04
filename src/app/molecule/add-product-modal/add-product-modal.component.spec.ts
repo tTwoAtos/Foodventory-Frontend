@@ -1,24 +1,32 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { IonicModule } from '@ionic/angular';
+import { ComponentFixture, TestBed, waitForAsync } from "@angular/core/testing"
+import { IonicModule } from "@ionic/angular"
 
-import { AddProductModalComponent } from './add-product-modal.component';
+import { AddProductModalComponent } from "./add-product-modal.component"
+import { CUSTOM_ELEMENTS_SCHEMA } from "@angular/core"
 
-describe('AddProductModalComponent', () => {
-  let component: AddProductModalComponent;
-  let fixture: ComponentFixture<AddProductModalComponent>;
+describe("AddProductModalComponent", () => {
+    let component: AddProductModalComponent
+    let fixture: ComponentFixture<AddProductModalComponent>
 
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
-      declarations: [ AddProductModalComponent ],
-      imports: [IonicModule.forRoot()]
-    }).compileComponents();
+    beforeEach(async () => {
+        await TestBed.configureTestingModule({
+            declarations: [AddProductModalComponent],
+            schemas: [CUSTOM_ELEMENTS_SCHEMA],
+        }).compileComponents()
+    })
 
-    fixture = TestBed.createComponent(AddProductModalComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  }));
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [AddProductModalComponent],
+            imports: [IonicModule.forRoot()],
+        }).compileComponents()
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});
+        fixture = TestBed.createComponent(AddProductModalComponent)
+        component = fixture.componentInstance
+        fixture.detectChanges()
+    }))
+
+    it("should create", () => {
+        expect(component).toBeTruthy()
+    })
+})
