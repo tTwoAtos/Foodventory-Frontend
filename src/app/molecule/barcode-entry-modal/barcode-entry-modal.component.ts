@@ -42,6 +42,7 @@ export class BarcodeEntryModalComponent {
     }
 
     confirm() {
+        console.log(this.barcode)
         this.confirmEvent.emit()
         this.setOpen(false)
     }
