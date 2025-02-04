@@ -12,4 +12,8 @@ export class BasketPage {
     }[] = []
 
     constructor() {}
+
+    saveBasket() {
+        // Save list of Product
+    }
 }
