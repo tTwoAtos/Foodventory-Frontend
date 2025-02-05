@@ -25,6 +25,18 @@ const routes: Routes = [
             ),
         // canActivate: [AuthGuard],
     },
+    {
+        path: "stock",
+        loadChildren: () =>
+            import("./page/stock/stock.module").then((m) => m.StockPageModule),
+    },
+    {
+        path: "product-content",
+        loadChildren: () =>
+            import("./page/product-content/product-content.module").then(
+                (m) => m.ProductContentPageModule
+            ),
+    },
 ]
 @NgModule({
     imports: [

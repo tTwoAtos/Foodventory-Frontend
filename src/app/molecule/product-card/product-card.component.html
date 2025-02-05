@@ -1,0 +1,15 @@
+<ion-row class="product-card">
+  <ion-icon class="product-icon" name="fast-food-outline"></ion-icon>
+  <div class="product-name">{{ name }}</div>
+  <div class="product-amount">
+    <ion-button class="mock-rounded-button" (click)="increment()">
+      <ion-icon name="add-circle-outline"></ion-icon>
+    </ion-button>
+
+    <div class="product-number">{{ amount }}</div>
+
+    <ion-button class="mock-rounded-button" (click)="decrement()">
+      <ion-icon name="remove-circle-outline"></ion-icon>
+    </ion-button>
+  </div>
+</ion-row>

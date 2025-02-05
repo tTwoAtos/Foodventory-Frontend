@@ -1,0 +1,19 @@
+<ion-header [translucent]="true">
+    <ion-toolbar>
+        <ion-title>stock-content</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+    <div class="stock-content-page">
+        <div class="search-bar"></div>
+
+        <ion-list class="product-list">
+            <app-product-card
+                *ngFor="let product of productCards"
+                [name]="product.name"
+                [amount]="product.amount"
+            ></app-product-card>
+        </ion-list>
+    </div>
+</ion-content>

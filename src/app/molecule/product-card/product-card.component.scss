@@ -1,0 +1,96 @@
+.product-card {
+    border: 1.5px solid black;
+    border-radius: 10px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    align-items: center;
+    height: 80px;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    justify-content: space-between;
+
+    .product-icon {
+        margin-right: 5px;
+        margin-left: 15px;
+        font-size: 3.2em; // Size of the icon
+    }
+
+    .product-name {
+        margin-right: 20px;
+        margin-left: 10px;
+
+        font-size: 1.3em;
+
+        width: 120px;
+        height: 60px;
+
+        overflow: hidden;
+        -webkit-box-orient: vertical;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        line-clamp: 3; // Unused but its to avoid warning message with "-webkit-line-clamp"
+
+        align-content: center;
+    }
+
+    .product-amount {
+        display: flex;
+        align-items: center;
+
+        margin-right: 1em;
+
+        .mock-rounded-button {
+
+            margin-right: 5px;
+            margin-left: 0px;
+
+
+            --box-shadow: 0;
+
+            --border-radius: 0px !important;
+            --padding-top: 0px !important;
+            --padding-bottom: 0px !important;
+            --padding-start: 0em !important;
+            --padding-end: 0em !important;
+
+            --background: transparent;
+            --background-hover: transparent;
+            --background-activated: transparent;
+            --background-focused: transparent;
+            --color: #000000;
+
+
+            :host(.button-solid) {
+                --border-radius: 0px !important;
+                --padding-top: 0px !important;
+                --padding-bottom: 0px !important;
+                --padding-start: 0em !important;
+                --padding-end: 0em !important;
+                -webkit-margin-start: 0px;
+                margin-inline-start: 0px;
+                -webkit-margin-end: 0px;
+                margin-inline-end: 0px;
+                margin-top: 0px;
+                margin-bottom: 0px;
+                min-height: 0px;
+                font-size: 0rem;
+                font-weight: 0;
+                letter-spacing: 0em;
+                text-transform: none;
+            }
+        }
+
+        .product-number {
+            margin-right: 0.1em;
+            margin-left: 0.1em;
+            font-style: italic;
+            font-weight: bold;
+            font-size: xx-large;
+            width: 1.5em;
+            text-align: center;
+        }
+    }
+
+
+}
