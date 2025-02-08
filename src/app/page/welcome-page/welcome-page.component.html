@@ -1,0 +1,36 @@
+<div class="ion-page">
+    <ion-content>
+        <ion-grid>
+            <ion-row>
+                <img src="/assets/accueil.svg" alt="logo foodstock" />
+            </ion-row>
+
+            <ion-row>
+                <div class="title">
+                    <h1>FoodStock</h1>
+
+                    <p>
+                        La ou il faut écrire le slogan maybe (a enlever avant
+                        l'exam)
+                    </p>
+                </div>
+            </ion-row>
+
+            <ion-row class="buttons">
+                <ion-button
+                    color="primary"
+                    (click)="router.navigateByUrl('/login')"
+                >
+                    Connexion
+                </ion-button>
+
+                <ion-button
+                    color="primary"
+                    (click)="router.navigateByUrl('/register')"
+                >
+                    Créer un compte
+                </ion-button>
+            </ion-row>
+        </ion-grid>
+    </ion-content>
+</div>
