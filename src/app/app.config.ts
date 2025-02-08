@@ -11,7 +11,7 @@ import { AuthGuard } from "./guards/auth-guard/auth.guard"
 import { AuthInterceptor } from "./interceptors/auth.interceptor"
 import { httpErrorInterceptor } from "./interceptors/http-error.interceptor"
 import { ErrorHandlingService } from "./services/global-error-handler.service"
-import { Toaster } from "./utils/toaster"
+import { ToastService } from "./services/toaster-service/toaster.service"
 
 export const appConfig: ApplicationConfig = {
     providers: [
@@ -23,7 +23,7 @@ export const appConfig: ApplicationConfig = {
         ),
         provideIonicAngular({}),
         ErrorHandlingService,
-        Toaster,
         AuthGuard,
+        ToastService,
     ],
 }
