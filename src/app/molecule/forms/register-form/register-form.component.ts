@@ -7,8 +7,8 @@ import {
     Validators,
 } from "@angular/forms"
 import { Router } from "@angular/router"
-import { AuthControllerService } from "@app/apis/auth"
-import { User } from "@app/apis/users"
+import { AuthControllerService, AuthUserEntity } from "@app/apis/auth"
+import { ToastService } from "@app/services/toaster-service/toaster.service"
 import { TokenService } from "@app/services/token-services/token.service"
 import { PASSWORD_MIN_LENGTH } from "@app/utils/const/const"
 import { DefaultMessage } from "@app/utils/const/default-form-validation-messages"
@@ -31,7 +31,8 @@ export class RegisterFormComponent {
         private service: AuthControllerService,
         private fb: FormBuilder,
         private tokenService: TokenService,
-        protected router: Router
+        protected router: Router,
+        private toasterService: ToastService
     ) {
         this.registerForm = this.fb.group({
             gender: ["0"], // Homme par défaut
@@ -89,16 +90,12 @@ export class RegisterFormComponent {
             return
         }
 
-        this.service
-            .register(this.registerForm.value)
-            .subscribe((registerResponse: User) => {
+        this.service.register(this.registerForm.value).subscribe({
+            next: (registerResponse: AuthUserEntity) => {
                 this.router.navigateByUrl(
                     "/login?email=" + registerResponse.email
                 )
-            })
-    }
-
-    test() {
-        console.log(this.registerForm)
+            },
+        })
     }
 }

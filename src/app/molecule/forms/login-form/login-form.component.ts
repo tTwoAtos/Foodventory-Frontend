@@ -8,6 +8,7 @@ import {
 } from "@angular/forms"
 import { ActivatedRoute, Router } from "@angular/router"
 import { AuthControllerService, TokenResponse } from "@app/apis/auth"
+import { ToastService } from "@app/services/toaster-service/toaster.service"
 import { TokenService } from "@app/services/token-services/token.service"
 import { PASSWORD_MIN_LENGTH } from "@app/utils/const/const"
 import { DefaultMessage } from "@app/utils/const/default-form-validation-messages"
@@ -29,6 +30,7 @@ export class LoginFormComponent {
         private fb: FormBuilder,
         private tokenService: TokenService,
         protected router: Router,
+        private toasterService: ToastService,
         private route: ActivatedRoute
     ) {
         this.loginForm = this.fb.group({
@@ -60,19 +62,22 @@ export class LoginFormComponent {
 
     onSubmit() {
         if (this.loginForm.valid) {
-            this.service
-                .login(this.loginForm.value)
-                .subscribe((tokenResponse: TokenResponse) => {
-                    console.log(tokenResponse)
-
+            this.service.login(this.loginForm.value).subscribe({
+                next: (tokenResponse: TokenResponse) => {
                     if (tokenResponse.access_token) {
                         this.tokenService.login(tokenResponse.access_token)
                     }
-                })
-        }
-    }
+                },
+                error: (error) => {
+                    console.log(error)
 
-    test() {
-        console.log(this.loginForm.controls["email"])
+                    if (error) {
+                        this.toasterService.error(
+                            "Email ou mot de passe incorrect"
+                        )
+                    }
+                },
+            })
+        }
     }
 }

@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core"
 import { Router } from "@angular/router"
 import { AUTH_TOKEN_KEY } from "@app/utils/const/const"
+import { Token } from "@app/utils/IToken"
 import { JwtHelperService } from "@auth0/angular-jwt"
 
 @Injectable({
@@ -50,12 +51,23 @@ export class TokenService {
         return decodedToken && decodedToken.role === "ROLE_ADMIN"
     }
 
-    getUserId(): string | null {
+    getAuthUser(): Token | null {
         if (!this.token) {
             return null
         }
 
-        const decodedToken = this.jwtHelper.decodeToken(this.token)
-        return decodedToken.id
+        const decodedToken: Token | null = this.jwtHelper.decodeToken(
+            this.token
+        )
+
+        return decodedToken
+    }
+
+    getLoggedCommunityId(): string | undefined {
+        return this.getAuthUser()?.loggedInCommunityId
+    }
+
+    getAuthUserId(): number | undefined {
+        return this.getAuthUser()?.user_id
     }
 }
