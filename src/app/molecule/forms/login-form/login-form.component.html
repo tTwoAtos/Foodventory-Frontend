@@ -1,0 +1,40 @@
+<div class="login-form">
+    <h2>Connexion</h2>
+
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <!-- Champ Email -->
+        <ion-input
+            formControlName="email"
+            type="email"
+            label="Email"
+            labelPlacement="floating"
+            fill="solid"
+            [errorText]="loginForm.controls['email'].errors?.['message']"
+        ></ion-input>
+
+        <!-- Champ Password -->
+        <ion-input
+            formControlName="password"
+            type="password"
+            label="Mot de passe"
+            labelPlacement="floating"
+            fill="solid"
+            [errorText]="loginForm.controls['password'].errors?.['message']"
+        >
+            <ion-input-password-toggle color="primary">
+            </ion-input-password-toggle>
+        </ion-input>
+
+        <ion-button
+            type="submit"
+            color="primary"
+            [disabled]="loginForm.invalid"
+        >
+            Se connecter
+        </ion-button>
+
+        <ion-button color="primary" (click)="router.navigateByUrl('/register')">
+            Créer un compte
+        </ion-button>
+    </form>
+</div>

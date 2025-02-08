@@ -34,4 +34,16 @@
 
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
-// @import "@ionic/angular/css/palettes/dark.system.css";
+@import "@ionic/angular/css/palettes/dark.system.css";
+
+* {
+    --ion-font-family: Arial, Helvetica, sans-serif;
+}
+
+ion-grid {
+    padding: 10px;
+}
+
+ion-input {
+    --border-radius: 60%;
+}

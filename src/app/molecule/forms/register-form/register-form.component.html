@@ -1,0 +1,113 @@
+<div class="register-form">
+    <h2>Création de compte</h2>
+
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <ion-grid>
+            <ion-row>
+                <ion-col size-sm="5" size="4" class="padding-right-8px">
+                    <!-- Champ gender -->
+                    <ion-select
+                        formControlName="gender"
+                        fill="solid"
+                        interface="popover"
+                        type="select"
+                    >
+                        <ion-select-option value="0">Mr</ion-select-option>
+                        <ion-select-option value="1">Mme</ion-select-option>
+                    </ion-select>
+                </ion-col>
+
+                <ion-col size-sm="7" size="8">
+                    <!-- Champ lastname -->
+                    <ion-input
+                        formControlName="lastname"
+                        type="lastname"
+                        label="Nom*"
+                        labelPlacement="floating"
+                        fill="solid"
+                        [errorText]="
+                            registerForm.controls['lastname'].errors?.[
+                                'message'
+                            ]
+                        "
+                    ></ion-input>
+                </ion-col>
+            </ion-row>
+
+            <ion-row>
+                <ion-col>
+                    <!-- Champ firstname -->
+                    <ion-input
+                        formControlName="firstname"
+                        type="firstname"
+                        label="Prénom*"
+                        labelPlacement="floating"
+                        fill="solid"
+                        [errorText]="
+                            registerForm.controls['firstname'].errors?.[
+                                'message'
+                            ]
+                        "
+                    ></ion-input>
+                </ion-col>
+            </ion-row>
+
+            <ion-row>
+                <!-- Champ Email -->
+                <ion-input
+                    formControlName="email"
+                    type="email"
+                    label="Email*"
+                    labelPlacement="floating"
+                    fill="solid"
+                    [errorText]="
+                        registerForm.controls['email'].errors?.['message']
+                    "
+                ></ion-input>
+
+                <!-- Champ Password -->
+                <ion-input
+                    formControlName="password"
+                    type="password"
+                    label="Mot de passe*"
+                    labelPlacement="floating"
+                    fill="solid"
+                    [errorText]="
+                        registerForm.controls['password'].errors?.['message']
+                    "
+                >
+                    <ion-input-password-toggle color="primary">
+                    </ion-input-password-toggle>
+                </ion-input>
+
+                <ion-input
+                    formControlName="password_validation"
+                    type="password"
+                    label="Validation du mot de passe*"
+                    labelPlacement="floating"
+                    fill="solid"
+                    [errorText]="
+                        registerForm.controls['password_validation'].errors?.[
+                            'message'
+                        ]
+                    "
+                >
+                    <ion-input-password-toggle color="primary">
+                    </ion-input-password-toggle>
+                </ion-input>
+
+                <ion-button
+                    type="submit"
+                    color="primary"
+                    [disabled]="registerForm.invalid"
+                >
+                    Confirmer
+                </ion-button>
+
+                <ion-button color="primary" (click)="router.navigate(['..'])">
+                    Retour
+                </ion-button>
+            </ion-row>
+        </ion-grid>
+    </form>
+</div>
