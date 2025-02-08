@@ -4,6 +4,7 @@ import { addIcons } from "ionicons"
 import * as icons from "ionicons/icons"
 import { HttpClient } from "@angular/common/http"
 import { StockContentService } from "@app/services/stock-content-service/stock-content.service"
+import { Product } from "@app/apis/products"
 
 @Component({
     selector: "app-stock-content",
@@ -19,22 +20,15 @@ export class StockContentPage implements OnInit {
         addIcons({ ...icons })
     }
 
-    productCards: {
-        name: string
-        amount: number
-    }[] = []
+    productCards: Product[] = []
 
-    ngOnInit() {
+    async ngOnInit() {
         this.route.paramMap.subscribe((params) => {
             const stockID = params.get("stockId")
 
             if (stockID != null) {
-                this.service.getStockContent().subscribe({
-                    next: (data) => {
-                        this.productCards =
-                            data[parseInt(stockID) - 1].productList
-                    },
-                    error: (e) => console.error(e),
+                this.service.getContentById(parseInt(stockID)).then((res) => {
+                    this.productCards = res.productList
                 })
             } else {
                 throw new ReferenceError()

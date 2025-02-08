@@ -1,6 +1,7 @@
 import { HttpClient } from "@angular/common/http"
-import { Component, Output } from "@angular/core"
+import { Component, OnInit, Output } from "@angular/core"
 import { StockService } from "@app/services/stock-service/stock.service"
+import { Stock } from "@app/types/stock"
 import { addIcons } from "ionicons"
 import * as icons from "ionicons/icons"
 
@@ -10,28 +11,8 @@ import * as icons from "ionicons/icons"
     styleUrls: ["./stock.page.scss"],
     providers: [HttpClient],
 })
-export class StockPage {
-    constructor(private stockService: StockService) {
-        addIcons({ ...icons })
-    }
-
-    @Output() mockDatas = [
-        {
-            id: 1,
-            name: "Réfrégirateur",
-            productAmount: 23,
-        },
-        {
-            id: 2,
-            name: "Congélateur",
-            productAmount: 16,
-        },
-        {
-            id: 3,
-            name: "Placard",
-            productAmount: 7,
-        },
-    ]
+export class StockPage implements OnInit {
+    mockStocks: Stock[] = []
 
     selectedCategories = [
         { name: "Viande" },
@@ -50,12 +31,13 @@ export class StockPage {
         { name: "Féculent" },
     ]
 
-    async redirectToStockContent(id: number) {
-        this.stockService.getStocks().subscribe({
-            next: (data) => {
-                console.log(data[id - 1])
-            },
-            error: (e) => console.error(e),
+    constructor(private stockService: StockService) {
+        addIcons({ ...icons })
+    }
+
+    async ngOnInit(): Promise<void> {
+        await this.stockService.getStocks().then((res) => {
+            this.mockStocks = res
         })
     }
 }

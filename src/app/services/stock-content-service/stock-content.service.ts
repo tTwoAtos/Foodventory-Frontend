@@ -1,14 +1,25 @@
 import { HttpClient } from "@angular/common/http"
 import { Injectable } from "@angular/core"
+import { StockDetails } from "@app/types/stock"
+import { mockStockDetails } from "@assets/mocks/datas/stocks/stock-details.mock"
 import { Observable } from "rxjs"
 
 @Injectable({
     providedIn: "root",
 })
 export class StockContentService {
-    constructor(private httpClient: HttpClient) {}
+    constructor() {}
 
-    getStockContent(): Observable<any> {
-        return this.httpClient.get("/assets/mocks/datas/stock-data.mock.json")
+    getContentById(id: number): Promise<StockDetails> {
+        return new Promise((success) => {
+            const stockContent = mockStockDetails.find(
+                (content) => content.id == id
+            )
+
+            if (stockContent == undefined) {
+                throw new Error("No stock content found....")
+            }
+            success(stockContent)
+        })
     }
 }

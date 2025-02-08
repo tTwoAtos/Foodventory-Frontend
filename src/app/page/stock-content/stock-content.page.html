@@ -11,8 +11,7 @@
         <ion-list class="product-list">
             <app-product-card
                 *ngFor="let product of productCards"
-                [name]="product.name"
-                [amount]="product.amount"
+                [product]="product"
             ></app-product-card>
         </ion-list>
     </div>

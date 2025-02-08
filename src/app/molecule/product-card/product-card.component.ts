@@ -1,4 +1,5 @@
-import { Component, Input } from "@angular/core"
+import { Component, Input, OnInit } from "@angular/core"
+import { Product } from "@app/apis/products"
 import { IonIcon, IonButton, IonRow } from "@ionic/angular/standalone"
 
 @Component({
@@ -9,19 +10,18 @@ import { IonIcon, IonButton, IonRow } from "@ionic/angular/standalone"
     styleUrls: ["./product-card.component.scss"],
 })
 export class ProductCardComponent {
-    @Input() name: string = ""
-    @Input() amount: number = 0
+    @Input() product: Product = {}
 
     // TODO : when amount is changed -> send request to backend to modify in bdd
     // but for each changing or after a few seconds to avoid too much request ?
 
     increment() {
-        this.amount++
+        this.product.nbAdded!++
     }
 
     decrement() {
-        if (this.amount > 0) {
-            this.amount--
+        if (this.product.nbAdded! > 0) {
+            this.product.nbAdded!--
         }
     }
 }

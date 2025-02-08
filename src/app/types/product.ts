@@ -1,6 +1,15 @@
-export interface Product {
-  name: string;
-  mark: string;
-  ingredients: string[];
-  nutriscore: string;
+// export interface Product {}
+
+export interface ProductCardType {
+    id: string
+    name: string
+    amount: number
+}
+
+export interface ProductDetails {
+    id: string
+    name: string
+    mark: string
+    ingredients: string[]
+    nutriscore: string
 }
