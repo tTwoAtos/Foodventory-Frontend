@@ -1,5 +1,5 @@
 import { CommonModule } from "@angular/common"
-import { Component, OnInit } from "@angular/core"
+import { Component } from "@angular/core"
 import { Router } from "@angular/router"
 import { Product } from "@app/apis/products"
 import { BasketService } from "@app/services/basket/basket.service"
@@ -12,7 +12,7 @@ import { IonicModule } from "@ionic/angular"
     standalone: true,
     imports: [IonicModule, CommonModule],
 })
-export class BasketPage implements OnInit {
+export class BasketPage {
     productCards: {
         name: string
         amount: number
@@ -24,10 +24,6 @@ export class BasketPage implements OnInit {
         public router: Router,
         private service: BasketService
     ) {}
-
-    ngOnInit(): void {
-        // Call localStorage to get all Products saved in local
-    }
 
     saveBasket() {
         // POST
