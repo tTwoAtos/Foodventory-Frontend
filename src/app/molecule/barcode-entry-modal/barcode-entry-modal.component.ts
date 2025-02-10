@@ -1,15 +1,15 @@
+import { CommonModule } from "@angular/common"
 import { Component, EventEmitter, Input, Output } from "@angular/core"
 import { FormsModule } from "@angular/forms"
+import { IonicModule } from "@ionic/angular"
 import { ModalComponent } from "../modal/modal.component"
-import { CommonModule } from "@angular/common"
-import { IonInput } from "@ionic/angular/standalone"
 
 @Component({
     selector: "app-barcode-entry-modal",
     templateUrl: "./barcode-entry-modal.component.html",
     standalone: true,
     styleUrls: ["./barcode-entry-modal.component.scss"],
-    imports: [IonInput, FormsModule, ModalComponent, CommonModule],
+    imports: [IonicModule, FormsModule, ModalComponent, CommonModule],
 })
 export class BarcodeEntryModalComponent {
     @Input() isModalOpen: boolean = false

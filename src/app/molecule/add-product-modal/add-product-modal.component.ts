@@ -1,16 +1,9 @@
+import { CommonModule } from "@angular/common"
 import { Component, EventEmitter, Input, Output } from "@angular/core"
 import { FormsModule } from "@angular/forms"
-import {
-    IonButton,
-    IonText,
-    IonIcon,
-    IonGrid,
-    IonRow,
-    IonCol,
-} from "@ionic/angular/standalone"
-import { ModalComponent } from "../modal/modal.component"
-import { CommonModule } from "@angular/common"
+import { IonicModule } from "@ionic/angular"
 import { BarcodeEntryModalComponent } from "../barcode-entry-modal/barcode-entry-modal.component"
+import { ModalComponent } from "../modal/modal.component"
 
 @Component({
     selector: "app-add-product-modal",
@@ -18,13 +11,7 @@ import { BarcodeEntryModalComponent } from "../barcode-entry-modal/barcode-entry
     standalone: true,
     styleUrls: ["./add-product-modal.component.scss"],
     imports: [
-        IonCol,
-        IonRow,
-        IonGrid,
-        IonIcon,
-        IonText,
-        IonButton,
-        IonIcon,
+        IonicModule,
         FormsModule,
         ModalComponent,
         CommonModule,

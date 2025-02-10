@@ -1,8 +1,12 @@
 import { NgModule } from "@angular/core"
 import { PreloadAllModules, RouterModule, Routes } from "@angular/router"
 import { AuthGuard } from "./guards/auth-guard/auth.guard"
+import { BasketPage } from "./page/basket/basket.page"
 import { LoginPageComponent } from "./page/login-page/login-page.component"
+import { PageScannerPage } from "./page/page-scanner/page-scanner.page"
+import { ProductContentPage } from "./page/product-content/product-content.page"
 import { RegisterPageComponent } from "./page/register-page/register-page.component"
+import { StockPage } from "./page/stock/stock.page"
 import { WelcomePageComponent } from "./page/welcome-page/welcome-page.component"
 
 const routes: Routes = [
@@ -24,29 +28,19 @@ const routes: Routes = [
         children: [
             {
                 path: "scan",
-                loadChildren: () =>
-                    import("./page/page-scanner/page-scanner.module").then(
-                        (m) => m.PageScannerPageModule
-                    ),
+                component: PageScannerPage,
             },
             {
                 path: "basket",
-                loadChildren: () =>
-                    import("./page/basket/basket.module").then(
-                        (m) => m.BasketPageModule
-                    ),
+                component: BasketPage,
             },
             {
                 path: "stock",
-                loadChildren: () =>
-                    import("./page/stock/stock.module").then((m) => m.StockPageModule),
+                component: StockPage,
             },
             {
                 path: "product-content",
-                loadChildren: () =>
-                    import("./page/product-content/product-content.module").then(
-                        (m) => m.ProductContentPageModule
-                    ),
+                component: ProductContentPage,
             },
         ],
     },

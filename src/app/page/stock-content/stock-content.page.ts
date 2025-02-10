@@ -1,16 +1,21 @@
+import { CommonModule } from "@angular/common"
+import { HttpClient } from "@angular/common/http"
 import { Component, OnInit } from "@angular/core"
 import { ActivatedRoute } from "@angular/router"
+import { Product } from "@app/apis/products"
+import { ProductCardComponent } from "@app/molecule/product-card/product-card.component"
+import { StockContentService } from "@app/services/stock-content-service/stock-content.service"
+import { IonicModule } from "@ionic/angular"
 import { addIcons } from "ionicons"
 import * as icons from "ionicons/icons"
-import { HttpClient } from "@angular/common/http"
-import { StockContentService } from "@app/services/stock-content-service/stock-content.service"
-import { Product } from "@app/apis/products"
 
 @Component({
     selector: "app-stock-content",
     templateUrl: "./stock-content.page.html",
     styleUrls: ["./stock-content.page.scss"],
     providers: [HttpClient],
+    standalone: true,
+    imports: [IonicModule, CommonModule, ProductCardComponent],
 })
 export class StockContentPage implements OnInit {
     constructor(

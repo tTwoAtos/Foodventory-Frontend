@@ -1,11 +1,12 @@
-import { Component, Input, OnInit } from "@angular/core"
+import { CommonModule } from "@angular/common"
+import { Component, Input } from "@angular/core"
 import { Product } from "@app/apis/products"
-import { IonIcon, IonButton, IonRow } from "@ionic/angular/standalone"
+import { IonicModule } from "@ionic/angular"
 
 @Component({
     selector: "app-product-card",
     templateUrl: "./product-card.component.html",
-    imports: [IonIcon, IonButton, IonRow],
+    imports: [IonicModule, CommonModule],
     standalone: true,
     styleUrls: ["./product-card.component.scss"],
 })

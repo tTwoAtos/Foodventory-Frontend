@@ -19,7 +19,7 @@ export class TokenService {
     login(token: string) {
         localStorage.setItem(AUTH_TOKEN_KEY, token)
 
-        this.router.navigateByUrl("/home")
+        this.router.navigateByUrl("/scan")
     }
 
     // Vérifie si l'utilisateur est authentifié
