@@ -12,12 +12,13 @@
     </ion-header>
 
     <ion-list class="product-list">
-        <!-- <product-card
-      *ngFor="let product of productCards"
-      [name]="product.name"
-      [amount]="product.amount"
-    ></product-card> -->
+        <app-product-card
+            *ngFor="let product of productList"
+            [product]="product"
+        ></app-product-card>
     </ion-list>
 
-    <ion-button (click)="saveBasket()"></ion-button>
+    <ion-button (click)="saveBasket()" class="">
+        <ion-label>Valider</ion-label>
+    </ion-button>
 </ion-content>

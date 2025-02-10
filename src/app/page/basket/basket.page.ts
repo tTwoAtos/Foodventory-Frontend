@@ -1,8 +1,10 @@
 import { CommonModule } from "@angular/common"
-import { Component } from "@angular/core"
+import { Component, OnInit } from "@angular/core"
 import { Router } from "@angular/router"
 import { Product } from "@app/apis/products"
+import { ProductCardComponent } from "@app/molecule/product-card/product-card.component"
 import { BasketService } from "@app/services/basket/basket.service"
+import { PRODUCTS_BASKET_KEY } from "@app/utils/const/const"
 import { IonicModule } from "@ionic/angular"
 
 @Component({
@@ -10,9 +12,9 @@ import { IonicModule } from "@ionic/angular"
     templateUrl: "./basket.page.html",
     styleUrls: ["./basket.page.scss"],
     standalone: true,
-    imports: [IonicModule, CommonModule],
+    imports: [IonicModule, CommonModule, ProductCardComponent],
 })
-export class BasketPage {
+export class BasketPage implements OnInit {
     productCards: {
         name: string
         amount: number
@@ -24,6 +26,11 @@ export class BasketPage {
         public router: Router,
         private service: BasketService
     ) {}
+    ngOnInit(): void {
+        const basketLocalStorage = localStorage.getItem(PRODUCTS_BASKET_KEY)
+        if (basketLocalStorage != null)
+            this.productList = JSON.parse(basketLocalStorage)
+    }
 
     saveBasket() {
         // POST
