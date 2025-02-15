@@ -49,11 +49,6 @@ export class ErrorHandlingService {
                     statusText: "Service indisponible. Merci de réessayer.",
                 })
                 break
-
-            default:
-                this.toaster.error(message)
-                throw new HttpErrorResponse({ statusText: message })
-                break
         }
     }
 }
