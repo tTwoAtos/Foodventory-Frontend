@@ -6,6 +6,7 @@ import { LoginPageComponent } from "./page/login-page/login-page.component"
 import { PageScannerPage } from "./page/page-scanner/page-scanner.page"
 import { ProductContentPage } from "./page/product-content/product-content.page"
 import { RegisterPageComponent } from "./page/register-page/register-page.component"
+import { StockContentPage } from "./page/stock-content/stock-content.page"
 import { StockPage } from "./page/stock/stock.page"
 import { WelcomePageComponent } from "./page/welcome-page/welcome-page.component"
 
@@ -37,6 +38,10 @@ const routes: Routes = [
             {
                 path: "stock",
                 component: StockPage,
+            },
+            {
+                path: "stock/content/:stockId",
+                component: StockContentPage,
             },
             {
                 path: "product-content",
