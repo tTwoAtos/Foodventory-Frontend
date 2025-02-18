@@ -3,16 +3,24 @@ import { HttpClient } from "@angular/common/http"
 import { Component, Output } from "@angular/core"
 import { addIcons } from "ionicons"
 import * as icons from "ionicons/icons"
+import { CommonModule } from '@angular/common';
+import { IonicModule } from '@ionic/angular';
+import { InfoCardComponent } from '@app/molecule/info-card/info-card.component';
+import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-community',
   templateUrl: './community.page.html',
   styleUrls: ['./community.page.scss'],
+  standalone: true,
+  imports: [CommonModule, IonicModule, InfoCardComponent, FormsModule]
 })
 export class CommunityPage {
 
-  constructor(private communityService: CommunityService) {
+  constructor(private communityService: CommunityService, protected router: Router) {
     addIcons({ ...icons })
+
   }
 
   @Output() datas = [

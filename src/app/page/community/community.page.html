@@ -12,7 +12,7 @@
 
     <ion-list class="community-list">
       <app-info-card *ngFor=" let data of datas" [name]="data.name" [productTotal]="data.productAmount"
-        (click)="redirectToStockContent(data.id)" [routerLink]="['content', data.id]"></app-info-card>
+        (click)="router.navigateByUrl('/login')"></app-info-card>
     </ion-list>
   </div>
 </ion-content>

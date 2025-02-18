@@ -4,6 +4,7 @@ import { AuthGuard } from "./guards/auth-guard/auth.guard"
 import { LoginPageComponent } from "./page/login-page/login-page.component"
 import { RegisterPageComponent } from "./page/register-page/register-page.component"
 import { WelcomePageComponent } from "./page/welcome-page/welcome-page.component"
+import { CommunityPage } from "./page/community/community.page"
 
 const routes: Routes = [
     {
@@ -19,15 +20,16 @@ const routes: Routes = [
         component: RegisterPageComponent,
     },
     {
-        path: "",
-        canActivate: [AuthGuard],
-        children: [],
+        path: "community",
+        component: CommunityPage,
     },
     {
-        path: 'community',
-        loadChildren: () => import('./page/community/community.module').then(m => m.CommunityPageModule)
-    },
+        path: "",
+        canActivate: [AuthGuard],
+        children: [
 
+        ],
+    },
 ]
 
 @NgModule({
