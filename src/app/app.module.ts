@@ -43,4 +43,4 @@ import { ToastService } from "./services/toaster-service/toaster.service"
     ],
     bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

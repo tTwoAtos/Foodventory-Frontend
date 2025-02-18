@@ -9,6 +9,7 @@ import { RegisterPageComponent } from "./page/register-page/register-page.compon
 import { StockContentPage } from "./page/stock-content/stock-content.page"
 import { StockPage } from "./page/stock/stock.page"
 import { WelcomePageComponent } from "./page/welcome-page/welcome-page.component"
+import { CommunityPage } from "./page/community/community.page"
 
 const routes: Routes = [
     {
@@ -22,6 +23,10 @@ const routes: Routes = [
     {
         path: "register",
         component: RegisterPageComponent,
+    },
+    {
+        path: "community",
+        component: CommunityPage,
     },
     {
         path: "",
@@ -57,4 +62,4 @@ const routes: Routes = [
     ],
     exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

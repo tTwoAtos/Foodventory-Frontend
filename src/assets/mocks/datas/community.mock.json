@@ -1,0 +1,22 @@
+[
+    {
+        "id": 1,
+        "name": "Les Alternés",
+        "productAmount": 153
+    },
+    {
+        "id": 2,
+        "name": "T2nic",
+        "productAmount": 2
+    },
+    {
+        "id": 3,
+        "name": "Atoz les opticiens",
+        "productAmount": 75
+    },
+    {
+        "id": 4,
+        "name": "Je sais pas",
+        "productAmount": 15
+    }
+]
