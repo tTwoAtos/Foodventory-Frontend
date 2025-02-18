@@ -1,5 +1,5 @@
 <app-modal
-    [title]="'Ajouter un produit'"
+    [title]="'-- Nom du produit --'"
     [modalIsOpen]="isModalOpen"
     [contentTemplate]="content"
     (cancelEvent)="cancel()"
@@ -7,26 +7,70 @@
 </app-modal>
 
 <ng-template #content>
-    <ion-grid>
-        <ion-row class="ion-justify-content-between">
-            <ion-col class="item">
-                <ion-button class="modal-button" color="primary" size="large">
-                    <ion-icon name="barcode-outline"></ion-icon>
-                </ion-button>
-                <ion-text class="modal-text">Scanner</ion-text>
+    <form [formGroup]="scanDetailsForm" (ngSubmit)="onSubmit()">
+        <ion-grid>
+            <ion-col>
+                <ion-input
+                    formControlName="quantity"
+                    label="Qté à ajouter ?"
+                    type="number"
+                    placeholder="Entrer une quantité"
+                ></ion-input>
             </ion-col>
-            <ion-col class="item">
-                <ion-button
-                    class="modal-button"
-                    size="large"
-                    (click)="openBarcodeModal(true)"
+
+            <ion-col>
+                <ion-select
+                    formControlName="emplacement"
+                    fill="solid"
+                    interface="popover"
+                    type="select"
+                    label="Emplacement ?"
                 >
-                    <ion-icon name="keypad-outline"></ion-icon>
-                </ion-button>
-                <ion-text class="modal-text">Taper</ion-text>
+                    <ion-select-option value="0">Mr</ion-select-option>
+                    <ion-select-option value="1">Mme</ion-select-option>
+                </ion-select>
             </ion-col>
-        </ion-row>
-    </ion-grid>
+
+            <ion-col>
+                <ion-input
+                    formControlName="community"
+                    label="Communauté ?"
+                    placeholder="Selectionner une communauté"
+                ></ion-input>
+            </ion-col>
+        </ion-grid>
+    </form>
+
+    <!-- <ion-list>
+        <ion-list>
+            <ion-item>
+                <ion-input
+                    label="Qté à ajouter ?"
+                    type="number"
+                    placeholder="Entrer une quantité"
+                ></ion-input>
+            </ion-item>
+
+            <ion-item>
+                <ion-select
+                    formControlName="gender"
+                    fill="solid"
+                    interface="popover"
+                    type="select"
+                >
+                    <ion-select-option value="0">Mr</ion-select-option>
+                    <ion-select-option value="1">Mme</ion-select-option>
+                </ion-select>
+            </ion-item>
+
+            <ion-item>
+                <ion-input
+                    label="Communauté ?"
+                    placeholder="Selectionner une communauté"
+                ></ion-input>
+            </ion-item>
+        </ion-list>
+    </ion-list> -->
 </ng-template>
 
 <app-barcode-entry-modal

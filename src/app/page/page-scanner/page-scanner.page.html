@@ -15,11 +15,17 @@
             <ion-icon name="close-outline"></ion-icon>
         </ion-button>
 
-        <app-barcode-entry-modal
+        <!-- <app-barcode-entry-modal
             [isModalOpen]="isModalOpen"
             (closeEvent)="setOpen(false)"
             (cancelEvent)="setOpen(false)"
-        ></app-barcode-entry-modal>
+        ></app-barcode-entry-modal> -->
+
+        <app-add-product-modal
+            [isModalOpen]="isModalOpen"
+            (closeEvent)="setOpen(false)"
+            (cancelEvent)="setOpen(false)"
+        ></app-add-product-modal>
 
         <ion-button class="digicode-button" (click)="setOpen(true)">
             <ion-icon name="keypad-outline"></ion-icon>

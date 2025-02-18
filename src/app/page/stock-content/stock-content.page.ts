@@ -1,9 +1,10 @@
 import { CommonModule } from "@angular/common"
 import { HttpClient } from "@angular/common/http"
 import { Component, OnInit } from "@angular/core"
-import { ActivatedRoute } from "@angular/router"
+import { ActivatedRoute, Router } from "@angular/router"
 import { Product } from "@app/apis/products"
 import { ProductCardComponent } from "@app/molecule/product-card/product-card.component"
+import { ProductStoreService } from "@app/services/product-store/product-store.service"
 import { StockContentService } from "@app/services/stock-content-service/stock-content.service"
 import { IonicModule } from "@ionic/angular"
 import { addIcons } from "ionicons"
@@ -19,8 +20,10 @@ import * as icons from "ionicons/icons"
 })
 export class StockContentPage implements OnInit {
     constructor(
+        protected router: Router,
         private route: ActivatedRoute,
-        private service: StockContentService
+        private service: StockContentService,
+        private productStoreService: ProductStoreService
     ) {
         addIcons({ ...icons })
     }
@@ -39,5 +42,19 @@ export class StockContentPage implements OnInit {
                 throw new ReferenceError()
             }
         })
+    }
+
+    testNewProduct() {
+        const testProduct: Product = {
+            name: "Rice Noodles",
+            nbScanned: 2,
+            nbAdded: 3,
+            thumbnail: "",
+            eancode: "0737628064502",
+        }
+
+        this.productStoreService
+            .addProduct(testProduct)
+            .then(() => this.router.navigateByUrl("/basket"))
     }
 }

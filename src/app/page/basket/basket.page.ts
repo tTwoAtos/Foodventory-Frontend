@@ -1,9 +1,10 @@
 import { CommonModule } from "@angular/common"
 import { Component, OnInit } from "@angular/core"
 import { Router } from "@angular/router"
-import { Product } from "@app/apis/products"
+import { ProductToCommunity } from "@app/apis/product-to-community"
+import { Product, ProductControllerService } from "@app/apis/products"
 import { ProductCardComponent } from "@app/molecule/product-card/product-card.component"
-import { BasketService } from "@app/services/basket/basket.service"
+import { ProductStoreService } from "@app/services/product-store/product-store.service"
 import { PRODUCTS_BASKET_KEY } from "@app/utils/const/const"
 import { IonicModule } from "@ionic/angular"
 
@@ -15,35 +16,51 @@ import { IonicModule } from "@ionic/angular"
     imports: [IonicModule, CommonModule, ProductCardComponent],
 })
 export class BasketPage implements OnInit {
-    productCards: {
-        name: string
-        amount: number
-    }[] = []
-
     productList: Product[] = []
 
     constructor(
         public router: Router,
-        private service: BasketService
+        private productStoreService: ProductStoreService,
+        private productService: ProductControllerService
     ) {}
-    ngOnInit(): void {
+
+    async ngOnInit() {
         const basketLocalStorage = localStorage.getItem(PRODUCTS_BASKET_KEY)
+
         if (basketLocalStorage != null)
             this.productList = JSON.parse(basketLocalStorage)
+
+        await this.getProductFromStorage()
     }
 
-    saveBasket() {
-        // POST
-        const test: Product = {
-            name: "Biscuit",
-            nbScanned: 1,
-            nbAdded: 3,
-            thumbnail: "",
-            eancode: "3642901334925",
-        }
-        this.service.addProduct(test)
+    // Send to back
+    async saveBasket() {
+        let basketProducts: Product[] = []
+        let testProductToCom: ProductToCommunity[] = []
+
+        await this.productStoreService.getProducts().then((res) => {
+            basketProducts = res
+        })
+
+        basketProducts.forEach((product) => {
+            let newProductToCom: ProductToCommunity = {
+                productId: product.eancode,
+                communityId: "", // Renseigner par ????
+                emplacementId: "", // Renseigner par ????
+                qte: product.nbScanned,
+            }
+
+            testProductToCom.push(newProductToCom)
+        })
+
+        // this.productService
+        //     .addedToCommunity("0737628064502")
+        //     .subscribe(() => {})
     }
 
-    // Add a product to the productList
-    addProduct() {}
+    async getProductFromStorage() {
+        await this.productStoreService.getProducts().then((res) => {
+            this.productList = res
+        })
+    }
 }

@@ -1,6 +1,11 @@
 import { CommonModule } from "@angular/common"
-import { Component, EventEmitter, Input, Output } from "@angular/core"
-import { FormsModule } from "@angular/forms"
+import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core"
+import {
+    FormBuilder,
+    FormGroup,
+    FormsModule,
+    ReactiveFormsModule,
+} from "@angular/forms"
 import { IonicModule } from "@ionic/angular"
 import { BarcodeEntryModalComponent } from "../barcode-entry-modal/barcode-entry-modal.component"
 import { ModalComponent } from "../modal/modal.component"
@@ -16,14 +21,33 @@ import { ModalComponent } from "../modal/modal.component"
         ModalComponent,
         CommonModule,
         BarcodeEntryModalComponent,
+        ReactiveFormsModule,
     ],
 })
-export class AddProductModalComponent {
+export class AddProductModalComponent implements OnInit {
     @Input() isModalOpen: boolean = false
     isBarecodeModalOpen: boolean = false
 
     @Output() closeEvent = new EventEmitter<void>()
     @Output() cancelEvent = new EventEmitter<void>()
+
+    scanDetailsForm: FormGroup
+
+    constructor(private fb: FormBuilder) {
+        this.scanDetailsForm = this.fb.group({
+            quantity: 1,
+            emplacement: "",
+            community: "",
+        })
+    }
+    ngOnInit(): void {
+        // Get all data of user -> emplacement / community
+        // throw new Error("Method not implemented.")
+    }
+
+    onSubmit() {
+        throw new Error("Method not implemented.")
+    }
 
     openBarcodeModal(value: boolean) {
         if (value == true) {
