@@ -1,0 +1,22 @@
+ion-grid {
+    padding: 0;
+}
+
+h1 {
+    font-size: 3em;
+    // Put Itim font here, need to be downloaded
+    // font-family:
+}
+.title {
+    justify-content: center;
+    align-items: center;
+    height: 30vh;
+    display: flex;
+}
+
+.bottom-div {
+    width: 100%;
+    border-radius: 20px;
+    box-shadow: 0px -5px 4px rgba(0, 0, 0, 0.25);
+    border-top: 1px solid var(--ion-color-primary-shade);
+}

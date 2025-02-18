@@ -1,34 +1,39 @@
 import { NgModule } from "@angular/core"
 import { PreloadAllModules, RouterModule, Routes } from "@angular/router"
 import { AuthGuard } from "./guards/auth-guard/auth.guard"
+import { LoginPageComponent } from "./page/login-page/login-page.component"
+import { RegisterPageComponent } from "./page/register-page/register-page.component"
+import { WelcomePageComponent } from "./page/welcome-page/welcome-page.component"
 
 const routes: Routes = [
     {
         path: "",
-        loadChildren: () =>
-            import("./organism/tabs/tabs.module").then((m) => m.TabsPageModule),
+        component: WelcomePageComponent,
     },
     {
-        path: "stock",
-        loadChildren: () =>
-            import("./page/stock/stock.module").then((m) => m.StockPageModule),
+        path: "login",
+        component: LoginPageComponent,
     },
     {
-        path: "product-content",
-        loadChildren: () =>
-            import("./page/product-content/product-content.module").then(
-                (m) => m.ProductContentPageModule
-            ),
-    },  {
-    path: 'community',
-    loadChildren: () => import('./page/community/community.module').then( m => m.CommunityPageModule)
-  },
+        path: "register",
+        component: RegisterPageComponent,
+    },
+    {
+        path: "",
+        canActivate: [AuthGuard],
+        children: [],
+    },
+    {
+        path: 'community',
+        loadChildren: () => import('./page/community/community.module').then(m => m.CommunityPageModule)
+    },
 
 ]
+
 @NgModule({
     imports: [
         RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules }),
     ],
     exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }
