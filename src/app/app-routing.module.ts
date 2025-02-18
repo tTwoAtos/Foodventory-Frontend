@@ -19,7 +19,11 @@ const routes: Routes = [
             import("./page/product-content/product-content.module").then(
                 (m) => m.ProductContentPageModule
             ),
-    },
+    },  {
+    path: 'community',
+    loadChildren: () => import('./page/community/community.module').then( m => m.CommunityPageModule)
+  },
+
 ]
 @NgModule({
     imports: [

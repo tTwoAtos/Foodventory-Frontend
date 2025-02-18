@@ -4,9 +4,9 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { StockPageRoutingModule } from './stock-routing.module';
+import { CommunityPageRoutingModule } from './community-routing.module';
 
-import { StockPage } from './stock.page';
+import { CommunityPage } from './community.page';
 import { InfoCardComponent } from '../../molecule/info-card/info-card.component';
 
 @NgModule({
@@ -14,9 +14,9 @@ import { InfoCardComponent } from '../../molecule/info-card/info-card.component'
     CommonModule,
     FormsModule,
     IonicModule,
-    StockPageRoutingModule,
+    CommunityPageRoutingModule,
     InfoCardComponent
   ],
-  declarations: [StockPage],
+  declarations: [CommunityPage]
 })
-export class StockPageModule { }
+export class CommunityPageModule { }

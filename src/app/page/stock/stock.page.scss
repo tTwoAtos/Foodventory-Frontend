@@ -22,38 +22,6 @@
 
 }
 
-.stock-item {
-    display: flex;
-    padding-top: 15px;
-    padding-bottom: 15px;
-    border: 1.5px solid black;
-    border-radius: 10px;
-    margin: 5px;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-
-    .stock-item-name {
-        margin-right: 5px;
-        margin-left: 20px;
-        font-size: clamp(20px, 2vw, 30px);
-    }
-
-    .stock-item-amount {
-        margin-right: 30px;
-        margin-left: 15px;
-        font-size: clamp(30px, 2vw, 40px);
-        flex-grow: 1;
-        text-align: end;
-    }
-
-    .stock-item-button {
-        margin-right: 5px;
-        margin-left: 0px;
-    }
-
-}
-
 .category-resume {
     margin-top: 20px;
     margin-left: 5px;

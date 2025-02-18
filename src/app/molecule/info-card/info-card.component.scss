@@ -7,20 +7,21 @@
     margin: 5px;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
 
     .info-card-name {
         margin-right: 5px;
         margin-left: 20px;
         font-size: clamp(20px, 2vw, 30px);
+        width: 80%;
     }
 
     .info-card-amount {
-        margin-right: 30px;
-        margin-left: 15px;
-        font-size: clamp(30px, 2vw, 40px);
+        font-size: clamp(25px, 2vw, 40px);
         flex-grow: 1;
-        text-align: end;
+        min-width: 2em;
+        --background: transparent;
+        --color: #000000;
+
     }
 
     .info-card-button {

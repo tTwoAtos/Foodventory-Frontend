@@ -1,18 +1,18 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { StockPage } from './stock.page';
+import { CommunityPage } from './community.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: StockPage,
+    component: CommunityPage,
   },
   {
-    path: 'content/:stockId',
+    path: 'content/:CommunityId',
     loadChildren: () =>
-      import('./../stock-content/stock-content.module').then(
-        (m) => m.StockContentPageModule
+      import('./../stock/stock.module').then(
+        (m) => m.StockPageModule
       ),
   },
 ];
@@ -21,4 +21,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class StockPageRoutingModule { }
+export class CommunityPageRoutingModule { }
