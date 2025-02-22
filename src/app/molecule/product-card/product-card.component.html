@@ -8,11 +8,11 @@
             (actionEvent)="increment()"
         ></app-round-button>
 
-        <div class="product-number">{{ product.nbAdded ?? 0 }}</div>
+        <div class="product-number">{{ product.amount }}</div>
 
         <app-round-button
             color="danger"
-            icon="remove-circle"
+            [icon]="this.product.amount == 1 ? 'trash' : 'remove-circle'"
             (actionEvent)="decrement()"
         ></app-round-button>
     </div>

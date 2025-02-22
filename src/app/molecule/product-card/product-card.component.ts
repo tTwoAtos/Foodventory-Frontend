@@ -1,6 +1,6 @@
 import { CommonModule } from "@angular/common"
 import { Component, Input } from "@angular/core"
-import { Product } from "@app/apis/products"
+import { ProductCardType } from "@app/types/product"
 import { IonicModule } from "@ionic/angular"
 import { RoundButtonComponent } from "../../atoms/round-button/round-button.component"
 
@@ -12,20 +12,21 @@ import { RoundButtonComponent } from "../../atoms/round-button/round-button.comp
     styleUrls: ["./product-card.component.scss"],
 })
 export class ProductCardComponent {
-    @Input() product: Product = {
-        nbAdded: 1,
+    @Input() product: ProductCardType = {
+        name: "",
+        amount: 0,
     }
 
     // TODO : when amount is changed -> send request to backend to modify in bdd
     // but for each changing or after a few seconds to avoid too much request ?
 
     increment() {
-        this.product.nbAdded!++
+        this.product.amount++
     }
 
     decrement() {
-        if (this.product.nbAdded! > 0) {
-            this.product.nbAdded!--
+        if (this.product.amount > 1) {
+            this.product.amount--
         }
     }
 }

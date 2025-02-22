@@ -1,7 +1,6 @@
 // export interface Product {}
 
 export interface ProductCardType {
-    id: string
     name: string
     amount: number
 }
