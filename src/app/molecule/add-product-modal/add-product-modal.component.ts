@@ -41,6 +41,7 @@ export class AddProductModalComponent implements OnInit {
         })
     }
     ngOnInit(): void {
+        return
         // Get all data of user -> emplacement / community
         // throw new Error("Method not implemented.")
     }
