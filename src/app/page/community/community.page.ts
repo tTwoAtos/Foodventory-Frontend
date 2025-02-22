@@ -22,7 +22,7 @@ export class CommunityPage {
     addIcons({ ...icons })
 
   }
-
+  @Output() icon = "people-outline"
   @Output() datas = [
     {
       id: 1,

@@ -10,6 +10,7 @@ import { StockContentPage } from "./page/stock-content/stock-content.page"
 import { StockPage } from "./page/stock/stock.page"
 import { WelcomePageComponent } from "./page/welcome-page/welcome-page.component"
 import { CommunityPage } from "./page/community/community.page"
+import { HomePage } from "./page/home/home.page"
 
 const routes: Routes = [
     {
@@ -29,6 +30,14 @@ const routes: Routes = [
         component: CommunityPage,
     },
     {
+        path: 'home',
+        component: HomePage,
+    },
+    {
+        path: "stock",
+        component: StockPage,
+    },
+    {
         path: "",
         canActivate: [AuthGuard],
         children: [
@@ -40,10 +49,7 @@ const routes: Routes = [
                 path: "basket",
                 component: BasketPage,
             },
-            {
-                path: "stock",
-                component: StockPage,
-            },
+
             {
                 path: "stock/content/:stockId",
                 component: StockContentPage,

@@ -1,9 +1,3 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>[Foodventory logo+title settings buttons]</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
   <div class="community-page">
     <ion-text class="community-title">
@@ -11,7 +5,7 @@
     </ion-text>
 
     <ion-list class="community-list">
-      <app-info-card *ngFor=" let data of datas" [name]="data.name" [productTotal]="data.productAmount"
+      <app-info-card *ngFor=" let data of datas" [name]="data.name" [nb]="data.productAmount" [icon]="icon"
         (click)="router.navigateByUrl('/login')"></app-info-card>
     </ion-list>
   </div>

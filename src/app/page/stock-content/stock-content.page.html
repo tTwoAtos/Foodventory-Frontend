@@ -1,21 +1,18 @@
-<ion-header [translucent]="true">
-    <ion-toolbar>
-        <ion-title>stock-content</ion-title>
-    </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
+
+    <app-header [headerIcon]="headerIcon" [headerTitle]="headerTitle"></app-header>
+
+
     <div class="stock-content-page">
         <div class="search-bar"></div>
 
         <ion-list class="product-list">
-            <app-product-card
-                *ngFor="let product of productCards"
-                [product]="product"
-            ></app-product-card>
+            <app-product-card *ngFor="let product of productCards" [product]="product"></app-product-card>
         </ion-list>
         <ion-button (click)="router.navigateByUrl('/scan')">
             <ion-label>(Test) New Product</ion-label>
         </ion-button>
     </div>
 </ion-content>
+
+<app-footer></app-footer>

@@ -13,7 +13,8 @@ import * as icons from "ionicons/icons"
 })
 export class InfoCardComponent {
     @Input() name: string = ""
-    @Input() productTotal: number = 0
+    @Input() nb: number = 0
+    @Input() icon: string = ""
 
     constructor() {
         addIcons({ ...icons })

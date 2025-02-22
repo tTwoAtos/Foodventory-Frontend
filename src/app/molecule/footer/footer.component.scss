@@ -1,0 +1,21 @@
+.toolbar-container {
+    background: #ffffff;
+    padding: 5px 0 5px 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+
+
+    .nav-button {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        min-width: 5em;
+
+        ion-text {
+            font-size: clamp(10px, 2vw, 18px);
+        }
+    }
+}
