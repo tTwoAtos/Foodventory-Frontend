@@ -36,14 +36,14 @@ export class BasketPage implements OnInit {
     // Send to back
     async saveBasket() {
         let basketProducts: Product[] = []
-        let testProductToCom: ProductToCommunity[] = []
+        const testProductToCom: ProductToCommunity[] = []
 
         await this.productStoreService.getProducts().then((res) => {
             basketProducts = res
         })
 
         basketProducts.forEach((product) => {
-            let newProductToCom: ProductToCommunity = {
+            const newProductToCom: ProductToCommunity = {
                 productId: product.eancode,
                 communityId: "", // Renseigner par ????
                 emplacementId: "", // Renseigner par ????
