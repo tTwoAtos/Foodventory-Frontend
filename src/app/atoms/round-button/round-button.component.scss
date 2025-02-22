@@ -1,0 +1,24 @@
+.round-button {
+    --padding-start: 0;
+    --padding-end: 0;
+
+    ion-icon {
+        width: 100%;
+        height: 100%;
+    }
+}
+
+.small {
+    width: 2em;
+    height: 2em;
+}
+
+.medium {
+    width: 3em;
+    height: 3em;
+}
+
+.large {
+    width: 4em;
+    height: 4em;
+}
