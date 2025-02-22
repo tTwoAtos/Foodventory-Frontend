@@ -1,6 +1,7 @@
 import { CommonModule } from "@angular/common"
 import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core"
 import { IonicModule } from "@ionic/angular"
+import { debounceTime, Subject } from "rxjs"
 
 @Component({
     selector: "app-round-button",
@@ -16,9 +17,19 @@ export class RoundButtonComponent implements OnInit {
     @Output() actionEvent = new EventEmitter<void>()
     @Input() size: string = "medium"
 
-    constructor() {}
+    private click$ = new Subject<void>()
+
+    constructor() {
+        this.click$
+            .pipe(debounceTime(50))
+            .subscribe(() => this.action())
+    }
 
     ngOnInit() {}
+
+    onClick() {
+        this.click$.next()
+    }
 
     action() {
         this.actionEvent.emit()
