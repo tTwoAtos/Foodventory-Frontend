@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 @Component({
@@ -7,7 +8,7 @@ import { IonicModule } from '@ionic/angular';
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.scss'],
   standalone: true,
-  imports: [IonicModule, CommonModule]
+  imports: [IonicModule, CommonModule, RouterLink]
 })
 export class FooterComponent {
 
