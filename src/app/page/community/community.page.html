@@ -1,6 +1,6 @@
 <ion-content [fullscreen]="true">
 
-  <app-header [headerIcon]="headerIcon" [headerTitle]="headerTitle"></app-header>
+  <app-header [headerTitle]="headerTitle"></app-header>
 
   <div class="community-page">
     <ion-text class="community-title">
@@ -9,7 +9,7 @@
 
     <ion-list class="community-list">
       <app-info-card *ngFor="let data of mockComs" [name]="data.name" [nb]="data.nbMember" [icon]="icon"
-        [routerLink]="[data.id]"></app-info-card>
+        [routerLink]="['../community',data.id]"></app-info-card>
     </ion-list>
   </div>
 </ion-content>

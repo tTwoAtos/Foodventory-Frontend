@@ -22,6 +22,11 @@ import { HeaderComponent } from "../../molecule/header/header.component";
 export class StockPage implements OnInit {
     mockStocks: Stock[] = []
 
+    icon = "restaurant-outline"
+    headerIcon = "caret-back-outline"
+    headerAction = "../"
+    headerTitle = "Les alternées"
+
     selectedCategories = [
         {
             name: "Viande",
@@ -63,7 +68,4 @@ export class StockPage implements OnInit {
         })
     }
 
-    @Output() icon = "restaurant-outline"
-    @Output() headerIcon = "caret-back-outline"
-    @Output() headerTitle = "Les alternées"
 }

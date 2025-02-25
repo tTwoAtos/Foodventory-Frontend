@@ -26,7 +26,11 @@ const routes: Routes = [
         component: RegisterPageComponent,
     },
     {
-        path: "community",
+        path: 'home',
+        component: HomePage,
+    },
+    {
+        path: "communities",
         component: CommunityPage,
     },
     {
@@ -34,12 +38,8 @@ const routes: Routes = [
         component: StockPage,
     },
     {
-        path: 'home',
-        component: HomePage,
-    },
-    {
-        path: "stock",
-        component: StockPage,
+        path: "stock/:stockId",
+        component: StockContentPage,
     },
     {
         path: "",
@@ -54,10 +54,7 @@ const routes: Routes = [
                 component: BasketPage,
             },
 
-            {
-                path: "stock/:stockId",
-                component: StockContentPage,
-            },
+
             {
                 path: "product-content",
                 component: ProductContentPage,

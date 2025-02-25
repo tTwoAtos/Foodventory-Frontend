@@ -23,7 +23,7 @@ import { HeaderComponent } from "../../molecule/header/header.component";
 export class CommunityPage implements OnInit {
 
   mockComs: Community[] = []
-  headerIcon = "leaf-outline"
+  headerIcon = "caret-back-outline"
   headerTitle = "Foodventory"
   icon = "people-outline"
 

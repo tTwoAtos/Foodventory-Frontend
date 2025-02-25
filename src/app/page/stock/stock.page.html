@@ -1,6 +1,6 @@
 <ion-content [fullscreen]="true">
 
-    <app-header [headerIcon]="headerIcon" [headerTitle]="headerTitle"></app-header>
+    <app-header [headerTitle]="headerTitle"></app-header>
 
     <div class="stock-page">
         <ion-text class="stock-title">
@@ -9,7 +9,7 @@
 
         <ion-list class="stock-list">
             <app-info-card *ngFor="let data of mockStocks" [name]="data.name" [nb]="data.productTotal" [icon]="icon"
-                [routerLink]="[data.id]"></app-info-card>
+                [routerLink]="['../../stock',data.id]"></app-info-card>
         </ion-list>
 
         <div class="category-resume">
