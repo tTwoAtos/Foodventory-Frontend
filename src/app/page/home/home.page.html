@@ -15,7 +15,7 @@
 
       <ion-list class="home-list">
         <app-info-card *ngFor="let data of mockComs" [name]="data.name" [nb]="data.nbMember" [icon]="icon"
-          [routerLink]="['../community',data.id]"></app-info-card>
+          [routerLink]="['/community',data.id]"></app-info-card>
       </ion-list>
     </div>
   </div>

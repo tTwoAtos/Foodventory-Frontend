@@ -1,9 +1,13 @@
-<div class="header">
-  <ion-button class="header-icons back-button">
-    <ion-icon slot="icon-only" name="caret-back-outline" size="large"></ion-icon>
-  </ion-button>
-  <ion-title class="header-title">{{headerTitle}} </ion-title>
-  <ion-button shape="round" class="header-icons">
-    <ion-icon slot="icon-only" name="person-outline"></ion-icon>
-  </ion-button>
-</div>
+<ion-header class="header">
+  <ion-toolbar class="toolbar header-icons">
+    <ion-buttons slot="start" class="header-icons">
+      <ion-back-button icon="caret-back-outline" defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar><ion-toolbar class="toolbar header-title">
+    <ion-title class="header-title-text">{{headerTitle}} </ion-title>
+  </ion-toolbar><ion-toolbar class="toolbar header-icons">
+    <ion-button shape="round" [routerLink]="['/settings']">
+      <ion-icon slot="icon-only" name="person-outline"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>

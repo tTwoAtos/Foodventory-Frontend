@@ -30,6 +30,10 @@ const routes: Routes = [
         component: HomePage,
     },
     {
+        path: 'settings',
+        component: HomePage,
+    },
+    {
         path: "communities",
         component: CommunityPage,
     },
@@ -53,8 +57,6 @@ const routes: Routes = [
                 path: "basket",
                 component: BasketPage,
             },
-
-
             {
                 path: "product-content",
                 component: ProductContentPage,
