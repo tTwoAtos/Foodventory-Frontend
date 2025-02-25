@@ -1,11 +1,13 @@
-import { Component, Output } from "@angular/core"
+import { Component, OnInit, Output } from "@angular/core"
 import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
 import { FormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
+import { RouterLink } from '@angular/router';
 import { addIcons } from "ionicons"
 import * as icons from "ionicons/icons"
 import { InfoCardComponent } from "@app/molecule/info-card/info-card.component";
+import { CommunityService } from "@app/services/community-services/community.service"
+import { Community } from "@app/types/community"
 import { FooterComponent } from "../../molecule/footer/footer.component";
 import { HeaderComponent } from "../../molecule/header/header.component";
 
@@ -15,41 +17,25 @@ import { HeaderComponent } from "../../molecule/header/header.component";
   templateUrl: './home.page.html',
   styleUrls: ['./home.page.scss'],
   standalone: true,
-  imports: [CommonModule, IonicModule, FormsModule, InfoCardComponent, FooterComponent, HeaderComponent]
+  imports: [CommonModule, IonicModule, FormsModule, InfoCardComponent, FooterComponent, HeaderComponent, RouterLink]
 })
-export class HomePage {
+export class HomePage implements OnInit {
 
-  constructor(protected router: Router) {
+  mockComs: Community[] = []
+
+  headerIcon = "leaf-outline"
+  headerTitle = "Foodventory"
+
+  icon = "people-outline"
+
+  constructor(private communityService: CommunityService) {
     addIcons({ ...icons })
   }
 
-  @Output() headerIcon = "leaf-outline"
-  @Output() headerTitle = "FoodStock"
-
-  @Output() icon = "people-outline"
-  @Output() datas = [
-    {
-      id: 1,
-      name: "Les Alternés",
-      productAmount: 5
-    },
-    {
-      id: 2,
-      name: "T2nic",
-      productAmount: 2
-    },
-    {
-      id: 3,
-      name: "Atoz les opticiens",
-      productAmount: 7
-    },
-    {
-      id: 4,
-      name: "Je sais pas",
-      productAmount: 3
-    }
-  ]
-
-
+  async ngOnInit(): Promise<void> {
+    await this.communityService.getCommunities().then((res) => {
+      this.mockComs = res
+    })
+  }
 
 }

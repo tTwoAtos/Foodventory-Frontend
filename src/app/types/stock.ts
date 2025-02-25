@@ -1,4 +1,3 @@
-import { Product } from "@app/apis/products"
 import { ProductCardType } from "./product"
 
 export interface Stock {

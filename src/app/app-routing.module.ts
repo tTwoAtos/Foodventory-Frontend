@@ -30,6 +30,10 @@ const routes: Routes = [
         component: CommunityPage,
     },
     {
+        path: "community/:communityId",
+        component: StockPage,
+    },
+    {
         path: 'home',
         component: HomePage,
     },
@@ -51,7 +55,7 @@ const routes: Routes = [
             },
 
             {
-                path: "stock/content/:stockId",
+                path: "stock/:stockId",
                 component: StockContentPage,
             },
             {

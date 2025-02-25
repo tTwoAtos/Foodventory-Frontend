@@ -9,7 +9,7 @@
 
         <ion-list class="stock-list">
             <app-info-card *ngFor="let data of mockStocks" [name]="data.name" [nb]="data.productTotal" [icon]="icon"
-                [routerLink]="['content', data.id]"></app-info-card>
+                [routerLink]="[data.id]"></app-info-card>
         </ion-list>
 
         <div class="category-resume">

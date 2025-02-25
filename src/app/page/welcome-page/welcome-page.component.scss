@@ -8,6 +8,11 @@
     }
 }
 
+ion-row {
+    display: flex;
+    flex-direction: column;
+}
+
 .title {
     display: flex;
     flex-direction: column;
@@ -15,6 +20,7 @@
     justify-content: center;
     color: var(--ion-text-color);
 }
+
 img {
     padding: 3em;
 }

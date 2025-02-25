@@ -57,8 +57,6 @@ export class StockPage implements OnInit {
         addIcons({ ...icons })
     }
 
-
-
     async ngOnInit(): Promise<void> {
         await this.stockService.getStocks().then((res) => {
             this.mockStocks = res

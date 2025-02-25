@@ -14,8 +14,8 @@
       </ion-text>
 
       <ion-list class="home-list">
-        <app-info-card *ngFor=" let data of datas" [name]="data.name" [nb]="data.productAmount" [icon]="icon"
-          (click)="router.navigateByUrl('/stock')"></app-info-card>
+        <app-info-card *ngFor="let data of mockComs" [name]="data.name" [nb]="data.nbMember" [icon]="icon"
+          [routerLink]="['../community',data.id]"></app-info-card>
       </ion-list>
     </div>
   </div>
