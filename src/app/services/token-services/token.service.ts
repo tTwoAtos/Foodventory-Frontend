@@ -64,7 +64,7 @@ export class TokenService {
     }
 
     getLoggedCommunityId(): string | undefined {
-        return this.getAuthUser()?.loggedInCommunityId
+        return this.getAuthUser()?.logged_in_community_id
     }
 
     getAuthUserId(): number | undefined {

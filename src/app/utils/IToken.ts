@@ -4,6 +4,6 @@ export interface Token {
     user_id?: number
     lastname?: string
     firstname?: string
-    loggedInCommunityId?: string
+    logged_in_community_id?: string
     role?: RoleEntity
 }
