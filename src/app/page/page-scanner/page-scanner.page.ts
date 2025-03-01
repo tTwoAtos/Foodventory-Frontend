@@ -1,5 +1,6 @@
 import { CommonModule } from "@angular/common"
 import { Component } from "@angular/core"
+import { TokenService } from "@app/services/token-services/token.service"
 import { IonicModule } from "@ionic/angular"
 import { AddProductModalComponent } from "../../molecule/add-product-modal/add-product-modal.component"
 import { BarcodeEntryModalComponent } from "../../molecule/barcode-entry-modal/barcode-entry-modal.component"
@@ -23,5 +24,7 @@ export class PageScannerPage {
         this.isModalOpen = value
     }
 
-    constructor() {}
+    constructor(private tokenService: TokenService) {
+        console.log(tokenService.getLoggedCommunityId())
+    }
 }
