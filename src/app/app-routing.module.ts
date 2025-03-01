@@ -11,6 +11,7 @@ import { StockPage } from "./page/stock/stock.page"
 import { WelcomePageComponent } from "./page/welcome-page/welcome-page.component"
 import { CommunityPage } from "./page/community/community.page"
 import { HomePage } from "./page/home/home.page"
+import { CguPage } from "./page/cgu/cgu.page"
 
 const routes: Routes = [
     {
@@ -24,6 +25,10 @@ const routes: Routes = [
     {
         path: "register",
         component: RegisterPageComponent,
+    },
+    {
+        path: "cgu",
+        component: CguPage,
     },
     {
         path: 'home',

@@ -61,7 +61,13 @@
                     </ion-input-password-toggle>
                 </ion-input>
 
-                <ion-button type="submit" color="primary" [disabled]="registerForm.invalid">
+                <ion-checkbox formControlName="consent" class="consent">
+                    <ion-text [routerLink]="['/cgu']">J'accepte les
+                        <u>conditions générales d'utilisations</u>
+                    </ion-text>
+                </ion-checkbox>
+
+                <ion-button type=" submit" color="primary" [disabled]="registerForm.invalid">
                     Confirmer
                 </ion-button>
 
