@@ -10,6 +10,8 @@ import { StockContentPage } from "./page/stock-content/stock-content.page"
 import { StockPage } from "./page/stock/stock.page"
 import { WelcomePageComponent } from "./page/welcome-page/welcome-page.component"
 import { CommunityPage } from "./page/community/community.page"
+import { HomePage } from "./page/home/home.page"
+import { CguPage } from "./page/cgu/cgu.page"
 
 const routes: Routes = [
     {
@@ -25,8 +27,28 @@ const routes: Routes = [
         component: RegisterPageComponent,
     },
     {
-        path: "community",
+        path: "cgu",
+        component: CguPage,
+    },
+    {
+        path: 'home',
+        component: HomePage,
+    },
+    {
+        path: 'settings',
+        component: HomePage,
+    },
+    {
+        path: "communities",
         component: CommunityPage,
+    },
+    {
+        path: "community/:communityId",
+        component: StockPage,
+    },
+    {
+        path: "stock/:stockId",
+        component: StockContentPage,
     },
     {
         path: "",
@@ -39,14 +61,6 @@ const routes: Routes = [
             {
                 path: "basket",
                 component: BasketPage,
-            },
-            {
-                path: "stock",
-                component: StockPage,
-            },
-            {
-                path: "stock/content/:stockId",
-                component: StockContentPage,
             },
             {
                 path: "product-content",

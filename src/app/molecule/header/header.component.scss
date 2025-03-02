@@ -1,0 +1,35 @@
+.header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    --border: none;
+    --box-shadow: none;
+
+    .toolbar {
+        --background: #AEF3F0;
+    }
+
+    .header-title {
+
+        max-width: 70%;
+        padding: 0;
+
+        .header-title-text {
+            font-size: clamp(20px, 4vw, 30px);
+            padding-left: 5px;
+        }
+    }
+
+    .header-icons {
+        min-width: 15%;
+        max-width: 3em;
+    }
+
+}
+
+.back-button {
+    --background: none;
+    --border: none;
+    --box-shadow: none;
+    --color: #000000
+}

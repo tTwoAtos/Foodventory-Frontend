@@ -1,0 +1,24 @@
+<ion-content [fullscreen]="true">
+
+
+  <div class="home-page">
+    <div class="home-community">
+      <h2>Les Alternés</h2>
+      <hr>
+    </div>
+
+
+    <div class="home-communities">
+      <ion-text class="home-title">
+        <h3>Mes communautés</h3>
+      </ion-text>
+
+      <ion-list class="home-list">
+        <app-info-card *ngFor="let data of mockComs" [name]="data.name" [nb]="data.nbMember" [icon]="icon"
+          [routerLink]="['/community',data.id]"></app-info-card>
+      </ion-list>
+    </div>
+  </div>
+</ion-content>
+
+<app-footer></app-footer>

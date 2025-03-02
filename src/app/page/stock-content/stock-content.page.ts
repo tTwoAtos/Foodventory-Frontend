@@ -1,6 +1,6 @@
 import { CommonModule } from "@angular/common"
 import { HttpClient } from "@angular/common/http"
-import { Component, OnInit } from "@angular/core"
+import { Component, OnInit, Output } from "@angular/core"
 import { ActivatedRoute, Router } from "@angular/router"
 import { Product } from "@app/apis/products"
 import { ProductCardComponent } from "@app/molecule/product-card/product-card.component"
@@ -10,6 +10,8 @@ import { ProductCardType } from "@app/types/product"
 import { IonicModule } from "@ionic/angular"
 import { addIcons } from "ionicons"
 import * as icons from "ionicons/icons"
+import { HeaderComponent } from "../../molecule/header/header.component";
+import { FooterComponent } from "../../molecule/footer/footer.component";
 
 @Component({
     selector: "app-stock-content",
@@ -17,7 +19,7 @@ import * as icons from "ionicons/icons"
     styleUrls: ["./stock-content.page.scss"],
     providers: [HttpClient],
     standalone: true,
-    imports: [IonicModule, CommonModule, ProductCardComponent],
+    imports: [IonicModule, CommonModule, ProductCardComponent, HeaderComponent, FooterComponent],
 })
 export class StockContentPage implements OnInit {
     constructor(
@@ -28,6 +30,12 @@ export class StockContentPage implements OnInit {
     ) {
         addIcons({ ...icons })
     }
+
+    @Output() headerIcon = "caret-back-outline"
+    @Output() headerTitle = "Nom produit / nom commu?"
+
+    @Output() headerIcon = "caret-back-outline"
+    @Output() headerTitle = "Nom produit / nom commu?"
 
     productCards: ProductCardType[] = []
 

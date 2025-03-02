@@ -20,6 +20,8 @@
         padding: 0;
     }
 
+    background: transparent;
+
 }
 
 .category-resume {
@@ -35,6 +37,8 @@
     padding: 0;
     margin: 0;
 
+    background: transparent;
+
     .category-item {
         padding-left: 20px;
         display: flex;
@@ -43,6 +47,8 @@
         padding-top: 10px;
         padding-bottom: 10px;
         border-bottom: 1px solid black;
+
+        background: #ffffff;
     }
 
     .category-name {

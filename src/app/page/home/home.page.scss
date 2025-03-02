@@ -1,0 +1,24 @@
+.home-page {
+    display: flex;
+    margin: 10px;
+    font-family: "Itim", cursive;
+    font-weight: 400;
+    font-style: normal;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.home-title {
+    align-self: center;
+}
+
+.home-list {
+    ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    background: none;
+}

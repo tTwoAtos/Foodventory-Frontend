@@ -1,5 +1,5 @@
 import { CommonModule } from "@angular/common"
-import { Component } from "@angular/core"
+import { Component, OnInit } from "@angular/core"
 import {
     FormBuilder,
     FormGroup,
@@ -8,6 +8,7 @@ import {
 } from "@angular/forms"
 import { ActivatedRoute, Router } from "@angular/router"
 import { AuthControllerService, TokenResponse } from "@app/apis/auth"
+import { InvitationCodeModalComponent } from "@app/molecule/modals/invitation-code-modal/invitation-code-modal.component"
 import { ToastService } from "@app/services/toaster-service/toaster.service"
 import { TokenService } from "@app/services/token-services/token.service"
 import { PASSWORD_MIN_LENGTH } from "@app/utils/const/const"
@@ -20,9 +21,14 @@ import { IonicModule } from "@ionic/angular"
     templateUrl: "./login-form.component.html",
     styleUrls: ["./login-form.component.scss"],
     standalone: true,
-    imports: [CommonModule, ReactiveFormsModule, IonicModule],
+    imports: [
+        CommonModule,
+        ReactiveFormsModule,
+        IonicModule,
+        InvitationCodeModalComponent,
+    ],
 })
-export class LoginFormComponent {
+export class LoginFormComponent implements OnInit {
     loginForm: FormGroup
 
     constructor(
@@ -61,23 +67,24 @@ export class LoginFormComponent {
     }
 
     onSubmit() {
-        if (this.loginForm.valid) {
-            this.service.login(this.loginForm.value).subscribe({
-                next: (tokenResponse: TokenResponse) => {
-                    if (tokenResponse.access_token) {
-                        this.tokenService.login(tokenResponse.access_token)
-                    }
-                },
-                error: (error) => {
-                    console.log(error)
-
-                    if (error) {
-                        this.toasterService.error(
-                            "Email ou mot de passe incorrect"
-                        )
-                    }
-                },
-            })
+        if (!this.loginForm.valid) {
+            this.loginForm.markAllAsTouched()
+            return
         }
+
+        this.service.login(this.loginForm.value).subscribe({
+            next: (tokenResponse: TokenResponse) => {
+                if (tokenResponse.access_token) {
+                    this.tokenService.login(tokenResponse.access_token)
+                }
+            },
+            error: (error) => {
+                console.log(error)
+
+                if (error) {
+                    this.toasterService.error("Email ou mot de passe incorrect")
+                }
+            },
+        })
     }
 }

@@ -1,0 +1,10 @@
+export * from './roleController.service';
+import { RoleControllerService } from './roleController.service';
+export * from './roleController.serviceInterface';
+export * from './userController.service';
+import { UserControllerService } from './userController.service';
+export * from './userController.serviceInterface';
+export * from './userToCommunityController.service';
+import { UserToCommunityControllerService } from './userToCommunityController.service';
+export * from './userToCommunityController.serviceInterface';
+export const APIS = [RoleControllerService, UserControllerService, UserToCommunityControllerService];

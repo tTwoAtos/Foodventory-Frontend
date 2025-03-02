@@ -25,13 +25,13 @@ if "%MICROSERVICE%"=="all" (
     call openapi-generator-cli generate -i http://localhost:5000/city/v3/api-docs -g typescript-angular -o ./src/app/apis/city --additional-properties=ngVersion=17.3,withInterfaces=true,modelPropertyNaming=original,httpHeaderAccepts='application/json' --generate-alias-as-model
 )
 
-@REM REM ms community
-@REM if "%MICROSERVICE%"=="community" (
-@REM     call openapi-generator-cli generate -i http://localhost:5000/community/v3/api-docs -g typescript-angular -o ./src/app/apis/community --additional-properties=ngVersion=17.3,withInterfaces=true,modelPropertyNaming=original,httpHeaderAccepts='application/json' --generate-alias-as-model
-@REM )
-@REM if "%MICROSERVICE%"=="all" (
-@REM     call openapi-generator-cli generate -i http://localhost:5000/community/v3/api-docs -g typescript-angular -o ./src/app/apis/community --additional-properties=ngVersion=17.3,withInterfaces=true,modelPropertyNaming=original,httpHeaderAccepts='application/json' --generate-alias-as-model
-@REM )
+REM ms community
+if "%MICROSERVICE%"=="community" (
+    call openapi-generator-cli generate -i http://localhost:5000/community/v3/api-docs -g typescript-angular -o ./src/app/apis/community --additional-properties=ngVersion=17.3,withInterfaces=true,modelPropertyNaming=original,httpHeaderAccepts='application/json' --generate-alias-as-model
+)
+if "%MICROSERVICE%"=="all" (
+    call openapi-generator-cli generate -i http://localhost:5000/community/v3/api-docs -g typescript-angular -o ./src/app/apis/community --additional-properties=ngVersion=17.3,withInterfaces=true,modelPropertyNaming=original,httpHeaderAccepts='application/json' --generate-alias-as-model
+)
 
 
 REM ms authentication
@@ -45,10 +45,10 @@ if "%MICROSERVICE%"=="all" (
 
 REM ms users
 if "%MICROSERVICE%"=="users" (
-    call openapi-generator-cli generate -i http://localhost:5000/users/v3/api-docs -g typescript-angular -o ./src/app/apis/users --additional-properties=ngVersion=17.3,withInterfaces=true,modelPropertyNaming=original,httpHeaderAccepts='application/json' --generate-alias-as-model
+    call openapi-generator-cli generate -i http://localhost:5000/user/v3/api-docs -g typescript-angular -o ./src/app/apis/user --additional-properties=ngVersion=17.3,withInterfaces=true,modelPropertyNaming=original,httpHeaderAccepts='application/json' --generate-alias-as-model
 )
 if "%MICROSERVICE%"=="all" (
-    call openapi-generator-cli generate -i http://localhost:5000/users/v3/api-docs -g typescript-angular -o ./src/app/apis/users --additional-properties=ngVersion=17.3,withInterfaces=true,modelPropertyNaming=original,httpHeaderAccepts='application/json' --generate-alias-as-model
+    call openapi-generator-cli generate -i http://localhost:5000/user/v3/api-docs -g typescript-angular -o ./src/app/apis/users --additional-properties=ngVersion=17.3,withInterfaces=true,modelPropertyNaming=original,httpHeaderAccepts='application/json' --generate-alias-as-model
 )
 
 REM ms productToCommunity

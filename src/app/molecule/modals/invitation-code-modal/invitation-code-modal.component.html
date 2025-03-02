@@ -1,0 +1,30 @@
+<app-modal
+    [title]="'Rejoindre une communauté'"
+    [modalIsOpen]="isModalOpen"
+    [contentTemplate]="content"
+>
+</app-modal>
+
+<ng-template #content>
+    <form [formGroup]="invitationCodeForm" (ngSubmit)="onSubmit()">
+        <!-- Champ Email -->
+        <ion-input
+            formControlName="code"
+            type="code"
+            label="Code d'invitation"
+            labelPlacement="floating"
+            fill="solid"
+            [errorText]="
+                invitationCodeForm.controls['code'].errors?.['message']
+            "
+        ></ion-input>
+
+        <ion-button
+            type="submit"
+            color="primary"
+            [disabled]="invitationCodeForm.invalid"
+        >
+            Rejoindre
+        </ion-button>
+    </form>
+</ng-template>

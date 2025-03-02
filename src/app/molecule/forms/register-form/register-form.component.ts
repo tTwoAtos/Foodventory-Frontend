@@ -1,12 +1,13 @@
 import { CommonModule } from "@angular/common"
 import { Component } from "@angular/core"
 import {
+    CheckboxRequiredValidator,
     FormBuilder,
     FormGroup,
     ReactiveFormsModule,
     Validators,
 } from "@angular/forms"
-import { Router } from "@angular/router"
+import { Router, RouterLink } from "@angular/router"
 import { AuthControllerService, AuthUserEntity } from "@app/apis/auth"
 import { ToastService } from "@app/services/toaster-service/toaster.service"
 import { TokenService } from "@app/services/token-services/token.service"
@@ -22,7 +23,7 @@ import { IonicModule } from "@ionic/angular"
     templateUrl: "./register-form.component.html",
     styleUrls: ["./register-form.component.scss"],
     standalone: true,
-    imports: [CommonModule, ReactiveFormsModule, IonicModule],
+    imports: [CommonModule, ReactiveFormsModule, IonicModule, RouterLink],
 })
 export class RegisterFormComponent {
     registerForm: FormGroup
@@ -81,6 +82,11 @@ export class RegisterFormComponent {
                     updateOn: "change",
                 },
             ],
+
+            consent: [
+                "false",
+                WithMessage(Validators.requiredTrue),
+            ]
         })
     }
 
