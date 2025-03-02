@@ -20,9 +20,7 @@ export class RoundButtonComponent implements OnInit {
     private click$ = new Subject<void>()
 
     constructor() {
-        this.click$
-            .pipe(debounceTime(50))
-            .subscribe(() => this.action())
+        this.click$.pipe(debounceTime(50)).subscribe(() => this.action())
     }
 
     ngOnInit() {}

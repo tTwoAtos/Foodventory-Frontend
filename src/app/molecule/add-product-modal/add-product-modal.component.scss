@@ -1,0 +1,14 @@
+.amount {
+    display: flex;
+    align-items: center;
+
+    .product-number {
+        margin-right: 0.1em;
+        margin-left: 0.1em;
+        font-style: italic;
+        font-weight: bold;
+        font-size: xx-large;
+        width: 1.5em;
+        text-align: center;
+    }
+}

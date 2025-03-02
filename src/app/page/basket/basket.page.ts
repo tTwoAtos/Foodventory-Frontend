@@ -2,10 +2,10 @@ import { CommonModule } from "@angular/common"
 import { Component, OnInit } from "@angular/core"
 import { Router } from "@angular/router"
 import { ProductToCommunity } from "@app/apis/product-to-community"
-import { Product, ProductControllerService } from "@app/apis/products"
+import { Product } from "@app/apis/products"
 import { ProductCardComponent } from "@app/molecule/product-card/product-card.component"
 import { ProductStoreService } from "@app/services/product-store/product-store.service"
-import { PRODUCTS_BASKET_KEY } from "@app/utils/const/const"
+import { ProductCardType } from "@app/types/product"
 import { IonicModule } from "@ionic/angular"
 
 @Component({
@@ -16,21 +16,34 @@ import { IonicModule } from "@ionic/angular"
     imports: [IonicModule, CommonModule, ProductCardComponent],
 })
 export class BasketPage implements OnInit {
-    productList: Product[] = []
+    productList: ProductCardType[] = []
 
     constructor(
         public router: Router,
-        private productStoreService: ProductStoreService,
-        private productService: ProductControllerService
-    ) {}
+        private productStoreService: ProductStoreService
+    ) {
+        // const navigation = this.router.getCurrentNavigation()
+        // if (navigation?.extras.state) {
+        //     const test = navigation.extras.state["data"]
+        //     const testNewProduct = { ...test }
+        //     console.log({
+        //         productId: testNewProduct.productId,
+        //         name: testNewProduct.name,
+        //         amount: testNewProduct.quantity,
+        //     })
+        // }
+    }
 
     async ngOnInit() {
-        const basketLocalStorage = localStorage.getItem(PRODUCTS_BASKET_KEY)
-
-        if (basketLocalStorage != null)
-            this.productList = JSON.parse(basketLocalStorage)
-
-        await this.getProductFromStorage()
+        // const basketLocalStorage = localStorage.getItem(PRODUCTS_BASKET_KEY)
+        // if (basketLocalStorage != null) {
+        //     // this.productList = JSON.parse(basketLocalStorage)
+        //     this.productList.push(...JSON.parse(basketLocalStorage))
+        //     console.log("Basket product list : ", this.productList)
+        // }
+        // await this.getProductFromStorage()
+        // await this.getProductToComFromStorage()
+        await this.getProductStoredFromStorage()
     }
 
     // Send to back
@@ -38,8 +51,13 @@ export class BasketPage implements OnInit {
         let basketProducts: Product[] = []
         let testProductToCom: ProductToCommunity[] = []
 
-        await this.productStoreService.getProducts().then((res) => {
-            basketProducts = res
+        // await this.productStoreService.getProducts().then((res) => {
+        //     basketProducts = res
+
+        // })
+
+        await this.productStoreService.getProductsToCom().then((res) => {
+            testProductToCom = res
         })
 
         basketProducts.forEach((product) => {
@@ -60,7 +78,31 @@ export class BasketPage implements OnInit {
 
     async getProductFromStorage() {
         await this.productStoreService.getProducts().then((res) => {
-            this.productList = res
+            this.productList.push(...(res as ProductCardType[]))
+            // this.productList = res
+        })
+    }
+
+    async getProductToComFromStorage() {
+        await this.productStoreService.getProductsToCom().then((res) => {
+            this.productList.push(...(res as ProductCardType[]))
+            // this.productList = res
+        })
+    }
+
+    async getProductStoredFromStorage() {
+        await this.productStoreService.getProductsStored().then((res) => {
+            console.log("Getting Product Stored : ", res)
+
+            res.forEach((product) => {
+                this.productList.push({
+                    productId: product.productId,
+                    amount: product.qte,
+                    name: product.name,
+                })
+            })
+
+            // this.productList = res
         })
     }
 }

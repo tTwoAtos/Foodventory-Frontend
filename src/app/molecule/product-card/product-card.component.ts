@@ -2,7 +2,7 @@ import { CommonModule } from "@angular/common"
 import { Component, Input } from "@angular/core"
 import { ProductCardType } from "@app/types/product"
 import { IonicModule } from "@ionic/angular"
-import { RoundButtonComponent } from "../../atoms/round-button/round-button.component"
+import { RoundButtonComponent } from "../round-button/round-button.component"
 
 @Component({
     selector: "app-product-card",
@@ -13,6 +13,7 @@ import { RoundButtonComponent } from "../../atoms/round-button/round-button.comp
 })
 export class ProductCardComponent {
     @Input() product: ProductCardType = {
+        productId: "",
         name: "",
         amount: 0,
     }

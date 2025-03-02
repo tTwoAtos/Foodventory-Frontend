@@ -1,4 +1,8 @@
-<ion-modal [isOpen]="modalIsOpen">
+<ion-modal
+    [isOpen]="modalIsOpen"
+    (willDismiss)="close()"
+    (didDismiss)="close()"
+>
     <ng-template>
         <ion-text class="modal-title">{{ title }}</ion-text>
 

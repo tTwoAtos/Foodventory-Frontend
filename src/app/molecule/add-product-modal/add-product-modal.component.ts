@@ -1,14 +1,19 @@
 import { CommonModule } from "@angular/common"
-import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core"
 import {
-    FormBuilder,
-    FormGroup,
-    FormsModule,
-    ReactiveFormsModule,
-} from "@angular/forms"
-import { IonicModule } from "@ionic/angular"
-import { BarcodeEntryModalComponent } from "../barcode-entry-modal/barcode-entry-modal.component"
+    Component,
+    EventEmitter,
+    Input,
+    OnChanges,
+    Output,
+    SimpleChanges,
+} from "@angular/core"
+import { FormsModule, ReactiveFormsModule } from "@angular/forms"
+import { Product } from "@app/apis/products"
+import { TokenService } from "@app/services/token-services/token.service"
+import { IonicModule, SelectChangeEventDetail } from "@ionic/angular"
+import { IonSelectCustomEvent } from "@ionic/core"
 import { ModalComponent } from "../modal/modal.component"
+import { RoundButtonComponent } from "../round-button/round-button.component"
 
 @Component({
     selector: "app-add-product-modal",
@@ -17,52 +22,88 @@ import { ModalComponent } from "../modal/modal.component"
     styleUrls: ["./add-product-modal.component.scss"],
     imports: [
         IonicModule,
-        FormsModule,
         ModalComponent,
         CommonModule,
-        BarcodeEntryModalComponent,
+        RoundButtonComponent,
         ReactiveFormsModule,
+        FormsModule,
     ],
 })
-export class AddProductModalComponent implements OnInit {
+export class AddProductModalComponent implements OnChanges {
     @Input() isModalOpen: boolean = false
     isBarecodeModalOpen: boolean = false
 
-    @Output() closeEvent = new EventEmitter<void>()
+    @Output() closedEvent = new EventEmitter<void>()
     @Output() cancelEvent = new EventEmitter<void>()
+    @Output() confirmEvent = new EventEmitter<void>()
 
-    scanDetailsForm: FormGroup
+    mockStock = [
+        { name: "Réfrigérateur", value: 1 },
+        { name: "Congélateur", value: 2 },
+        { name: "Placard", value: 3 },
+    ]
+    @Input() newProduct: Product = {}
 
-    constructor(private fb: FormBuilder) {
-        this.scanDetailsForm = this.fb.group({
-            quantity: 1,
-            emplacement: "",
-            community: "",
-        })
-    }
-    ngOnInit(): void {
-        // Get all data of user -> emplacement / community
-        // throw new Error("Method not implemented.")
-    }
-
-    onSubmit() {
-        throw new Error("Method not implemented.")
+    newProductData = {
+        name: this.newProduct.name,
+        productId: this.newProduct.eancode,
+        qte: 1,
+        emplacementId: 1,
+        communityId: 0,
     }
 
-    openBarcodeModal(value: boolean) {
-        if (value == true) {
-            this.closeEvent.emit()
+    constructor(private tokenService: TokenService) {
+        // TODO : CHECK THIS LINES AFTER GETTING DEVEL
+        if (this.tokenService.getLoggedCommunityId() != undefined) {
+            this.newProductData.communityId = parseInt(
+                this.tokenService.getLoggedCommunityId()!
+            )
+        } else {
+            // throw new Error("No community for this user ???")
         }
+    }
+    ngOnChanges(changes: SimpleChanges): void {
+        if (changes["newProduct"] != undefined) {
+            this.newProduct = changes["newProduct"].currentValue
+            if (this.newProduct != undefined) {
+                if (this.newProduct.name != undefined) {
+                    this.newProductData.name = this.newProduct.name
+                }
 
-        this.isBarecodeModalOpen = value
+                if (this.newProduct.eancode != undefined) {
+                    this.newProductData.productId = this.newProduct.eancode
+                }
+            }
+        }
     }
 
     setOpen(value: boolean) {
         this.isModalOpen = value
+        this.closedEvent.emit()
     }
 
     cancel() {
         this.cancelEvent.emit()
         this.setOpen(false)
+    }
+    confirm() {
+        this.confirmEvent.emit(this.newProductData as any)
+        this.setOpen(false)
+    }
+
+    decrement() {
+        if (this.newProductData.qte > 1) {
+            this.newProductData.qte--
+        }
+    }
+
+    increment() {
+        this.newProductData.qte++
+    }
+
+    UpdateEmplacementValue(
+        $event: IonSelectCustomEvent<SelectChangeEventDetail<any>>
+    ) {
+        this.newProductData.emplacementId = $event.detail.value
     }
 }

@@ -24,16 +24,20 @@ export class ModalComponent {
 
     @Output() confirmEvent = new EventEmitter<void>()
     @Output() cancelEvent = new EventEmitter<void>()
+    @Output() closedEvent = new EventEmitter<void>()
 
     confirm() {
-        // this.modal!.dismiss()
         this.modalIsOpen = false
         this.confirmEvent.emit()
     }
 
     cancel() {
-        // this.modal!.dismiss()
         this.modalIsOpen = false
         this.cancelEvent.emit()
+    }
+
+    close() {
+        this.modalIsOpen = false
+        this.closedEvent.emit()
     }
 }

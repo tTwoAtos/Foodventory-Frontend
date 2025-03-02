@@ -1,80 +1,54 @@
 <app-modal
-    [title]="'-- Nom du produit --'"
+    [title]="newProductData.name!"
     [modalIsOpen]="isModalOpen"
     [contentTemplate]="content"
+    (confirmEvent)="confirm()"
     (cancelEvent)="cancel()"
+    (closedEvent)="setOpen(false)"
+    [haveConfirmButton]="true"
 >
 </app-modal>
 
 <ng-template #content>
-    <form [formGroup]="scanDetailsForm" (ngSubmit)="onSubmit()">
-        <ion-grid>
-            <ion-col>
-                <ion-input
-                    formControlName="quantity"
-                    label="Qté à ajouter ?"
-                    type="number"
-                    placeholder="Entrer une quantité"
-                ></ion-input>
-            </ion-col>
+    <ion-list lines="none">
+        <ion-item>
+            <ion-label>Quantité ?</ion-label>
+            <div class="amount">
+                <app-round-button
+                    [color]="newProductData.qte == 1 ? 'medium' : 'danger'"
+                    icon="remove-circle"
+                    (actionEvent)="decrement()"
+                ></app-round-button>
 
-            <ion-col>
-                <ion-select
-                    formControlName="emplacement"
-                    fill="solid"
-                    interface="popover"
-                    type="select"
-                    label="Emplacement ?"
+                <div class="product-number">
+                    {{ newProductData.qte }}
+                </div>
+
+                <app-round-button
+                    color="primary"
+                    icon="add-circle"
+                    (actionEvent)="increment()"
+                ></app-round-button>
+            </div>
+        </ion-item>
+
+        <ion-item>
+            <ion-label>Emplacement ?</ion-label>
+            <ion-select
+                fill="solid"
+                interface="popover"
+                type="select"
+                [(ngModel)]="newProductData.emplacementId"
+                justify="start"
+                (ionChange)="UpdateEmplacementValue($event)"
+            >
+                <ion-select-option
+                    *ngFor="let stock of mockStock; index as i"
+                    [value]="stock.value"
                 >
-                    <ion-select-option value="0">Mr</ion-select-option>
-                    <ion-select-option value="1">Mme</ion-select-option>
-                </ion-select>
-            </ion-col>
-
-            <ion-col>
-                <ion-input
-                    formControlName="community"
-                    label="Communauté ?"
-                    placeholder="Selectionner une communauté"
-                ></ion-input>
-            </ion-col>
-        </ion-grid>
-    </form>
-
-    <!-- <ion-list>
-        <ion-list>
-            <ion-item>
-                <ion-input
-                    label="Qté à ajouter ?"
-                    type="number"
-                    placeholder="Entrer une quantité"
-                ></ion-input>
-            </ion-item>
-
-            <ion-item>
-                <ion-select
-                    formControlName="gender"
-                    fill="solid"
-                    interface="popover"
-                    type="select"
-                >
-                    <ion-select-option value="0">Mr</ion-select-option>
-                    <ion-select-option value="1">Mme</ion-select-option>
-                </ion-select>
-            </ion-item>
-
-            <ion-item>
-                <ion-input
-                    label="Communauté ?"
-                    placeholder="Selectionner une communauté"
-                ></ion-input>
-            </ion-item>
-        </ion-list>
-    </ion-list> -->
+                    {{ stock.name }}
+                </ion-select-option>
+            </ion-select>
+        </ion-item>
+    </ion-list>
 </ng-template>
-
-<app-barcode-entry-modal
-    [isModalOpen]="isBarecodeModalOpen"
-    (confirmEvent)="openBarcodeModal(false)"
-    (cancelEvent)="openBarcodeModal(false)"
-></app-barcode-entry-modal>

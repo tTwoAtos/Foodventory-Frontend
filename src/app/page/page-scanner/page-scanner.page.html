@@ -23,8 +23,10 @@
 
         <app-add-product-modal
             [isModalOpen]="isModalOpen"
-            (closeEvent)="setOpen(false)"
+            (closedEvent)="setOpen(false)"
             (cancelEvent)="setOpen(false)"
+            (confirmEvent)="redirectToBasket($event)"
+            [newProduct]="product!"
         ></app-add-product-modal>
 
         <ion-button class="digicode-button" (click)="setOpen(true)">
