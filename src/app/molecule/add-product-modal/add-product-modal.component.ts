@@ -98,6 +98,10 @@ export class AddProductModalComponent implements OnChanges {
         this.confirmEvent.emit(this.newProductData as any)
         this.setOpen(false)
     }
+    close() {
+        this.closedEvent.emit()
+        this.setOpen(false)
+    }
 
     decrement() {
         if (this.newProductData.qte > 1) {

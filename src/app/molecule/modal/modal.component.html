@@ -19,6 +19,7 @@
                 Retour
             </ion-button>
             <ion-button
+                [disabled]="confirmButtonIsDisabled"
                 *ngIf="haveConfirmButton"
                 class="modal-exit-button"
                 (click)="confirm()"

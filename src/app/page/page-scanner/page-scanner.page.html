@@ -11,15 +11,13 @@
 
         <app-barcode-entry-modal
             [isModalOpen]="barcodeModalIsOpen"
-            (closeEvent)="openBarcodeModal(false)"
-            (cancelEvent)="openBarcodeModal(false)"
+            (closedEvent)="openBarcodeModal(false)"
             (confirmEvent)="getProduct($event)"
         ></app-barcode-entry-modal>
 
         <app-add-product-modal
             [isModalOpen]="quantityModalIsOpen"
             (closedEvent)="openQuantityModal(false)"
-            (cancelEvent)="openQuantityModal(false)"
             (confirmEvent)="redirectToBasket($event)"
             [newProduct]="product!"
             [emplacementId]="stockId!"

@@ -1,3 +1,15 @@
+<app-modal
+    [title]="'Entrer le code barre'"
+    [modalIsOpen]="isModalOpen"
+    [contentTemplate]="content"
+    (confirmEvent)="confirm()"
+    (cancelEvent)="cancel()"
+    (closedEvent)="close()"
+    [haveConfirmButton]="true"
+    [confirmButtonIsDisabled]="!(barcode.length == 13)"
+>
+</app-modal>
+
 <ng-template #content>
     <ion-input
         id="barcode-input"
@@ -8,18 +20,7 @@
         type="text"
     ></ion-input>
 
-    <p *ngIf="barcode.length > 0 && barcode.length < 13" style="color: red">
+    <p *ngIf="barcode.length < 13">
         ⚠️ Le code doit comporter au moins 13 caractères.
     </p>
 </ng-template>
-
-<app-modal
-    [title]="'Entrer le code barre'"
-    [modalIsOpen]="isModalOpen"
-    [contentTemplate]="content"
-    (confirmEvent)="confirm()"
-    (cancelEvent)="cancel()"
-    (closedEvent)="cancel()"
-    [haveConfirmButton]="true"
->
-</app-modal>

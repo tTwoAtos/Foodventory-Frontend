@@ -42,14 +42,6 @@ export class PageScannerPage {
     }
 
     openQuantityModal(value: boolean) {
-        // this.product = {
-        //     eancode: "7346895213440",
-        //     name: "Produit Test",
-        //     nbAdded: 0,
-        //     nbScanned: 1,
-        //     thumbnail: "",
-        // }
-
         this.quantityModalIsOpen = value
     }
 
@@ -57,7 +49,6 @@ export class PageScannerPage {
         console.log(newProduct)
 
         this.productStoreService.addProductStored(newProduct)
-        this.openQuantityModal(false)
         setTimeout(() => {
             this.router.navigate(["/basket"])
         }, 200)
@@ -73,7 +64,6 @@ export class PageScannerPage {
             nbScanned: 1,
             thumbnail: "",
         }
-
         this.openQuantityModal(true)
     }
 }

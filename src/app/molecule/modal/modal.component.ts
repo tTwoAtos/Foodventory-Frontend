@@ -18,26 +18,29 @@ import { IonicModule } from "@ionic/angular"
 })
 export class ModalComponent {
     @Input() title: string = ""
+
     @Input() modalIsOpen: boolean = false
+
     @Input() contentTemplate!: TemplateRef<any>
+
     @Input() haveConfirmButton: boolean = false
+    @Input() confirmButtonIsDisabled: boolean = false
 
     @Output() confirmEvent = new EventEmitter<void>()
     @Output() cancelEvent = new EventEmitter<void>()
     @Output() closedEvent = new EventEmitter<void>()
 
     confirm() {
-        this.modalIsOpen = false
         this.confirmEvent.emit()
+        this.close()
     }
 
     cancel() {
-        this.modalIsOpen = false
         this.cancelEvent.emit()
+        this.close()
     }
 
     close() {
-        this.modalIsOpen = false
         this.closedEvent.emit()
     }
 }
