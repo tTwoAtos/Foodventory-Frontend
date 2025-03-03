@@ -1,38 +1,33 @@
 import { CommonModule } from "@angular/common"
 import { Component, OnInit } from "@angular/core"
 import { Router } from "@angular/router"
-import { ProductToCommunity } from "@app/apis/product-to-community"
+import {
+    ProductToCommunity,
+    ProductToCommunityControllerService,
+} from "@app/apis/product-to-community"
 import { Product } from "@app/apis/products"
 import { ProductCardComponent } from "@app/molecule/product-card/product-card.component"
 import { ProductStoreService } from "@app/services/product-store/product-store.service"
 import { ProductCardType } from "@app/types/product"
 import { IonicModule } from "@ionic/angular"
+import { HeaderComponent } from "../../molecule/header/header.component";
+import { FooterComponent } from "../../molecule/footer/footer.component";
 
 @Component({
     selector: "app-basket",
     templateUrl: "./basket.page.html",
     styleUrls: ["./basket.page.scss"],
     standalone: true,
-    imports: [IonicModule, CommonModule, ProductCardComponent],
+    imports: [IonicModule, CommonModule, ProductCardComponent, HeaderComponent, FooterComponent],
 })
 export class BasketPage implements OnInit {
     productList: ProductCardType[] = []
 
     constructor(
         public router: Router,
-        private productStoreService: ProductStoreService
-    ) {
-        // const navigation = this.router.getCurrentNavigation()
-        // if (navigation?.extras.state) {
-        //     const test = navigation.extras.state["data"]
-        //     const testNewProduct = { ...test }
-        //     console.log({
-        //         productId: testNewProduct.productId,
-        //         name: testNewProduct.name,
-        //         amount: testNewProduct.quantity,
-        //     })
-        // }
-    }
+        private productStoreService: ProductStoreService,
+        private productToComService: ProductToCommunityControllerService
+    ) {}
 
     async ngOnInit() {
         // const basketLocalStorage = localStorage.getItem(PRODUCTS_BASKET_KEY)
@@ -51,48 +46,49 @@ export class BasketPage implements OnInit {
         let basketProducts: Product[] = []
         const testProductToCom: ProductToCommunity[] = []
 
-        // await this.productStoreService.getProducts().then((res) => {
-        //     basketProducts = res
+        this.productStoreService.getProductsStored().then((res) => {
+            console.log(res)
 
+            res.forEach((element) => {
+                this.productToComService.add(element.communityId, element)
+            })
+        })
+
+        // basketProducts.forEach((product) => {
+        //     const newProductToCom: ProductToCommunity = {
+        //         productId: product.eancode,
+        //         communityId: "", // Renseigner par ????
+        //         emplacementId: "", // Renseigner par ????
+        //         qte: product.nbScanned,
+        //     }
+
+        //     testProductToCom.push(newProductToCom)
         // })
 
-        await this.productStoreService.getProductsToCom().then((res) => {
-            testProductToCom = res
-        })
-
-        basketProducts.forEach((product) => {
-            const newProductToCom: ProductToCommunity = {
-                productId: product.eancode,
-                communityId: "", // Renseigner par ????
-                emplacementId: "", // Renseigner par ????
-                qte: product.nbScanned,
-            }
-
-            testProductToCom.push(newProductToCom)
-        })
+        // this.productToComService.add()
 
         // this.productService
         //     .addedToCommunity("0737628064502")
         //     .subscribe(() => {})
     }
 
-    async getProductFromStorage() {
-        await this.productStoreService.getProducts().then((res) => {
-            this.productList.push(...(res as ProductCardType[]))
-            // this.productList = res
-        })
-    }
+    // async getProductFromStorage() {
+    //     await this.productStoreService.getProducts().then((res) => {
+    //         this.productList.push(...(res as ProductCardType[]))
+    //         // this.productList = res
+    //     })
+    // }
 
-    async getProductToComFromStorage() {
-        await this.productStoreService.getProductsToCom().then((res) => {
-            this.productList.push(...(res as ProductCardType[]))
-            // this.productList = res
-        })
-    }
+    // async getProductToComFromStorage() {
+    //     await this.productStoreService.getProductsToCom().then((res) => {
+    //         this.productList.push(...(res as ProductCardType[]))
+    //         // this.productList = res
+    //     })
+    // }
 
     async getProductStoredFromStorage() {
         await this.productStoreService.getProductsStored().then((res) => {
-            console.log("Getting Product Stored : ", res)
+            // console.log("Getting Product Stored : ", res)
 
             res.forEach((product) => {
                 this.productList.push({

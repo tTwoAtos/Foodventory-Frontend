@@ -5,9 +5,16 @@
         <div class="search-bar"></div>
 
         <ion-list class="product-list">
-            <app-product-card *ngFor="let product of productCards" [product]="product"></app-product-card>
+            <app-product-card
+                *ngFor="let product of productCards"
+                [product]="product"
+            ></app-product-card>
         </ion-list>
-        <ion-button (click)="router.navigateByUrl('/scan')">
+        <ion-button
+            (click)="router.navigate(['/scan'], {
+            state: { stockID: this.stockID },
+        })"
+        >
             <ion-label>(Test) New Product</ion-label>
         </ion-button>
     </div>

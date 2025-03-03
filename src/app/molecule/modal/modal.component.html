@@ -11,7 +11,11 @@
         </ion-content>
 
         <div>
-            <ion-button class="modal-exit-button" (click)="cancel()">
+            <ion-button
+                class="modal-exit-button"
+                (click)="cancel()"
+                [color]="haveConfirmButton ? 'medium' : 'primary'"
+            >
                 Retour
             </ion-button>
             <ion-button

@@ -1,11 +1,16 @@
 <ng-template #content>
     <ion-input
         id="barcode-input"
-        type="number"
         placeholder="_ _ _ _ _ _ _ _ _ _ _ _ _"
         [(ngModel)]="barcode"
         (keydown)="onKeyDown($event)"
+        inputmode="numeric"
+        type="text"
     ></ion-input>
+
+    <p *ngIf="barcode.length > 0 && barcode.length < 13" style="color: red">
+        ⚠️ Le code doit comporter au moins 13 caractères.
+    </p>
 </ng-template>
 
 <app-modal
@@ -14,6 +19,7 @@
     [contentTemplate]="content"
     (confirmEvent)="confirm()"
     (cancelEvent)="cancel()"
+    (closedEvent)="cancel()"
     [haveConfirmButton]="true"
 >
 </app-modal>

@@ -38,26 +38,26 @@ export class AddProductModalComponent implements OnChanges {
     @Output() confirmEvent = new EventEmitter<void>()
 
     mockStock = [
-        { name: "Réfrigérateur", value: 1 },
-        { name: "Congélateur", value: 2 },
-        { name: "Placard", value: 3 },
+        { name: "Réfrigérateur", value: "1" },
+        { name: "Congélateur", value: "2" },
+        { name: "Placard", value: "3" },
     ]
     @Input() newProduct: Product = {}
+    @Input() emplacementId: string = ""
 
     newProductData = {
-        name: this.newProduct.name,
-        productId: this.newProduct.eancode,
+        name: "",
+        productId: "",
         qte: 1,
-        emplacementId: 1,
-        communityId: 0,
+        emplacementId: "1",
+        communityId: "1",
     }
 
     constructor(private tokenService: TokenService) {
         // TODO : CHECK THIS LINES AFTER GETTING DEVEL
         if (this.tokenService.getLoggedCommunityId() != undefined) {
-            this.newProductData.communityId = parseInt(
+            this.newProductData.communityId =
                 this.tokenService.getLoggedCommunityId()!
-            )
         } else {
             // throw new Error("No community for this user ???")
         }
@@ -73,6 +73,14 @@ export class AddProductModalComponent implements OnChanges {
                 if (this.newProduct.eancode != undefined) {
                     this.newProductData.productId = this.newProduct.eancode
                 }
+            }
+        }
+
+        if (changes["emplacementId"] != undefined) {
+            this.emplacementId = changes["emplacementId"].currentValue
+
+            if (this.emplacementId != undefined) {
+                this.newProductData.emplacementId = this.emplacementId
             }
         }
     }

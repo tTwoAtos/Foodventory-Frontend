@@ -1,6 +1,6 @@
 import { CommonModule } from "@angular/common"
 import { Component, EventEmitter, Input, Output } from "@angular/core"
-import { FormsModule } from "@angular/forms"
+import { FormBuilder, FormsModule, ReactiveFormsModule } from "@angular/forms"
 import { IonicModule } from "@ionic/angular"
 import { ModalComponent } from "../modal/modal.component"
 
@@ -9,7 +9,13 @@ import { ModalComponent } from "../modal/modal.component"
     templateUrl: "./barcode-entry-modal.component.html",
     standalone: true,
     styleUrls: ["./barcode-entry-modal.component.scss"],
-    imports: [IonicModule, FormsModule, ModalComponent, CommonModule],
+    imports: [
+        IonicModule,
+        FormsModule,
+        ModalComponent,
+        CommonModule,
+        ReactiveFormsModule,
+    ],
 })
 export class BarcodeEntryModalComponent {
     @Input() isModalOpen: boolean = false
@@ -18,12 +24,35 @@ export class BarcodeEntryModalComponent {
     @Output() confirmEvent = new EventEmitter<void>()
     @Output() cancelEvent = new EventEmitter<void>()
 
-    invalidChars: string[] = ["-", "+", "e"]
+    // form: FormGroup
 
-    constructor() {}
+    constructor(private fb: FormBuilder) {
+        // this.form = this.fb.group({
+        //     barcode: [
+        //         "",
+        //         [
+        //             WithMessage(Validators.required, DefaultMessage.Required),
+        //             WithMessage(
+        //                 Validators.minLength(13),
+        //                 "Ce champ doit comporter 13 chiffres"
+        //             ),
+        //             WithMessage(Validators.pattern("/^\d+$/"), "Ne peut être composer que de chiffres")
+        //         ],
+        //     ],
+        // })
+    }
 
     onKeyDown(event: KeyboardEvent) {
-        if (this.invalidChars.includes(event.key)) {
+        const isNumber = /^[0-9]$/.test(event.key)
+        const allowedKeys = [
+            "Backspace",
+            "Tab",
+            "ArrowLeft",
+            "ArrowRight",
+            "Delete",
+        ]
+
+        if (!allowedKeys.includes(event.key) && !isNumber) {
             event.preventDefault()
         }
 
@@ -42,8 +71,7 @@ export class BarcodeEntryModalComponent {
     }
 
     confirm() {
-        console.log(this.barcode)
-        this.confirmEvent.emit()
+        this.confirmEvent.emit(this.barcode as any)
         this.setOpen(false)
     }
 

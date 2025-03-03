@@ -1,6 +1,6 @@
 import { CommonModule } from "@angular/common"
 import { Component } from "@angular/core"
-import { Router } from "@angular/router"
+import { Router, RouterLink } from "@angular/router"
 import { Product } from "@app/apis/products"
 import { ProductStoreService } from "@app/services/product-store/product-store.service"
 import { IonicModule } from "@ionic/angular"
@@ -17,46 +17,63 @@ import { BarcodeEntryModalComponent } from "../../molecule/barcode-entry-modal/b
         CommonModule,
         BarcodeEntryModalComponent,
         AddProductModalComponent,
+        RouterLink,
     ],
 })
 export class PageScannerPage {
-    isModalOpen: boolean = false
-
+    barcodeModalIsOpen: boolean = false
+    quantityModalIsOpen: boolean = false
     product: Product | undefined
+    stockId: string | undefined
 
     constructor(
         private router: Router,
         private productStoreService: ProductStoreService
-    ) {}
-
-    async setOpen(value: boolean) {
-        this.isModalOpen = value
-
-        //TODO : remove after testing
-        if (value) {
-            this.scan()
+    ) {
+        const navigation = this.router.getCurrentNavigation()
+        if (navigation?.extras.state) {
+            const stockID = navigation.extras.state["stockID"]
+            this.stockId = stockID
         }
     }
 
+    openBarcodeModal(value: boolean) {
+        this.barcodeModalIsOpen = value
+    }
+
+    openQuantityModal(value: boolean) {
+        // this.product = {
+        //     eancode: "7346895213440",
+        //     name: "Produit Test",
+        //     nbAdded: 0,
+        //     nbScanned: 1,
+        //     thumbnail: "",
+        // }
+
+        this.quantityModalIsOpen = value
+    }
+
     async redirectToBasket(newProduct: any) {
+        console.log(newProduct)
+
         this.productStoreService.addProductStored(newProduct)
-        this.setOpen(false)
+        this.openQuantityModal(false)
         setTimeout(() => {
             this.router.navigate(["/basket"])
         }, 200)
     }
 
-    /**
-     *
-     * @param product Product is any because doesn't how scanned prudoct will be returned
-     */
-    scan(product: any = null) {
+    getProduct(eancode: any) {
+        // Call ProductService to get the product by this eancode
+
         this.product = {
-            eancode: "7346895213440",
+            eancode: eancode,
             name: "Produit Test",
             nbAdded: 0,
             nbScanned: 1,
             thumbnail: "",
         }
+
+        this.openQuantityModal(true)
     }
 }

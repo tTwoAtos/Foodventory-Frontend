@@ -1,16 +1,6 @@
-<ion-header [translucent]="true">
-    <ion-toolbar>
-        <ion-title>basket</ion-title>
-    </ion-toolbar>
-</ion-header>
+<app-header [headerTitle]="'Panier'"></app-header>
 
 <ion-content [fullscreen]="true">
-    <ion-header collapse="condense">
-        <ion-toolbar>
-            <ion-title size="large">basket</ion-title>
-        </ion-toolbar>
-    </ion-header>
-
     <ion-list class="product-list">
         <app-product-card
             *ngFor="let product of productList"
@@ -18,7 +8,9 @@
         ></app-product-card>
     </ion-list>
 
-    <ion-button (click)="saveBasket()">
+    <ion-button (click)="saveBasket()" *ngIf="productList.length > 0">
         <ion-label>Valider</ion-label>
     </ion-button>
 </ion-content>
+
+<app-footer></app-footer>

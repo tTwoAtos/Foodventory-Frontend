@@ -3,17 +3,17 @@
     <div class="product-name">{{ product.name }}</div>
     <div class="product-amount">
         <app-round-button
-            color="primary"
-            icon="add-circle"
-            (actionEvent)="increment()"
+            color="danger"
+            [icon]="this.product.amount == 1 ? 'trash' : 'remove-circle'"
+            (actionEvent)="decrement()"
         ></app-round-button>
 
         <div class="product-number">{{ product.amount }}</div>
 
         <app-round-button
-            color="danger"
-            [icon]="this.product.amount == 1 ? 'trash' : 'remove-circle'"
-            (actionEvent)="decrement()"
+            color="primary"
+            icon="add-circle"
+            (actionEvent)="increment()"
         ></app-round-button>
     </div>
 </ion-row>

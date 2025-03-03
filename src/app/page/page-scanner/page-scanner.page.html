@@ -1,9 +1,3 @@
-<ion-header [translucent]="true">
-    <ion-toolbar>
-        <ion-title>page-scanner</ion-title>
-    </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
     <div>
         <div class="scanner">
@@ -11,26 +5,32 @@
         </div>
 
         <!-- Back to the previous page -->
-        <ion-button class="exit-button">
+        <ion-button class="exit-button" [routerLink]="['/home']">
             <ion-icon name="close-outline"></ion-icon>
         </ion-button>
 
-        <!-- <app-barcode-entry-modal
-            [isModalOpen]="isModalOpen"
-            (closeEvent)="setOpen(false)"
-            (cancelEvent)="setOpen(false)"
-        ></app-barcode-entry-modal> -->
+        <app-barcode-entry-modal
+            [isModalOpen]="barcodeModalIsOpen"
+            (closeEvent)="openBarcodeModal(false)"
+            (cancelEvent)="openBarcodeModal(false)"
+            (confirmEvent)="getProduct($event)"
+        ></app-barcode-entry-modal>
 
         <app-add-product-modal
-            [isModalOpen]="isModalOpen"
-            (closedEvent)="setOpen(false)"
-            (cancelEvent)="setOpen(false)"
+            [isModalOpen]="quantityModalIsOpen"
+            (closedEvent)="openQuantityModal(false)"
+            (cancelEvent)="openQuantityModal(false)"
             (confirmEvent)="redirectToBasket($event)"
             [newProduct]="product!"
+            [emplacementId]="stockId!"
         ></app-add-product-modal>
 
-        <ion-button class="digicode-button" (click)="setOpen(true)">
+        <ion-button class="digicode-button" (click)="openBarcodeModal(true)">
             <ion-icon name="keypad-outline"></ion-icon>
         </ion-button>
+
+        <ion-button (click)="openQuantityModal(true)"
+            >Test modal post-scan</ion-button
+        >
     </div>
 </ion-content>
