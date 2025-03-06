@@ -7,8 +7,19 @@
         </ion-text>
 
         <ion-list class="stock-list">
-            <app-info-card *ngFor="let data of mockStocks" [name]="data.name" [nb]="data.productTotal" [icon]="icon"
-                [routerLink]="['/stock',data.id]"></app-info-card>
+            <app-info-card
+                *ngFor="let data of mockStocks"
+                [name]="data.name"
+                [nb]="data.productTotal"
+                [icon]="icon"
+                [routerLink]="['/stock',data.id]"
+            ></app-info-card>
+
+            <app-round-button
+                icon="add-circle"
+                class="center"
+                (actionEvent)="openModal(true)"
+            ></app-round-button>
         </ion-list>
 
         <div class="category-resume">
@@ -18,8 +29,15 @@
 
             <ion-list class="category-list">
                 <!-- TODO : Change <div> par <ion-row> -->
-                <div class="category-item" *ngFor="let category of selectedCategories">
-                    <ion-icon class="category-icon" name={{category.icon}} size="large"></ion-icon>
+                <div
+                    class="category-item"
+                    *ngFor="let category of selectedCategories"
+                >
+                    <ion-icon
+                        class="category-icon"
+                        name="{{category.icon}}"
+                        size="large"
+                    ></ion-icon>
                     <ion-text class="category-name">
                         {{category.name}}
                     </ion-text>
@@ -30,3 +48,10 @@
 </ion-content>
 
 <app-footer></app-footer>
+
+<app-add-stock-modal
+    [isModalOpen]="stockModalIsOpen"
+    (cancelEvent)="openModal(false)"
+    (confirmEvent)="createNewStock($event)"
+    (closedEvent)="openModal(false)"
+></app-add-stock-modal>

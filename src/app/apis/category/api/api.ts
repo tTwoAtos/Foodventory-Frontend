@@ -1,0 +1,10 @@
+export * from './categoryController.service';
+import { CategoryControllerService } from './categoryController.service';
+export * from './categoryController.serviceInterface';
+export * from './categoryToCommunityController.service';
+import { CategoryToCommunityControllerService } from './categoryToCommunityController.service';
+export * from './categoryToCommunityController.serviceInterface';
+export * from './productToCategoryController.service';
+import { ProductToCategoryControllerService } from './productToCategoryController.service';
+export * from './productToCategoryController.serviceInterface';
+export const APIS = [CategoryControllerService, CategoryToCommunityControllerService, ProductToCategoryControllerService];

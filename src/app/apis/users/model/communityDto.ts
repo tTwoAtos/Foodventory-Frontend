@@ -10,7 +10,7 @@
 
 
 export interface CommunityDto { 
-    id?: string;
+    id?: number;
     name?: string;
     cityCode?: string;
 }

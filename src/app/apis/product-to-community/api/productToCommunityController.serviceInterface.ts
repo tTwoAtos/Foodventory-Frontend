@@ -11,6 +11,7 @@ import { HttpHeaders }                                       from '@angular/comm
 
 import { Observable }                                        from 'rxjs';
 
+import { PageProductToCommunity } from '../model/models';
 import { ProductToCommunity } from '../model/models';
 import { QuantityDto } from '../model/models';
 
@@ -29,7 +30,7 @@ export interface ProductToCommunityControllerServiceInterface {
      * @param productEanCode 
      * @param communityId 
      */
-    _delete(productEanCode: string, communityId: string, extraHttpRequestParams?: any): Observable<object>;
+    _delete(productEanCode: string, communityId: string, extraHttpRequestParams?: any): Observable<string>;
 
     /**
      * 
@@ -37,7 +38,7 @@ export interface ProductToCommunityControllerServiceInterface {
      * @param communityId 
      * @param productToCommunity 
      */
-    add(communityId: string, productToCommunity: ProductToCommunity, extraHttpRequestParams?: any): Observable<object>;
+    add(communityId: string, productToCommunity: ProductToCommunity, extraHttpRequestParams?: any): Observable<ProductToCommunity>;
 
     /**
      * 
@@ -50,8 +51,11 @@ export interface ProductToCommunityControllerServiceInterface {
     /**
      * 
      * 
+     * @param filters 
+     * @param page 
+     * @param size 
      */
-    getAll(extraHttpRequestParams?: any): Observable<Array<ProductToCommunity>>;
+    getAll(filters: { [key: string]: string; }, page?: number, size?: number, extraHttpRequestParams?: any): Observable<PageProductToCommunity>;
 
     /**
      * 
@@ -74,7 +78,7 @@ export interface ProductToCommunityControllerServiceInterface {
      * @param communityId 
      * @param requestBody 
      */
-    massDelete(communityId: string, requestBody: Array<string>, extraHttpRequestParams?: any): Observable<object>;
+    massDelete(communityId: string, requestBody: Array<string>, extraHttpRequestParams?: any): Observable<string>;
 
     /**
      * 
@@ -83,6 +87,6 @@ export interface ProductToCommunityControllerServiceInterface {
      * @param productId 
      * @param quantityDto 
      */
-    updateQuantity(communityId: string, productId: string, quantityDto: QuantityDto, extraHttpRequestParams?: any): Observable<object>;
+    updateQuantity(communityId: string, productId: string, quantityDto: QuantityDto, extraHttpRequestParams?: any): Observable<ProductToCommunity>;
 
 }

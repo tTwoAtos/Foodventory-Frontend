@@ -20,6 +20,7 @@ model/userAddRequestDto.ts
 model/userGetRequestDto.ts
 model/userLoginRequestDto.ts
 model/userToCommunity.ts
+model/userUpdateLoggedInCommunityRequestDto.ts
 model/userUpdateRequestDto.ts
 param.ts
 variables.ts

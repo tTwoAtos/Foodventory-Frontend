@@ -7,12 +7,10 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { AuthUserEntity } from './authUserEntity';
 
 
 export interface TokenResponse { 
     access_token?: string;
     expire_in?: number;
-    user?: AuthUserEntity;
 }
 

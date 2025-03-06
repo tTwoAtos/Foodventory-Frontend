@@ -17,6 +17,8 @@ import { CustomHttpParameterCodec }                          from '../encoder';
 import { Observable }                                        from 'rxjs';
 
 // @ts-ignore
+import { PageProductToCommunity } from '../model/pageProductToCommunity';
+// @ts-ignore
 import { ProductToCommunity } from '../model/productToCommunity';
 // @ts-ignore
 import { QuantityDto } from '../model/quantityDto';
@@ -101,9 +103,9 @@ export class ProductToCommunityControllerService implements ProductToCommunityCo
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public _delete(productEanCode: string, communityId: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<object>;
-    public _delete(productEanCode: string, communityId: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<object>>;
-    public _delete(productEanCode: string, communityId: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<object>>;
+    public _delete(productEanCode: string, communityId: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<string>;
+    public _delete(productEanCode: string, communityId: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<string>>;
+    public _delete(productEanCode: string, communityId: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<string>>;
     public _delete(productEanCode: string, communityId: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
         if (productEanCode === null || productEanCode === undefined) {
             throw new Error('Required parameter productEanCode was null or undefined when calling _delete.');
@@ -149,7 +151,7 @@ export class ProductToCommunityControllerService implements ProductToCommunityCo
         }
 
         let localVarPath = `/api/v1/product-to-community/${this.configuration.encodeParam({name: "communityId", value: communityId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/${this.configuration.encodeParam({name: "productEanCode", value: productEanCode, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}`;
-        return this.httpClient.request<object>('delete', `${this.configuration.basePath}${localVarPath}`,
+        return this.httpClient.request<string>('delete', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 responseType: <any>responseType_,
@@ -168,9 +170,9 @@ export class ProductToCommunityControllerService implements ProductToCommunityCo
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public add(communityId: string, productToCommunity: ProductToCommunity, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<object>;
-    public add(communityId: string, productToCommunity: ProductToCommunity, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<object>>;
-    public add(communityId: string, productToCommunity: ProductToCommunity, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<object>>;
+    public add(communityId: string, productToCommunity: ProductToCommunity, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<ProductToCommunity>;
+    public add(communityId: string, productToCommunity: ProductToCommunity, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<ProductToCommunity>>;
+    public add(communityId: string, productToCommunity: ProductToCommunity, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<ProductToCommunity>>;
     public add(communityId: string, productToCommunity: ProductToCommunity, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
         if (communityId === null || communityId === undefined) {
             throw new Error('Required parameter communityId was null or undefined when calling add.');
@@ -225,7 +227,7 @@ export class ProductToCommunityControllerService implements ProductToCommunityCo
         }
 
         let localVarPath = `/api/v1/product-to-community/${this.configuration.encodeParam({name: "communityId", value: communityId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}`;
-        return this.httpClient.request<object>('post', `${this.configuration.basePath}${localVarPath}`,
+        return this.httpClient.request<ProductToCommunity>('post', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 body: productToCommunity,
@@ -307,13 +309,33 @@ export class ProductToCommunityControllerService implements ProductToCommunityCo
     }
 
     /**
+     * @param filters 
+     * @param page 
+     * @param size 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getAll(observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<Array<ProductToCommunity>>;
-    public getAll(observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<Array<ProductToCommunity>>>;
-    public getAll(observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<Array<ProductToCommunity>>>;
-    public getAll(observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
+    public getAll(filters: { [key: string]: string; }, page?: number, size?: number, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<PageProductToCommunity>;
+    public getAll(filters: { [key: string]: string; }, page?: number, size?: number, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<PageProductToCommunity>>;
+    public getAll(filters: { [key: string]: string; }, page?: number, size?: number, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<PageProductToCommunity>>;
+    public getAll(filters: { [key: string]: string; }, page?: number, size?: number, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
+        if (filters === null || filters === undefined) {
+            throw new Error('Required parameter filters was null or undefined when calling getAll.');
+        }
+
+        let localVarQueryParameters = new HttpParams({encoder: this.encoder});
+        if (page !== undefined && page !== null) {
+          localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
+            <any>page, 'page');
+        }
+        if (size !== undefined && size !== null) {
+          localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
+            <any>size, 'size');
+        }
+        if (filters !== undefined && filters !== null) {
+          localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
+            <any>filters, 'filters');
+        }
 
         let localVarHeaders = this.defaultHeaders;
 
@@ -352,9 +374,10 @@ export class ProductToCommunityControllerService implements ProductToCommunityCo
         }
 
         let localVarPath = `/api/v1/product-to-community`;
-        return this.httpClient.request<Array<ProductToCommunity>>('get', `${this.configuration.basePath}${localVarPath}`,
+        return this.httpClient.request<PageProductToCommunity>('get', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
+                params: localVarQueryParameters,
                 responseType: <any>responseType_,
                 withCredentials: this.configuration.withCredentials,
                 headers: localVarHeaders,
@@ -501,9 +524,9 @@ export class ProductToCommunityControllerService implements ProductToCommunityCo
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public massDelete(communityId: string, requestBody: Array<string>, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<object>;
-    public massDelete(communityId: string, requestBody: Array<string>, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<object>>;
-    public massDelete(communityId: string, requestBody: Array<string>, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<object>>;
+    public massDelete(communityId: string, requestBody: Array<string>, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<string>;
+    public massDelete(communityId: string, requestBody: Array<string>, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<string>>;
+    public massDelete(communityId: string, requestBody: Array<string>, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<string>>;
     public massDelete(communityId: string, requestBody: Array<string>, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
         if (communityId === null || communityId === undefined) {
             throw new Error('Required parameter communityId was null or undefined when calling massDelete.');
@@ -558,7 +581,7 @@ export class ProductToCommunityControllerService implements ProductToCommunityCo
         }
 
         let localVarPath = `/api/v1/product-to-community/${this.configuration.encodeParam({name: "communityId", value: communityId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}`;
-        return this.httpClient.request<object>('delete', `${this.configuration.basePath}${localVarPath}`,
+        return this.httpClient.request<string>('delete', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 body: requestBody,
@@ -579,9 +602,9 @@ export class ProductToCommunityControllerService implements ProductToCommunityCo
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public updateQuantity(communityId: string, productId: string, quantityDto: QuantityDto, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<object>;
-    public updateQuantity(communityId: string, productId: string, quantityDto: QuantityDto, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<object>>;
-    public updateQuantity(communityId: string, productId: string, quantityDto: QuantityDto, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<object>>;
+    public updateQuantity(communityId: string, productId: string, quantityDto: QuantityDto, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<ProductToCommunity>;
+    public updateQuantity(communityId: string, productId: string, quantityDto: QuantityDto, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<ProductToCommunity>>;
+    public updateQuantity(communityId: string, productId: string, quantityDto: QuantityDto, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<ProductToCommunity>>;
     public updateQuantity(communityId: string, productId: string, quantityDto: QuantityDto, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
         if (communityId === null || communityId === undefined) {
             throw new Error('Required parameter communityId was null or undefined when calling updateQuantity.');
@@ -639,7 +662,7 @@ export class ProductToCommunityControllerService implements ProductToCommunityCo
         }
 
         let localVarPath = `/api/v1/product-to-community/${this.configuration.encodeParam({name: "communityId", value: communityId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/${this.configuration.encodeParam({name: "productId", value: productId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}`;
-        return this.httpClient.request<object>('put', `${this.configuration.basePath}${localVarPath}`,
+        return this.httpClient.request<ProductToCommunity>('put', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 body: quantityDto,

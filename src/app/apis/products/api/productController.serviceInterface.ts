@@ -27,13 +27,16 @@ export interface ProductControllerServiceInterface {
      * 
      * @param code 
      */
-    addedToCommunity(code: string, extraHttpRequestParams?: any): Observable<object>;
+    addedToCommunity(code: string, extraHttpRequestParams?: any): Observable<{}>;
 
     /**
      * 
      * 
+     * @param filters 
+     * @param page 
+     * @param size 
      */
-    getAll(extraHttpRequestParams?: any): Observable<Array<Product>>;
+    getAll(filters: { [key: string]: string; }, page?: number, size?: number, extraHttpRequestParams?: any): Observable<Array<Product>>;
 
     /**
      * 
@@ -47,6 +50,6 @@ export interface ProductControllerServiceInterface {
      * 
      * @param code 
      */
-    getById(code: string, extraHttpRequestParams?: any): Observable<object>;
+    getById(code: string, extraHttpRequestParams?: any): Observable<Product>;
 
 }

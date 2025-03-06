@@ -58,3 +58,19 @@ if "%MICROSERVICE%"=="product-to-community" (
 if "%MICROSERVICE%"=="all" (
     call openapi-generator-cli generate -i http://localhost:5000/product-to-community/v3/api-docs -g typescript-angular -o ./src/app/apis/product-to-community --additional-properties=ngVersion=17.3,withInterfaces=true,modelPropertyNaming=original,httpHeaderAccepts='application/json' --generate-alias-as-model
 )
+
+REM ms emplacement
+if "%MICROSERVICE%"=="emplacement" (
+    call openapi-generator-cli generate -i http://localhost:5000/emplacement/v3/api-docs -g typescript-angular -o ./src/app/apis/emplacement --additional-properties=ngVersion=17.3,withInterfaces=true,modelPropertyNaming=original,httpHeaderAccepts='application/json' --generate-alias-as-model
+)
+if "%MICROSERVICE%"=="all" (
+    call openapi-generator-cli generate -i http://localhost:5000/emplacement/v3/api-docs -g typescript-angular -o ./src/app/apis/emplacement --additional-properties=ngVersion=17.3,withInterfaces=true,modelPropertyNaming=original,httpHeaderAccepts='application/json' --generate-alias-as-model
+)
+
+REM ms category
+if "%MICROSERVICE%"=="category" (
+    call openapi-generator-cli generate -i http://localhost:5000/category/v3/api-docs -g typescript-angular -o ./src/app/apis/category --additional-properties=ngVersion=17.3,withInterfaces=true,modelPropertyNaming=original,httpHeaderAccepts='application/json' --generate-alias-as-model
+)
+if "%MICROSERVICE%"=="all" (
+    call openapi-generator-cli generate -i http://localhost:5000/category/v3/api-docs -g typescript-angular -o ./src/app/apis/category --additional-properties=ngVersion=17.3,withInterfaces=true,modelPropertyNaming=original,httpHeaderAccepts='application/json' --generate-alias-as-model
+)

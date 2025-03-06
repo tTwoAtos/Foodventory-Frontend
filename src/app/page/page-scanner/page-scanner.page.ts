@@ -64,6 +64,7 @@ export class PageScannerPage {
             nbScanned: 1,
             thumbnail: "",
         }
+
         this.openQuantityModal(true)
     }
 }

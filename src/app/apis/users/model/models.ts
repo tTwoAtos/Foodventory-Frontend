@@ -5,4 +5,5 @@ export * from './userAddRequestDto';
 export * from './userGetRequestDto';
 export * from './userLoginRequestDto';
 export * from './userToCommunity';
+export * from './userUpdateLoggedInCommunityRequestDto';
 export * from './userUpdateRequestDto';

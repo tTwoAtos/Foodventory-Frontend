@@ -33,6 +33,6 @@ export interface CityControllerServiceInterface {
      * 
      * @param code 
      */
-    getAll1(code: string, extraHttpRequestParams?: any): Observable<City>;
+    getByCode(code: string, extraHttpRequestParams?: any): Observable<City>;
 
 }

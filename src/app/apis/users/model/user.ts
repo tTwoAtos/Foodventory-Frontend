@@ -20,5 +20,7 @@ export interface User {
     password?: string;
     loggedInCommunityId?: string;
     role?: Role;
+    createdAt?: string;
+    updatedAt?: string;
 }
 

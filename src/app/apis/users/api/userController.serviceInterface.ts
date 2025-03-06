@@ -15,6 +15,7 @@ import { User } from '../model/models';
 import { UserAddRequestDto } from '../model/models';
 import { UserGetRequestDto } from '../model/models';
 import { UserLoginRequestDto } from '../model/models';
+import { UserUpdateLoggedInCommunityRequestDto } from '../model/models';
 import { UserUpdateRequestDto } from '../model/models';
 
 
@@ -31,7 +32,7 @@ export interface UserControllerServiceInterface {
      * 
      * @param requestBody 
      */
-    _delete(requestBody: Array<number>, extraHttpRequestParams?: any): Observable<object>;
+    _delete(requestBody: Array<number>, extraHttpRequestParams?: any): Observable<{}>;
 
     /**
      * 
@@ -39,6 +40,13 @@ export interface UserControllerServiceInterface {
      * @param userAddRequestDto 
      */
     add(userAddRequestDto: UserAddRequestDto, extraHttpRequestParams?: any): Observable<User>;
+
+    /**
+     * 
+     * 
+     * @param userUpdateLoggedInCommunityRequestDto 
+     */
+    communityLogin(userUpdateLoggedInCommunityRequestDto: UserUpdateLoggedInCommunityRequestDto, extraHttpRequestParams?: any): Observable<boolean>;
 
     /**
      * 

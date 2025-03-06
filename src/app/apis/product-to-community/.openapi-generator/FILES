@@ -1,5 +1,4 @@
 .gitignore
-.openapi-generator-ignore
 README.md
 api.module.ts
 api/api.ts
@@ -10,7 +9,10 @@ encoder.ts
 git_push.sh
 index.ts
 model/models.ts
+model/pageProductToCommunity.ts
+model/pageableObject.ts
 model/productToCommunity.ts
 model/quantityDto.ts
+model/sortObject.ts
 param.ts
 variables.ts
