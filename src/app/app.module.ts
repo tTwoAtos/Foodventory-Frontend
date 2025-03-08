@@ -10,6 +10,7 @@ import { IonicModule, IonicRouteStrategy } from "@ionic/angular"
 import { provideHttpClient, withInterceptors } from "@angular/common/http"
 import { provideAnimationsAsync } from "@angular/platform-browser/animations/async"
 import { JwtModule } from "@auth0/angular-jwt"
+import { BarcodeScanner } from "@awesome-cordova-plugins/barcode-scanner/ngx"
 import { AppRoutingModule } from "./app-routing.module"
 import { AppComponent } from "./app.component"
 import { AuthInterceptor } from "./interceptors/auth.interceptor"
@@ -40,7 +41,8 @@ import { ToastService } from "./services/toaster-service/toaster.service"
         ErrorHandlingService,
         provideAnimationsAsync(),
         provideClientHydration(),
+        BarcodeScanner,
     ],
     bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

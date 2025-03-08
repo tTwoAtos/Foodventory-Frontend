@@ -26,5 +26,33 @@
         <ion-button class="digicode-button" (click)="openBarcodeModal(true)">
             <ion-icon name="keypad-outline"></ion-icon>
         </ion-button>
+
+        <!-- Bouton de scan -->
+        <ion-button expand="full" (click)="scanCode()">📷 Scanner un code</ion-button>
+
+        <!-- Chargement -->
+        <ion-spinner *ngIf="isLoading"></ion-spinner>
+
+        <!-- Erreur -->
+        <ion-card *ngIf="errorMessage">
+            <ion-card-content>
+                {{ errorMessage }}
+            </ion-card-content>
+        </ion-card>
+
+        <!-- Affichage des infos du produit -->
+        <ion-card *ngIf="product">
+            <img [src]="product.image_url" *ngIf="product.image_url" alt="Image du produit" />
+
+            <ion-card-header>
+                <ion-card-title>{{ product.product_name || 'Nom inconnu' }}</ion-card-title>
+            </ion-card-header>
+
+            <ion-card-content>
+                <p><strong>Marque :</strong> {{ product.brands || 'Inconnu' }}</p>
+                <p><strong>Catégorie :</strong> {{ product.categories || 'Non spécifié' }}</p>
+                <p><strong>Nutri-Score :</strong> {{ product.nutrition_grades || 'Non disponible' }}</p>
+            </ion-card-content>
+        </ion-card>
     </div>
 </ion-content>

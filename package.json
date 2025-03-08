@@ -26,6 +26,7 @@
         "@angular/platform-browser-dynamic": "^18.0.0",
         "@angular/router": "^18.0.0",
         "@auth0/angular-jwt": "^5.2.0",
+        "@awesome-cordova-plugins/barcode-scanner": "^6.14.0",
         "@capacitor/app": "6.0.2",
         "@capacitor/core": "6.2.0",
         "@capacitor/haptics": "6.0.2",
@@ -33,6 +34,7 @@
         "@capacitor/status-bar": "6.0.2",
         "@ionic/angular": "^8.0.0",
         "ionicons": "^7.0.0",
+        "phonegap-plugin-barcodescanner": "^8.1.0",
         "rxjs": "~7.8.0",
         "tslib": "^2.3.0",
         "zone.js": "~0.14.2"
@@ -67,9 +69,9 @@
         "karma-coverage": "~2.2.0",
         "karma-jasmine": "~5.1.0",
         "karma-jasmine-html-reporter": "~2.1.0",
+        "lint-staged": "^15.2.10",
         "prettier": "^3.3.3",
-        "typescript": "~5.4.0",
-        "lint-staged": "^15.2.10"
+        "typescript": "~5.4.0"
     },
     "husky": {
         "hooks": {
