@@ -90,8 +90,14 @@ export class StockPage implements OnInit {
         })
     }
 
+    ionViewWillLeave() {
+        this.openModal(false)
+        console.log("Modal closed just before page changing")
+    }
+
     openModal(value: boolean) {
         this.stockModalIsOpen = value
+        console.log(this.stockModalIsOpen)
     }
 
     createNewStock($event: void) {
@@ -99,8 +105,6 @@ export class StockPage implements OnInit {
             communityId: this.tokenService.getLoggedCommunityId(),
             name: $event!,
         }
-
-        console.log(newEmplacement)
 
         this.emplacementService.add(newEmplacement).subscribe(() => {
             console.log("Test add emplacement request....")

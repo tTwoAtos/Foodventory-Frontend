@@ -1,4 +1,5 @@
 ion-modal {
+    --ion-background-color: #f1ecec;
     --height: 50%;
     --width: 90%;
     --border-radius: 16px;
@@ -7,7 +8,6 @@ ion-modal {
 }
 
 ion-modal::part(backdrop) {
-    background: rgba(209, 213, 219);
     opacity: 1;
 }
 
@@ -18,8 +18,24 @@ ion-modal::part(backdrop) {
     font-size: x-large;
 }
 
-.item {
+.modal-grid {
+    height: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center;
+}
+
+.modal-content {
+    flex: 1; /* Permet au contenu de prendre tout l’espace disponible */
+    display: flex;
+    align-items: center; /* Centre horizontalement */
+    justify-content: center; /* Centre verticalement */
+    text-align: center; /* Centre le texte */
+}
+
+.justify-center {
+    justify-content: space-around;
+}
+
+.width-7 {
+    width: 7em;
 }

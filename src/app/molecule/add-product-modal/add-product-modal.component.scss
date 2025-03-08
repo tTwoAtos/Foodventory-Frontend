@@ -12,3 +12,8 @@
         text-align: center;
     }
 }
+
+// Mauvaise pratique.......
+::ng-deep ion-popover .select-interface-option {
+    --ion-background-color: #f1ecec;
+}

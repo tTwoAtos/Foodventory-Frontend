@@ -1,0 +1,22 @@
+<app-modal
+    [title]="'Nouveau stock'"
+    [modalIsOpen]="isModalOpen"
+    [contentTemplate]="content"
+    (confirmEvent)="confirm()"
+    (cancelEvent)="cancel()"
+    (closedEvent)="close()"
+    [haveConfirmButton]="true"
+    [confirmButtonIsDisabled]="stockName.length == 0"
+>
+</app-modal>
+
+<ng-template #content>
+    <ion-col><ion-text>Nom :</ion-text></ion-col>
+    <ion-col>
+        <ion-input
+            type="text"
+            placeholder="Nom de stock"
+            [(ngModel)]="stockName"
+        ></ion-input
+    ></ion-col>
+</ng-template>

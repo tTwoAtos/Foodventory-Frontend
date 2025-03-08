@@ -4,28 +4,63 @@
     (didDismiss)="close()"
 >
     <ng-template>
-        <ion-text class="modal-title">{{ title }}</ion-text>
-
-        <ion-content class="ion-padding modal-content">
-            <ng-container *ngTemplateOutlet="contentTemplate"></ng-container>
+        <ion-header
+            ><ion-text class="modal-title">{{ title }}</ion-text></ion-header
+        >
+        <ion-content>
+            <ion-grid class="modal-grid">
+                <ion-row class="modal-content">
+                    <ng-container
+                        *ngTemplateOutlet="contentTemplate"
+                    ></ng-container>
+                </ion-row>
+            </ion-grid>
         </ion-content>
 
-        <div>
-            <ion-button
-                class="modal-exit-button"
-                (click)="cancel()"
-                [color]="haveConfirmButton ? 'medium' : 'primary'"
-            >
-                Retour
-            </ion-button>
-            <ion-button
-                [disabled]="confirmButtonIsDisabled"
-                *ngIf="haveConfirmButton"
-                class="modal-exit-button"
-                (click)="confirm()"
-            >
-                Valider
-            </ion-button>
-        </div>
+        <ion-footer>
+            <ion-grid>
+                <ion-row class="justify-center">
+                    <ion-button
+                        class="width-7"
+                        (click)="cancel()"
+                        [color]="haveConfirmButton ? 'medium' : 'primary'"
+                    >
+                        Retour
+                    </ion-button>
+                    <ion-button
+                        class="width-7"
+                        [disabled]="confirmButtonIsDisabled"
+                        *ngIf="haveConfirmButton"
+                        (click)="confirm()"
+                    >
+                        Valider
+                    </ion-button></ion-row
+                >
+            </ion-grid>
+        </ion-footer>
+
+        <!-- <ion-grid class="modal-grid">
+            <ion-row>
+                <ion-content class="ion-padding">
+                    <ng-container
+                        *ngTemplateOutlet="contentTemplate"
+                    ></ng-container> </ion-content
+            ></ion-row>
+            <ion-row class="modal-footer">
+                <ion-button
+                    (click)="cancel()"
+                    [color]="haveConfirmButton ? 'medium' : 'primary'"
+                >
+                    Retour
+                </ion-button>
+                <ion-button
+                    [disabled]="confirmButtonIsDisabled"
+                    *ngIf="haveConfirmButton"
+                    (click)="confirm()"
+                >
+                    Valider
+                </ion-button>
+            </ion-row>
+        </ion-grid> -->
     </ng-template>
 </ion-modal>
