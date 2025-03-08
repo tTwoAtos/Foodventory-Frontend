@@ -1,9 +1,18 @@
-import type { CapacitorConfig } from "@capacitor/cli"
+import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-    appId: "io.ionic.starter",
-    appName: "Frontend",
-    webDir: "www",
-}
+    appId: 'io.ionic.starter',
+    appName: 'product-scanner',
+    webDir: 'www',
+    server: {
+        androidScheme: 'https'
+    },
+    plugins: {
+        CapacitorHttp: {
+            enabled: true
+        }
+    }
+};
 
-export default config
+
+export default config;
