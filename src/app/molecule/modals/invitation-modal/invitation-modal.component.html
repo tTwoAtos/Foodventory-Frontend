@@ -1,0 +1,24 @@
+<app-modal
+    [title]="'Rejoindre une communauté'"
+    [modalIsOpen]="isModalOpen"
+    [contentTemplate]="content"
+    (confirmEvent)="onSubmit()"
+    [haveConfirmButton]="true"
+>
+</app-modal>
+
+<ng-template #content>
+    <form [formGroup]="invitationForm" (ngSubmit)="onSubmit()">
+        <!-- Champ Email -->
+        <ion-input
+            formControlName="userEmail"
+            type="userEmail"
+            label="Email de l'utilisateur a inviter"
+            labelPlacement="floating"
+            fill="solid"
+            [errorText]="
+                invitationForm.controls['userEmail'].errors?.['message']
+            "
+        ></ion-input>
+    </form>
+</ng-template>

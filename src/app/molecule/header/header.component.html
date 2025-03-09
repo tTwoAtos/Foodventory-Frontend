@@ -1,13 +1,35 @@
 <ion-header class="header">
-  <ion-toolbar class="toolbar header-icons">
-    <ion-buttons slot="start" class="header-icons">
-      <ion-back-button icon="caret-back-outline" defaultHref="/home"></ion-back-button>
-    </ion-buttons>
-  </ion-toolbar><ion-toolbar class="toolbar header-title">
-    <ion-title class="header-title-text">{{headerTitle}} </ion-title>
-  </ion-toolbar><ion-toolbar class="toolbar header-icons">
-    <ion-button shape="round" [routerLink]="['/settings']">
-      <ion-icon slot="icon-only" name="person-outline"></ion-icon>
-    </ion-button>
-  </ion-toolbar>
+    <ion-grid>
+        <ion-row>
+            <ion-col size="4">
+                <ion-toolbar class="toolbar">
+                    <ion-buttons slot="start" class="header-icons">
+                        <ion-back-button
+                            text="Retour"
+                            defaultHref="/home"
+                        ></ion-back-button>
+                    </ion-buttons>
+                </ion-toolbar>
+            </ion-col>
+
+            <ion-col>
+                <ion-toolbar class="toolbar header-title">
+                    <ion-title class="header-title-text"
+                        >{{ headerTitle }}
+                    </ion-title>
+                </ion-toolbar>
+            </ion-col>
+
+            <ion-col size="2">
+                <ion-toolbar class="toolbar">
+                    <ion-button shape="round" [routerLink]="['/settings']">
+                        <ion-icon
+                            slot="icon-only"
+                            name="person-outline"
+                        ></ion-icon>
+                    </ion-button>
+                </ion-toolbar>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
 </ion-header>

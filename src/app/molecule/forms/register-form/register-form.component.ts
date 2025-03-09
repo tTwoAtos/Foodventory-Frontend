@@ -1,7 +1,6 @@
 import { CommonModule } from "@angular/common"
 import { Component } from "@angular/core"
 import {
-    CheckboxRequiredValidator,
     FormBuilder,
     FormGroup,
     ReactiveFormsModule,
@@ -83,10 +82,7 @@ export class RegisterFormComponent {
                 },
             ],
 
-            consent: [
-                "false",
-                WithMessage(Validators.requiredTrue),
-            ]
+            consent: ["false", WithMessage(Validators.requiredTrue)],
         })
     }
 
@@ -101,6 +97,9 @@ export class RegisterFormComponent {
                 this.router.navigateByUrl(
                     "/login?email=" + registerResponse.email
                 )
+            },
+            error(err) {
+                console.error(err)
             },
         })
     }

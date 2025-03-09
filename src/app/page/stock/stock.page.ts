@@ -6,7 +6,10 @@ import {
     Emplacement,
     EmplacementControllerService,
 } from "@app/apis/emplacement"
+import { User, UserToCommunityControllerService } from "@app/apis/user"
 import { InfoCardComponent } from "@app/molecule/info-card/info-card.component"
+import { InvitationModalComponent } from "@app/molecule/modals/invitation-modal/invitation-modal.component"
+import { UserInfoCardComponent } from "@app/molecule/user-info-card/user-info-card.component"
 import { StockService } from "@app/services/stock-service/stock.service"
 import { TokenService } from "@app/services/token-services/token.service"
 import { Stock } from "@app/types/stock"
@@ -33,10 +36,14 @@ import { RoundButtonComponent } from "../../molecule/round-button/round-button.c
         HeaderComponent,
         RoundButtonComponent,
         AddStockModalComponent,
+        UserInfoCardComponent,
+        InvitationModalComponent,
     ],
 })
 export class StockPage implements OnInit {
     mockStocks: Stock[] = []
+    users: User[] = []
+    isModalInvitationOpen: boolean = false
 
     icon = "chevron-forward-outline"
     headerIcon = "caret-back-outline"
@@ -78,6 +85,7 @@ export class StockPage implements OnInit {
 
     constructor(
         private stockService: StockService,
+        private userToCommunityService: UserToCommunityControllerService,
         private tokenService: TokenService,
         private emplacementService: EmplacementControllerService
     ) {
@@ -87,6 +95,13 @@ export class StockPage implements OnInit {
     async ngOnInit(): Promise<void> {
         await this.stockService.getStocks().then((res) => {
             this.mockStocks = res
+        })
+
+        await this.userToCommunityService.getAllByCommunity("1").subscribe({
+            next: (res: User[]) => {
+                this.users = res
+            },
+            error: (err) => console.error(err),
         })
     }
 
@@ -98,6 +113,10 @@ export class StockPage implements OnInit {
     openModal(value: boolean) {
         this.stockModalIsOpen = value
         console.log(this.stockModalIsOpen)
+    }
+
+    toggleInvitationModal() {
+        this.isModalInvitationOpen = !this.isModalInvitationOpen
     }
 
     createNewStock($event: void) {

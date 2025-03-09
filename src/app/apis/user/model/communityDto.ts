@@ -13,5 +13,6 @@ export interface CommunityDto {
     id?: number;
     name?: string;
     cityCode?: string;
+    nbUsers?: number;
 }
 

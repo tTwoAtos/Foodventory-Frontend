@@ -1,0 +1,61 @@
+.info-card {
+    display: flex;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border: 1.5px solid #000000;
+    border-radius: 10px;
+    margin: 5px;
+    flex-direction: row;
+    align-items: center;
+    background-color: #ffffff;
+
+    .info-card-name {
+        margin-right: 5px;
+        margin-left: 20px;
+        font-size: clamp(20px, 2vw, 30px);
+        width: 80%;
+    }
+
+    .info-card-amount {
+        font-size: clamp(25px, 2vw, 40px);
+        flex-grow: 1;
+        min-width: 2em;
+        --background: transparent;
+        --color: #000000;
+
+    }
+
+    .info-card-button {
+        margin-right: 5px;
+        margin-left: 0px;
+
+        --box-shadow: 0;
+
+        --background: transparent;
+        --background-hover: transparent;
+        --background-activated: transparent;
+        --background-focused: transparent;
+        --color: #000000;
+
+        :host(.button-solid) {
+            --border-radius: 0px;
+            --padding-top: 0px;
+            --padding-bottom: 0px;
+            --padding-start: 0em;
+            --padding-end: 0em;
+            // --transition:
+            -webkit-margin-start: 0px;
+            margin-inline-start: 0px;
+            -webkit-margin-end: 0px;
+            margin-inline-end: 0px;
+            margin-top: 0px;
+            margin-bottom: 0px;
+            min-height: 0px;
+            font-size: 0rem;
+            font-weight: 0;
+            letter-spacing: 0em;
+            text-transform: none;
+        }
+    }
+
+}

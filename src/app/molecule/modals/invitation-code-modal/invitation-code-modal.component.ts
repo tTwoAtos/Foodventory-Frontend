@@ -44,8 +44,6 @@ export class InvitationCodeModalComponent {
             return
         }
 
-        console.log(this.invitationCodeForm.value)
-
         this.service
             .validateInvitation(this.invitationCodeForm.value.code)
             .subscribe({

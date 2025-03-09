@@ -22,6 +22,20 @@
             ></app-round-button>
         </ion-list>
 
+        <ion-list class="stock-list">
+            <h3>Membres</h3>
+            <app-user-info-card
+                *ngFor="let user of users"
+                [name]="user.firstname! + ' ' + user.lastname!"
+            ></app-user-info-card>
+
+            <app-round-button
+                icon="add-circle"
+                class="center"
+                (actionEvent)="toggleInvitationModal()"
+            ></app-round-button>
+        </ion-list>
+
         <div class="category-resume">
             <ion-text class="category-title">
                 <h3>Les produits categorisés</h3>
@@ -55,3 +69,7 @@
     (confirmEvent)="createNewStock($event)"
     (closedEvent)="openModal(false)"
 ></app-add-stock-modal>
+
+<app-invitation-modal
+    [isModalOpen]="isModalInvitationOpen"
+></app-invitation-modal>

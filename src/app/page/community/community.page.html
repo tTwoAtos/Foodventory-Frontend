@@ -1,16 +1,21 @@
 <app-header [headerTitle]="headerTitle"></app-header>
 
 <ion-content [fullscreen]="true">
-  <div class="community-page">
-    <ion-text class="community-title">
-      <h2>Mes communautés</h2>
-    </ion-text>
+    <div class="community-page">
+        <ion-text class="community-title">
+            <h2>Mes communautés</h2>
+        </ion-text>
 
-    <ion-list class="community-list">
-      <app-info-card *ngFor="let data of mockComs" [name]="data.name" [nb]="data.nbMember" [icon]="icon"
-        [routerLink]="['/community',data.id]"></app-info-card>
-    </ion-list>
-  </div>
+        <ion-list class="community-list">
+            <app-info-card
+                *ngFor="let data of communities"
+                [name]="data.name!"
+                [nb]="data.nbUsers!"
+                [icon]="icon"
+                [routerLink]="['/community', data.id]"
+            ></app-info-card>
+        </ion-list>
+    </div>
 </ion-content>
 
 <app-footer></app-footer>

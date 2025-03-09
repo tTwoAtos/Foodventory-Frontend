@@ -3,9 +3,9 @@
     [modalIsOpen]="isModalOpen"
     [contentTemplate]="content"
     (confirmEvent)="confirm()"
+    [haveConfirmButton]="true"
     (cancelEvent)="cancel()"
     (closedEvent)="close()"
-    [haveConfirmButton]="true"
     [confirmButtonIsDisabled]="stockName.length == 0"
 >
 </app-modal>
