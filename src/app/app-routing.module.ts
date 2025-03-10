@@ -51,21 +51,22 @@ const routes: Routes = [
         component: StockContentPage,
     },
     {
+        path: "scan",
+        component: PageScannerPage,
+    },
+    {
+        path: "basket",
+        component: BasketPage,
+    },
+    {
+        path: "product/:productId",
+        component: ProductContentPage,
+    },
+    {
         path: "",
         canActivate: [AuthGuard],
         children: [
-            {
-                path: "scan",
-                component: PageScannerPage,
-            },
-            {
-                path: "basket",
-                component: BasketPage,
-            },
-            {
-                path: "product-content",
-                component: ProductContentPage,
-            },
+
         ],
     },
 ]

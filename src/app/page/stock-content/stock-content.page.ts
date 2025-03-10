@@ -1,7 +1,7 @@
 import { CommonModule } from "@angular/common"
 import { HttpClient } from "@angular/common/http"
 import { Component, OnInit, Output } from "@angular/core"
-import { ActivatedRoute, Router } from "@angular/router"
+import { ActivatedRoute, Router, RouterLink } from "@angular/router"
 import { Product } from "@app/apis/products"
 import { ProductCardComponent } from "@app/molecule/product-card/product-card.component"
 import { ProductStoreService } from "@app/services/product-store/product-store.service"
@@ -18,7 +18,7 @@ import { FooterComponent } from "../../molecule/footer/footer.component";
     styleUrls: ["./stock-content.page.scss"],
     providers: [HttpClient],
     standalone: true,
-    imports: [IonicModule, CommonModule, ProductCardComponent, HeaderComponent, FooterComponent],
+    imports: [IonicModule, CommonModule, ProductCardComponent, RouterLink, HeaderComponent, FooterComponent],
 })
 export class StockContentPage implements OnInit {
     constructor(
@@ -30,8 +30,7 @@ export class StockContentPage implements OnInit {
         addIcons({ ...icons })
     }
 
-    @Output() headerIcon = "caret-back-outline"
-    @Output() headerTitle = "Nom produit / nom commu?"
+    @Output() headerTitle = "commu?"
 
     productCards: Product[] = []
 

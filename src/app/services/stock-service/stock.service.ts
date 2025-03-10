@@ -9,11 +9,17 @@ import { EmptyError, NotFoundError, Observable } from "rxjs"
     providedIn: "root",
 })
 export class StockService {
-    constructor() {}
+    constructor() { }
 
     getStocks(): Promise<Stock[]> {
         return new Promise((success) => {
             success(mockStocks)
+        })
+    }
+
+    getFavStocks(): Promise<Stock[]> {
+        return new Promise((success) => {
+            success(mockStocks.filter((item, index) => index < 3))
         })
     }
 

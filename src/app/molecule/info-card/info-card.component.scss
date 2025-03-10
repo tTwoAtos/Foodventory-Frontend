@@ -1,7 +1,7 @@
 .info-card {
     display: flex;
-    padding-top: 15px;
-    padding-bottom: 15px;
+    padding-top: 5px;
+    padding-bottom: 5px;
     border: 1.5px solid #000000;
     border-radius: 10px;
     margin: 5px;
@@ -10,14 +10,13 @@
     background-color: #ffffff;
 
     .info-card-name {
-        margin-right: 5px;
-        margin-left: 20px;
-        font-size: clamp(20px, 2vw, 30px);
+        margin-left: 15px;
+        font-size: clamp(20px, 2vw, 35px);
         width: 80%;
     }
 
     .info-card-amount {
-        font-size: clamp(25px, 2vw, 40px);
+        font-size: clamp(25px, 2vw, 50px);
         flex-grow: 1;
         min-width: 2em;
         --background: transparent;

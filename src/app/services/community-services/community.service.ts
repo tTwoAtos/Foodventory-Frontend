@@ -16,4 +16,10 @@ export class CommunityService {
         })
     }
 
+    getFavCommunities(): Promise<Community[]> {
+        return new Promise((success) => {
+            success(mockComs.filter((item, index) => index < 5))
+        })
+    }
+
 }

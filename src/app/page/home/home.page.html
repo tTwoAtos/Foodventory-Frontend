@@ -1,20 +1,38 @@
-<ion-content [fullscreen]="true">
+<ion-header class="header">
+  <ion-toolbar class="toolbar header-icons">
+    <ion-icon slot="icon-only" name="leaf-outline"></ion-icon>
+  </ion-toolbar>
+  <ion-toolbar class="toolbar header-title">
+    <ion-title class="header-title-text">{{headerTitle}} </ion-title>
+  </ion-toolbar><ion-toolbar class="toolbar header-icons">
+    <ion-button shape="round" [routerLink]="['/settings']">
+      <ion-icon slot="icon-only" name="person-outline"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
 
+<ion-content [fullscreen]="true">
 
   <div class="home-page">
     <div class="home-community">
-      <h2>Les Alternés</h2>
-      <hr>
-    </div>
+      <h1>Les Alternés</h1>
+      <ion-list class="home-list">
+        <app-info-card *ngFor="let data of mockStocks" [name]="data.name" [nb]="data.productTotal" [icon]="stockIcon"
+          [routerLink]="['/stock',data.id]"></app-info-card>
+      </ion-list>
 
+      <ion-button shape="round" [routerLink]="['/community',]" style="width: 90%; margin-bottom: 15px;">Voir plus
+        ...</ion-button>
+
+    </div>
 
     <div class="home-communities">
       <ion-text class="home-title">
-        <h3>Mes communautés</h3>
+        <h2>Mes communautés</h2>
       </ion-text>
 
       <ion-list class="home-list">
-        <app-info-card *ngFor="let data of mockComs" [name]="data.name" [nb]="data.nbMember" [icon]="icon"
+        <app-info-card *ngFor="let data of mockComs" [name]="data.name" [nb]="data.nbMember" [icon]="comsIcon"
           [routerLink]="['/community',data.id]"></app-info-card>
       </ion-list>
     </div>
