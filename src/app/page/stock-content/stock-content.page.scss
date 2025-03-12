@@ -7,6 +7,7 @@
     flex-wrap: nowrap;
     flex-direction: column;
     justify-content: space-between;
+
 }
 
 .stock-title {
@@ -14,6 +15,8 @@
 }
 
 .product-list {
+    background: transparent;
+
     ul {
         list-style: none;
         margin: 0;
