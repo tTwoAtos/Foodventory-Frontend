@@ -43,8 +43,8 @@
                 (ionChange)="UpdateEmplacementValue($event)"
             >
                 <ion-select-option
-                    *ngFor="let stock of mockStock; index as i"
-                    [value]="stock.value"
+                    *ngFor="let stock of stocks; index as i"
+                    [value]="stock.id"
                 >
                     {{ stock.name }}
                 </ion-select-option>

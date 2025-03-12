@@ -4,11 +4,17 @@ import {
     EventEmitter,
     Input,
     OnChanges,
+    OnInit,
     Output,
     SimpleChanges,
 } from "@angular/core"
 import { FormsModule, ReactiveFormsModule } from "@angular/forms"
+import {
+    Emplacement,
+    EmplacementControllerService,
+} from "@app/apis/emplacement"
 import { Product } from "@app/apis/products"
+import { UserToCommunityControllerService } from "@app/apis/user"
 import { TokenService } from "@app/services/token-services/token.service"
 import { IonicModule, SelectChangeEventDetail } from "@ionic/angular"
 import { IonSelectCustomEvent } from "@ionic/core"
@@ -29,22 +35,17 @@ import { RoundButtonComponent } from "../round-button/round-button.component"
         FormsModule,
     ],
 })
-export class AddProductModalComponent implements OnChanges {
+export class AddProductModalComponent implements OnChanges, OnInit {
     @Input() isModalOpen: boolean = false
     isBarecodeModalOpen: boolean = false
 
     @Output() closedEvent = new EventEmitter<void>()
     @Output() cancelEvent = new EventEmitter<void>()
     @Output() confirmEvent = new EventEmitter<void>()
-
-    mockStock = [
-        { name: "Réfrigérateur", value: "1" },
-        { name: "Congélateur", value: "2" },
-        { name: "Placard", value: "3" },
-    ]
     @Input() newProduct: Product = {}
     @Input() emplacementId: string = ""
 
+    stocks: Emplacement[] = []
     newProductData = {
         name: "",
         productId: "",
@@ -53,7 +54,11 @@ export class AddProductModalComponent implements OnChanges {
         communityId: 1,
     }
 
-    constructor(private tokenService: TokenService) {
+    constructor(
+        private tokenService: TokenService,
+        private uToCService: UserToCommunityControllerService,
+        private stockService: EmplacementControllerService
+    ) {
         // TODO : CHECK THIS LINES AFTER GETTING DEVEL
         if (this.tokenService.getLoggedCommunityId() != undefined) {
             this.newProductData.communityId =
@@ -62,7 +67,23 @@ export class AddProductModalComponent implements OnChanges {
             // throw new Error("No community for this user ???")
         }
     }
+
+    ngOnInit() {
+        console.log("Empty On init")
+    }
+
     ngOnChanges(changes: SimpleChanges): void {
+        this.stockService
+            .getAllByCommunity(this.tokenService.getLoggedCommunityId())
+            .subscribe({
+                next: (value: Emplacement[]) => {
+                    this.stocks = value
+                },
+                error: (err) => {
+                    console.error(err)
+                },
+            })
+
         if (changes["newProduct"] != undefined) {
             this.newProduct = changes["newProduct"].currentValue
             if (this.newProduct != undefined) {
