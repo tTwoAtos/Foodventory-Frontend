@@ -20,14 +20,15 @@
     }
 
     .product-amount {
-        width: 120px;
+        width: 100px;
         display: flex;
         align-items: center;
 
         .product-number {
-            font-size: clamp(20px, 2vw, 40px);
+            text-align: center;
+            font-size: clamp(18px, 2vw, 40px);
             flex-grow: 1;
-            min-width: 0.75em;
+            min-width: 1.75em;
             padding: 0 3px 0 3px;
         }
     }
