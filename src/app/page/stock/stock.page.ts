@@ -5,14 +5,17 @@ import { RouterLink } from "@angular/router"
 import {
     Emplacement,
     EmplacementControllerService,
+    EmplacementListResponse,
 } from "@app/apis/emplacement"
-import { User, UserToCommunityControllerService } from "@app/apis/user"
+import {
+    User,
+    UserControllerService,
+    UserToCommunityControllerService,
+} from "@app/apis/user"
 import { InfoCardComponent } from "@app/molecule/info-card/info-card.component"
 import { InvitationModalComponent } from "@app/molecule/modals/invitation-modal/invitation-modal.component"
 import { UserInfoCardComponent } from "@app/molecule/user-info-card/user-info-card.component"
-import { StockService } from "@app/services/stock-service/stock.service"
 import { TokenService } from "@app/services/token-services/token.service"
-import { Stock } from "@app/types/stock"
 import { IonicModule } from "@ionic/angular"
 import { addIcons } from "ionicons"
 import * as icons from "ionicons/icons"
@@ -41,14 +44,14 @@ import { RoundButtonComponent } from "../../molecule/round-button/round-button.c
     ],
 })
 export class StockPage implements OnInit {
-    mockStocks: Stock[] = []
+    stocks: EmplacementListResponse[] = []
     users: User[] = []
     isModalInvitationOpen: boolean = false
 
     icon = "chevron-forward-outline"
     headerIcon = "caret-back-outline"
     headerAction = "../"
-    headerTitle = "Les alternées"
+    headerTitle?: string = "Les alternées"
 
     selectedCategories = [
         {
@@ -84,25 +87,52 @@ export class StockPage implements OnInit {
     stockModalIsOpen: boolean = false
 
     constructor(
-        private stockService: StockService,
+        private stockService: EmplacementControllerService,
         private userToCommunityService: UserToCommunityControllerService,
         private tokenService: TokenService,
-        private emplacementService: EmplacementControllerService
+        private emplacementService: EmplacementControllerService,
+        private userService: UserControllerService
     ) {
         addIcons({ ...icons })
     }
 
-    async ngOnInit(): Promise<void> {
-        await this.stockService.getStocks().then((res) => {
-            this.mockStocks = res
-        })
+    ngOnInit(): void {
+        this.stockService
+            .getAllByCommunity(this.tokenService.getLoggedCommunityId())
+            .subscribe({
+                next: (res: EmplacementListResponse[]) => {
+                    this.stocks = res
+                    res.forEach((community) => {
+                        if (
+                            community.communityId ===
+                            this.tokenService.getLoggedCommunityId()
+                        ) {
+                            this.headerTitle = community.name
+                        }
+                    })
+                },
+                error: (err) => {
+                    console.error(err)
+                },
+            })
 
-        await this.userToCommunityService.getAllByCommunity("1").subscribe({
-            next: (res: User[]) => {
-                this.users = res
-            },
-            error: (err) => console.error(err),
-        })
+        this.userToCommunityService
+            .getAllByCommunity(this.tokenService.getLoggedCommunityId())
+            .subscribe({
+                next: (res: User[]) => {
+                    this.users = res
+                },
+                error: (err) => console.error(err),
+            })
+
+        this.userToCommunityService
+            .getAllByCommunity(this.tokenService.getLoggedCommunityId())
+            .subscribe({
+                next: (res: User[]) => {
+                    this.users = res
+                },
+                error: (err) => console.error(err),
+            })
     }
 
     ionViewWillLeave() {

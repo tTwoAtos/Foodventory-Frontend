@@ -8,11 +8,11 @@
 
         <ion-list class="stock-list">
             <app-info-card
-                *ngFor="let data of mockStocks"
-                [name]="data.name"
-                [nb]="data.productTotal"
+                *ngFor="let stock of stocks"
+                [name]="stock.name"
+                [nb]="stock.nbProducts"
                 [icon]="icon"
-                [routerLink]="['/stock',data.id]"
+                [routerLink]="['/stock', stock.id]"
             ></app-info-card>
 
             <app-round-button

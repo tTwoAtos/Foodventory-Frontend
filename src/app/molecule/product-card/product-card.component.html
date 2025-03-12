@@ -1,19 +1,19 @@
 <ion-row class="product-card">
     <ion-icon class="product-icon" name="fast-food-outline"></ion-icon>
-    <div class="product-name">{{ product.name }}</div>
+    <div class="product-name">{{ product?.name }}</div>
     <div class="product-amount">
         <app-round-button
             color="danger"
-            [icon]="this.product.amount == 1 ? 'trash' : 'remove-circle'"
-            (actionEvent)="decrement()"
+            [icon]="this.product?.quantity === 1 ? 'trash' : 'remove-circle'"
+            (click)="decrement()"
         ></app-round-button>
 
-        <div class="product-number">{{ product.amount }}</div>
+        <div class="product-number">{{ product?.quantity }}</div>
 
         <app-round-button
             color="primary"
             icon="add-circle"
-            (actionEvent)="increment()"
+            (click)="increment()"
         ></app-round-button>
     </div>
 </ion-row>

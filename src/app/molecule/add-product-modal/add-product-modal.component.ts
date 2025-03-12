@@ -50,7 +50,7 @@ export class AddProductModalComponent implements OnChanges {
         productId: "",
         qte: 1,
         emplacementId: "1",
-        communityId: "1",
+        communityId: 1,
     }
 
     constructor(private tokenService: TokenService) {

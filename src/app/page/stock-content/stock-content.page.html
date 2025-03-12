@@ -8,6 +8,7 @@
             <app-product-card
                 *ngFor="let product of productCards"
                 [product]="product"
+                [(products)]="productCards"
             ></app-product-card>
         </ion-list>
         <ion-button

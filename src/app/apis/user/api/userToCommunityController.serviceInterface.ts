@@ -42,7 +42,7 @@ export interface UserToCommunityControllerServiceInterface {
      * 
      * @param communityId 
      */
-    getAllByCommunity(communityId: string, extraHttpRequestParams?: any): Observable<Array<User>>;
+    getAllByCommunity(communityId: number, extraHttpRequestParams?: any): Observable<Array<User>>;
 
     /**
      * 

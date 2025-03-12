@@ -1,6 +1,9 @@
 import { CommonModule } from "@angular/common"
-import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core"
+import { Component, EventEmitter, Input, Output } from "@angular/core"
 import { FormsModule, ReactiveFormsModule } from "@angular/forms"
+import { EmplacementControllerService } from "@app/apis/emplacement"
+import { ToastService } from "@app/services/toaster-service/toaster.service"
+import { TokenService } from "@app/services/token-services/token.service"
 import { IonicModule } from "@ionic/angular"
 import { ModalComponent } from "../modal/modal.component"
 
@@ -17,7 +20,7 @@ import { ModalComponent } from "../modal/modal.component"
         FormsModule,
     ],
 })
-export class AddStockModalComponent implements OnInit {
+export class AddStockModalComponent {
     @Input() isModalOpen: boolean = false
 
     stockName: string = ""
@@ -26,9 +29,11 @@ export class AddStockModalComponent implements OnInit {
     @Output() cancelEvent = new EventEmitter<void>()
     @Output() confirmEvent = new EventEmitter<void>()
 
-    constructor() {}
-
-    ngOnInit() {}
+    constructor(
+        private tokenService: TokenService,
+        private emplacementService: EmplacementControllerService,
+        private toasterService: ToastService
+    ) {}
 
     close() {
         this.stockName = ""
@@ -38,6 +43,21 @@ export class AddStockModalComponent implements OnInit {
         this.cancelEvent.emit()
     }
     confirm() {
-        this.confirmEvent.emit(this.stockName as any)
+        this.emplacementService
+            .add({
+                communityId: this.tokenService.getLoggedCommunityId(),
+                name: this.stockName,
+            })
+            .subscribe({
+                next: () => {
+                    this.confirmEvent.emit(this.stockName as any)
+                },
+                error: (err) => {
+                    console.error(err)
+                    this.toasterService.error(
+                        "Echec de la création de l'emplacement de stockage"
+                    )
+                },
+            })
     }
 }

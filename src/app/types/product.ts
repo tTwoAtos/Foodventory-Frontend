@@ -17,6 +17,6 @@ export interface ProductStoredType {
     productId?: string
     name: string
     qte: number
-    communityId: string
-    emplacementId: string
+    communityId: number
+    emplacementId: number
 }

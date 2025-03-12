@@ -20,7 +20,7 @@ export class TokenService {
     login(token: string) {
         localStorage.setItem(AUTH_TOKEN_KEY, token)
 
-        this.router.navigateByUrl("/home")
+        this.router.navigateByUrl("/communities")
     }
 
     // Vérifie si l'utilisateur est authentifié
@@ -63,11 +63,11 @@ export class TokenService {
         return decodedToken
     }
 
-    getLoggedCommunityId(): string | undefined {
-        return this.getAuthUser()?.logged_in_community_id
+    getLoggedCommunityId(): number {
+        return Number(this.getAuthUser()?.logged_in_community_id)
     }
 
-    getAuthUserId(): number | undefined {
-        return this.getAuthUser()?.user_id
+    getAuthUserId(): number {
+        return Number(this.getAuthUser()?.user_id)
     }
 }

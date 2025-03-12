@@ -1,7 +1,7 @@
 .info-card {
     display: flex;
-    padding-top: 15px;
-    padding-bottom: 15px;
+    // padding-top: 15px;
+    // padding-bottom: 15px;
     border: 1.5px solid #000000;
     border-radius: 10px;
     margin: 5px;
@@ -22,7 +22,6 @@
         min-width: 2em;
         --background: transparent;
         --color: #000000;
-
     }
 
     .info-card-button {
@@ -57,5 +56,4 @@
             text-transform: none;
         }
     }
-
 }

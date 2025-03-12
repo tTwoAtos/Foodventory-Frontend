@@ -1,5 +1,5 @@
 /**
- * Product to Community API
+ * Emplacement API
  *
  * 
  *
@@ -9,13 +9,10 @@
  */
 
 
-export interface ProductToCommunity { 
+export interface EmplacementListResponse { 
     id?: number;
-    productId?: string;
     communityId?: number;
-    emplacementId?: number;
-    qte?: number;
-    createdAt?: string;
-    updatedAt?: string;
+    name?: string;
+    nbProducts?: number;
 }
 

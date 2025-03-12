@@ -12,6 +12,7 @@ import { HttpHeaders }                                       from '@angular/comm
 import { Observable }                                        from 'rxjs';
 
 import { Emplacement } from '../model/models';
+import { EmplacementListResponse } from '../model/models';
 
 
 import { Configuration }                                     from '../configuration';
@@ -41,7 +42,7 @@ export interface EmplacementControllerServiceInterface {
      * 
      * @param communityId 
      */
-    getAllByCommunity(communityId: string, extraHttpRequestParams?: any): Observable<Array<Emplacement>>;
+    getAllByCommunity(communityId: number, extraHttpRequestParams?: any): Observable<Array<EmplacementListResponse>>;
 
     /**
      * 
