@@ -20,7 +20,7 @@
     }
 
     .product-amount {
-        width: 100px;
+        width: 120px;
         display: flex;
         align-items: center;
 
@@ -28,6 +28,7 @@
             font-size: clamp(20px, 2vw, 40px);
             flex-grow: 1;
             min-width: 0.75em;
+            padding: 0 3px 0 3px;
         }
     }
 }
