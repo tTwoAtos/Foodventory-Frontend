@@ -2,15 +2,11 @@
 
 <ion-content [fullscreen]="true">
     <ion-list class="product-list">
-        <app-product-card
-            *ngFor="let product of productList"
-            [product]="product"
-        ></app-product-card>
-    </ion-list>
+        <app-product-card *ngFor="let product of productList" [product]="product"></app-product-card>
 
-    <ion-button (click)="saveBasket()" *ngIf="productList.length > 0">
-        <ion-label>Valider</ion-label>
-    </ion-button>
+        <app-large-button *ngIf="productList.length > 0" icon="scan-circle-outline" (actionEvent)="saveBasket()"
+            class="center" text="Valider Panier"></app-large-button>
+    </ion-list>
 </ion-content>
 
 <app-footer></app-footer>

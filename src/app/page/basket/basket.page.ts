@@ -12,13 +12,14 @@ import { ProductCardType } from "@app/types/product"
 import { IonicModule } from "@ionic/angular"
 import { HeaderComponent } from "../../molecule/header/header.component";
 import { FooterComponent } from "../../molecule/footer/footer.component";
+import { LargeButtonComponent } from "../../molecule/large-button/large-button.component";
 
 @Component({
     selector: "app-basket",
     templateUrl: "./basket.page.html",
     styleUrls: ["./basket.page.scss"],
     standalone: true,
-    imports: [IonicModule, CommonModule, ProductCardComponent, HeaderComponent, FooterComponent],
+    imports: [IonicModule, CommonModule, ProductCardComponent, HeaderComponent, FooterComponent, LargeButtonComponent],
 })
 export class BasketPage implements OnInit {
     productList: ProductCardType[] = []
@@ -27,7 +28,7 @@ export class BasketPage implements OnInit {
         public router: Router,
         private productStoreService: ProductStoreService,
         private productToComService: ProductToCommunityControllerService
-    ) {}
+    ) { }
 
     async ngOnInit() {
         // const basketLocalStorage = localStorage.getItem(PRODUCTS_BASKET_KEY)
