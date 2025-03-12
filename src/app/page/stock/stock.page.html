@@ -3,7 +3,7 @@
 <ion-content [fullscreen]="true">
     <div class="stock-page">
         <ion-text class="stock-title">
-            <h2>Votre stock</h2>
+            <h2>Stockages :</h2>
         </ion-text>
 
         <ion-list class="stock-list">
@@ -15,7 +15,7 @@
 
         <ion-list class="stock-list">
             <ion-text class="stock-title">
-                <h3>Membres :</h3>
+                <h2>Membres :</h2>
             </ion-text>
             <app-user-info-card *ngFor=" let user of users"
                 [name]="user.firstname! + ' ' + user.lastname!"></app-user-info-card>
