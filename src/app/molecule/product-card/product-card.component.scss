@@ -1,52 +1,33 @@
 .product-card {
-    border: 1.5px solid black;
-    border-radius: 10px;
-    margin-top: 15px;
-    margin-bottom: 15px;
-    align-items: center;
-    height: 80px;
     display: flex;
-    flex-wrap: nowrap;
+    margin: 7px;
+    padding: 5px;
+    border: 0.5px solid #00000025;
+    box-shadow: 0.5px 0.5px 5px 0.5px rgba(0, 0, 0, 0.25);
+    border-radius: 30px;
     flex-direction: row;
-    justify-content: space-between;
-    background-color: #f1ecec;
+    flex-wrap: nowrap;
+    align-items: center;
+    background-color: #ffffff;
 
     .product-icon {
-        margin-right: 5px;
-        margin-left: 15px;
-        font-size: 3.2em; // Size of the icon
+        width: 3em;
     }
 
     .product-name {
-        margin-right: 20px;
-        margin-left: 10px;
-
-        font-size: 1.3em;
-
-        width: 120px;
-        height: 60px;
-
-        overflow: hidden;
-        -webkit-box-orient: vertical;
-        display: -webkit-box;
-        -webkit-line-clamp: 3;
-        line-clamp: 3; // Unused but its to avoid warning message with "-webkit-line-clamp"
-
-        align-content: center;
+        font-size: clamp(15px, 2vw, 30px);
+        width: 80%;
     }
 
     .product-amount {
+        width: 100px;
         display: flex;
         align-items: center;
 
         .product-number {
-            margin-right: 0.1em;
-            margin-left: 0.1em;
-            font-style: italic;
-            font-weight: bold;
-            font-size: xx-large;
-            width: 1.5em;
-            text-align: center;
+            font-size: clamp(20px, 2vw, 40px);
+            flex-grow: 1;
+            min-width: 0.75em;
         }
     }
 }

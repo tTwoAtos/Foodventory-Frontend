@@ -11,6 +11,7 @@ import { addIcons } from "ionicons"
 import * as icons from "ionicons/icons"
 import { FooterComponent } from "../../molecule/footer/footer.component"
 import { HeaderComponent } from "../../molecule/header/header.component"
+import { LargeButtonComponent } from "../../molecule/large-button/large-button.component";
 
 @Component({
     selector: "app-stock-content",
@@ -24,6 +25,7 @@ import { HeaderComponent } from "../../molecule/header/header.component"
         ProductCardComponent,
         HeaderComponent,
         FooterComponent,
+        LargeButtonComponent
     ],
 })
 export class StockContentPage implements OnInit {

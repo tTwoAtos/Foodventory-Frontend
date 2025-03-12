@@ -7,33 +7,21 @@
         </ion-text>
 
         <ion-list class="stock-list">
-            <app-info-card
-                *ngFor="let data of mockStocks"
-                [name]="data.name"
-                [nb]="data.productTotal"
-                [icon]="icon"
-                [routerLink]="['/stock',data.id]"
-            ></app-info-card>
+            <app-info-card *ngFor="let data of mockStocks" [name]="data.name" [nb]="data.productTotal" [icon]="icon"
+                [routerLink]="['/stock',data.id]"></app-info-card>
 
-            <app-round-button
-                icon="add-circle"
-                class="center"
-                (actionEvent)="openModal(true)"
-            ></app-round-button>
+            <app-large-button icon="add-outline" class="center" (actionEvent)="openModal(true)"></app-large-button>
         </ion-list>
 
         <ion-list class="stock-list">
-            <h3>Membres</h3>
-            <app-user-info-card
-                *ngFor="let user of users"
-                [name]="user.firstname! + ' ' + user.lastname!"
-            ></app-user-info-card>
+            <ion-text class="stock-title">
+                <h3>Membres :</h3>
+            </ion-text>
+            <app-user-info-card *ngFor=" let user of users"
+                [name]="user.firstname! + ' ' + user.lastname!"></app-user-info-card>
 
-            <app-round-button
-                icon="add-circle"
-                class="center"
-                (actionEvent)="toggleInvitationModal()"
-            ></app-round-button>
+            <app-large-button icon="add-outline" class="center"
+                (actionEvent)="toggleInvitationModal()"></app-large-button>
         </ion-list>
 
         <div class="category-resume">
@@ -43,15 +31,8 @@
 
             <ion-list class="category-list">
                 <!-- TODO : Change <div> par <ion-row> -->
-                <div
-                    class="category-item"
-                    *ngFor="let category of selectedCategories"
-                >
-                    <ion-icon
-                        class="category-icon"
-                        name="{{category.icon}}"
-                        size="large"
-                    ></ion-icon>
+                <div class="category-item" *ngFor="let category of selectedCategories">
+                    <ion-icon class="category-icon" name="{{category.icon}}" size="large"></ion-icon>
                     <ion-text class="category-name">
                         {{category.name}}
                     </ion-text>
@@ -63,13 +44,7 @@
 
 <app-footer></app-footer>
 
-<app-add-stock-modal
-    [isModalOpen]="stockModalIsOpen"
-    (cancelEvent)="openModal(false)"
-    (confirmEvent)="createNewStock($event)"
-    (closedEvent)="openModal(false)"
-></app-add-stock-modal>
+<app-add-stock-modal [isModalOpen]="stockModalIsOpen" (cancelEvent)="openModal(false)"
+    (confirmEvent)="createNewStock($event)" (closedEvent)="openModal(false)"></app-add-stock-modal>
 
-<app-invitation-modal
-    [isModalOpen]="isModalInvitationOpen"
-></app-invitation-modal>
+<app-invitation-modal [isModalOpen]="isModalInvitationOpen"></app-invitation-modal>

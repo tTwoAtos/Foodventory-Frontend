@@ -20,6 +20,7 @@ import { AddStockModalComponent } from "../../molecule/add-stock-modal/add-stock
 import { FooterComponent } from "../../molecule/footer/footer.component"
 import { HeaderComponent } from "../../molecule/header/header.component"
 import { RoundButtonComponent } from "../../molecule/round-button/round-button.component"
+import { LargeButtonComponent } from "../../molecule/large-button/large-button.component";
 
 @Component({
     selector: "app-stock",
@@ -34,10 +35,10 @@ import { RoundButtonComponent } from "../../molecule/round-button/round-button.c
         RouterLink,
         FooterComponent,
         HeaderComponent,
-        RoundButtonComponent,
         AddStockModalComponent,
         UserInfoCardComponent,
         InvitationModalComponent,
+        LargeButtonComponent
     ],
 })
 export class StockPage implements OnInit {
