@@ -11,7 +11,7 @@
 
 export interface Emplacement { 
     id?: number;
-    communityId?: string;
+    communityId?: number;
     name?: string;
 }
 

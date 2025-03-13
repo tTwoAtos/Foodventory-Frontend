@@ -2,10 +2,17 @@ import { CommonModule } from "@angular/common"
 import { HttpClient } from "@angular/common/http"
 import { Component, OnInit, Output } from "@angular/core"
 import { ActivatedRoute, Router } from "@angular/router"
+import {
+    Emplacement,
+    EmplacementControllerService,
+} from "@app/apis/emplacement"
+import {
+    ProductResponseDto,
+    ProductToCommunityControllerService,
+} from "@app/apis/product-to-community"
+import { Product } from "@app/apis/products"
 import { ProductCardComponent } from "@app/molecule/product-card/product-card.component"
-import { ProductStoreService } from "@app/services/product-store/product-store.service"
-import { StockContentService } from "@app/services/stock-content-service/stock-content.service"
-import { ProductCardType, ProductStoredType } from "@app/types/product"
+import { TokenService } from "@app/services/token-services/token.service"
 import { IonicModule } from "@ionic/angular"
 import { addIcons } from "ionicons"
 import * as icons from "ionicons/icons"
@@ -32,8 +39,9 @@ export class StockContentPage implements OnInit {
     constructor(
         protected router: Router,
         private route: ActivatedRoute,
-        private service: StockContentService,
-        private productStoreService: ProductStoreService
+        private tokenService: TokenService,
+        private pToCService: ProductToCommunityControllerService,
+        private stockService: EmplacementControllerService
     ) {
         addIcons({ ...icons })
     }
@@ -41,7 +49,7 @@ export class StockContentPage implements OnInit {
     @Output() headerIcon = "caret-back-outline"
     @Output() headerTitle = "Nom produit / nom commu?"
 
-    productCards: ProductCardType[] = []
+    productCards: Product[] = []
 
     stockID: string = ""
 
@@ -51,9 +59,26 @@ export class StockContentPage implements OnInit {
 
             if (stockID != null) {
                 this.stockID = stockID
-                this.service.getContentById(parseInt(stockID)).then((res) => {
-                    this.productCards = res.productList
-                })
+                this.pToCService
+                    .getAllByCommunityByEmplacement(
+                        this.tokenService.getLoggedCommunityId(),
+                        parseInt(stockID)
+                    )
+                    .subscribe({
+                        next: (res: ProductResponseDto[]) => {
+                            this.productCards = res
+                        },
+                    })
+
+                this.stockService
+                    .getEmplacementById(parseInt(stockID))
+                    .subscribe({
+                        next: (res: Emplacement) => {
+                            if (res.name) {
+                                this.headerTitle = res.name
+                            }
+                        },
+                    })
             } else {
                 throw new ReferenceError()
             }

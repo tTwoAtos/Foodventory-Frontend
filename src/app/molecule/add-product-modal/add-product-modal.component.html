@@ -15,7 +15,7 @@
             <ion-label>Quantité ?</ion-label>
             <div class="amount">
                 <app-round-button
-                    [color]="newProductData.qte == 1 ? 'medium' : 'danger'"
+                    [color]="newProductData.qte === 1 ? 'medium' : 'danger'"
                     icon="remove-circle"
                     (actionEvent)="decrement()"
                 ></app-round-button>
@@ -43,8 +43,8 @@
                 (ionChange)="UpdateEmplacementValue($event)"
             >
                 <ion-select-option
-                    *ngFor="let stock of mockStock; index as i"
-                    [value]="stock.value"
+                    *ngFor="let stock of stocks; index as i"
+                    [value]="stock.id"
                 >
                     {{ stock.name }}
                 </ion-select-option>

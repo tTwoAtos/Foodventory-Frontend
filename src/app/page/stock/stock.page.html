@@ -7,8 +7,13 @@
         </ion-text>
 
         <ion-list class="stock-list">
-            <app-info-card *ngFor="let data of mockStocks" [name]="data.name" [nb]="data.productTotal" [icon]="icon"
-                [routerLink]="['/stock',data.id]"></app-info-card>
+            <app-info-card
+                *ngFor="let stock of stocks"
+                [name]="stock.name"
+                [nb]="stock.nbProducts"
+                [icon]="icon"
+                [routerLink]="['/stock', stock.id]"
+            ></app-info-card>
 
             <app-large-button icon="add-outline" class="center" (actionEvent)="openModal(true)"></app-large-button>
         </ion-list>

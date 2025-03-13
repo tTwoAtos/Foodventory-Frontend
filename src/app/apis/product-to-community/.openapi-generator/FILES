@@ -11,6 +11,7 @@ index.ts
 model/models.ts
 model/pageProductToCommunity.ts
 model/pageableObject.ts
+model/productResponseDto.ts
 model/productToCommunity.ts
 model/quantityDto.ts
 model/sortObject.ts

@@ -18,6 +18,8 @@ import { Observable }                                        from 'rxjs';
 
 // @ts-ignore
 import { Emplacement } from '../model/emplacement';
+// @ts-ignore
+import { EmplacementListResponse } from '../model/emplacementListResponse';
 
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
@@ -233,10 +235,10 @@ export class EmplacementControllerService implements EmplacementControllerServic
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getAllByCommunity(communityId: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<Array<Emplacement>>;
-    public getAllByCommunity(communityId: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<Array<Emplacement>>>;
-    public getAllByCommunity(communityId: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<Array<Emplacement>>>;
-    public getAllByCommunity(communityId: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
+    public getAllByCommunity(communityId: number, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<Array<EmplacementListResponse>>;
+    public getAllByCommunity(communityId: number, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<Array<EmplacementListResponse>>>;
+    public getAllByCommunity(communityId: number, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<Array<EmplacementListResponse>>>;
+    public getAllByCommunity(communityId: number, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
         if (communityId === null || communityId === undefined) {
             throw new Error('Required parameter communityId was null or undefined when calling getAllByCommunity.');
         }
@@ -277,8 +279,8 @@ export class EmplacementControllerService implements EmplacementControllerServic
             }
         }
 
-        let localVarPath = `/api/v1/emplacement/community/${this.configuration.encodeParam({name: "communityId", value: communityId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}`;
-        return this.httpClient.request<Array<Emplacement>>('get', `${this.configuration.basePath}${localVarPath}`,
+        let localVarPath = `/api/v1/emplacement/community/${this.configuration.encodeParam({name: "communityId", value: communityId, in: "path", style: "simple", explode: false, dataType: "number", dataFormat: "int32"})}`;
+        return this.httpClient.request<Array<EmplacementListResponse>>('get', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 responseType: <any>responseType_,

@@ -41,6 +41,7 @@ export class ModalComponent {
     }
 
     close() {
+        this.modalIsOpen = false
         this.closedEvent.emit()
     }
 }

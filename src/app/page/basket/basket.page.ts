@@ -5,13 +5,12 @@ import {
     ProductToCommunity,
     ProductToCommunityControllerService,
 } from "@app/apis/product-to-community"
-import { Product } from "@app/apis/products"
 import { ProductCardComponent } from "@app/molecule/product-card/product-card.component"
 import { ProductStoreService } from "@app/services/product-store/product-store.service"
 import { ProductCardType } from "@app/types/product"
 import { IonicModule } from "@ionic/angular"
-import { HeaderComponent } from "../../molecule/header/header.component";
-import { FooterComponent } from "../../molecule/footer/footer.component";
+import { FooterComponent } from "../../molecule/footer/footer.component"
+import { HeaderComponent } from "../../molecule/header/header.component"
 import { LargeButtonComponent } from "../../molecule/large-button/large-button.component";
 
 @Component({
@@ -19,7 +18,13 @@ import { LargeButtonComponent } from "../../molecule/large-button/large-button.c
     templateUrl: "./basket.page.html",
     styleUrls: ["./basket.page.scss"],
     standalone: true,
-    imports: [IonicModule, CommonModule, ProductCardComponent, HeaderComponent, FooterComponent, LargeButtonComponent],
+    imports: [
+        IonicModule,
+        CommonModule,
+        ProductCardComponent,
+        HeaderComponent,
+        FooterComponent,
+    ],
 })
 export class BasketPage implements OnInit {
     productList: ProductCardType[] = []
@@ -44,7 +49,7 @@ export class BasketPage implements OnInit {
 
     // Send to back
     async saveBasket() {
-        let basketProducts: Product[] = []
+        // let basketProducts: Product[] = []
         const testProductToCom: ProductToCommunity[] = []
 
         this.productStoreService.getProductsStored().then((res) => {

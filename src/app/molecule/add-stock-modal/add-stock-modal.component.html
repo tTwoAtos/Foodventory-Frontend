@@ -6,7 +6,7 @@
     [haveConfirmButton]="true"
     (cancelEvent)="cancel()"
     (closedEvent)="close()"
-    [confirmButtonIsDisabled]="stockName.length == 0"
+    [confirmButtonIsDisabled]="stockName.length === 0"
 >
 </app-modal>
 

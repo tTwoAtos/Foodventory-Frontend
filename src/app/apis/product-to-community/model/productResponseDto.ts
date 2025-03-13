@@ -9,13 +9,13 @@
  */
 
 
-export interface ProductToCommunity { 
-    id?: number;
-    productId?: string;
-    communityId?: number;
+export interface ProductResponseDto { 
+    name?: string;
+    nbScanned?: number;
+    thumbnail?: string;
+    nbAdded?: number;
+    quantity?: number;
     emplacementId?: number;
-    qte?: number;
-    createdAt?: string;
-    updatedAt?: string;
+    eancode?: string;
 }
 

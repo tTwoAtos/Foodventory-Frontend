@@ -9,6 +9,7 @@ encoder.ts
 git_push.sh
 index.ts
 model/emplacement.ts
+model/emplacementListResponse.ts
 model/models.ts
 param.ts
 variables.ts

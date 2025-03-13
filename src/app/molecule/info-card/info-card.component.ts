@@ -12,8 +12,8 @@ import * as icons from "ionicons/icons"
     styleUrl: "./info-card.component.scss",
 })
 export class InfoCardComponent {
-    @Input() name: string = ""
-    @Input() nb: number = 0
+    @Input() name?: string = ""
+    @Input() nb?: number = 0
     @Input() icon: string = ""
 
     constructor() {

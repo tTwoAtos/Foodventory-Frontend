@@ -29,7 +29,7 @@ export class PageScannerPage {
     isLoading = false
     errorMessage: string | null = null
     barcodeModalIsOpen: boolean = false
-    quantityModalIsOpen: boolean = false
+    quantityModalIsOpen: boolean = true
     stockId: string | undefined
 
     constructor(

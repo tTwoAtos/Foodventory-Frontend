@@ -5,10 +5,20 @@
         <div class="search-bar"></div>
 
         <ion-list class="product-list">
-            <app-product-card *ngFor="let product of productCards" [product]="product"></app-product-card>
-            <app-large-button icon="scan-circle-outline" (actionEvent)="router.navigate(['/scan'], {
+            <app-product-card
+                *ngFor="let product of productCards"
+                [product]="product"
+                [(products)]="productCards"
+            ></app-product-card>
+
+            <app-large-button
+                icon="scan-circle-outline"
+                (actionEvent)="router.navigate(['/scan'], {
             state: { stockID: this.stockID },
-        })" class="center" text="Ajouter Produit"></app-large-button>
+        })"
+                class="center"
+                text="Ajouter Produit"
+            ></app-large-button>
         </ion-list>
     </div>
 </ion-content>

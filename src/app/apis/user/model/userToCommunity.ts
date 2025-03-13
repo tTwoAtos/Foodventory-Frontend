@@ -12,7 +12,7 @@ import { User } from './user';
 
 export interface UserToCommunity { 
     id?: number;
-    communityId?: string;
+    communityId?: number;
     user?: User;
 }
 

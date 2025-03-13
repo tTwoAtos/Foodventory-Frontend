@@ -1,6 +1,11 @@
 import { CommonModule } from "@angular/common"
-import { Component, Input } from "@angular/core"
-import { ProductCardType } from "@app/types/product"
+import { Component, Input, model } from "@angular/core"
+import {
+    ProductResponseDto,
+    ProductToCommunityControllerService,
+} from "@app/apis/product-to-community"
+import { ToastService } from "@app/services/toaster-service/toaster.service"
+import { TokenService } from "@app/services/token-services/token.service"
 import { IonicModule } from "@ionic/angular"
 import { RoundButtonComponent } from "../round-button/round-button.component"
 
@@ -12,22 +17,76 @@ import { RoundButtonComponent } from "../round-button/round-button.component"
     styleUrls: ["./product-card.component.scss"],
 })
 export class ProductCardComponent {
-    @Input() product: ProductCardType = {
-        productId: "",
-        name: "",
-        amount: 0,
-    }
+    @Input() product?: ProductResponseDto
 
-    // TODO : when amount is changed -> send request to backend to modify in bdd
-    // but for each changing or after a few seconds to avoid too much request ?
+    products = model<ProductResponseDto[]>([])
+
+    constructor(
+        private tokenService: TokenService,
+        private service: ProductToCommunityControllerService,
+        private toastService: ToastService
+    ) {}
 
     increment() {
-        this.product.amount++
+        if (!this.product?.quantity || !this.product?.eancode) return
+
+        this.service
+            .updateQuantity(
+                this.tokenService.getLoggedCommunityId(),
+                this.product.eancode,
+                {
+                    qte: this.product.quantity + 1,
+                }
+            )
+            .subscribe({
+                next: () => {
+                    if (!this.product?.quantity) return
+
+                    this.product.quantity++
+                },
+                error: (err) => {
+                    console.error(err)
+                    this.toastService.error("Une erreur est survenue")
+                },
+            })
     }
 
     decrement() {
-        if (this.product.amount > 1) {
-            this.product.amount--
+        if (this.product?.eancode && this.product.quantity) {
+            this.service
+                .updateQuantity(
+                    this.tokenService.getLoggedCommunityId(),
+                    this.product.eancode,
+                    {
+                        qte: this.product.quantity - 1,
+                    }
+                )
+                .subscribe({
+                    next: () => {
+                        if (!this.product?.quantity) return
+                        this.product.quantity--
+
+                        if (this.product.quantity === 0) {
+                            this.products.update((products) =>
+                                products.filter(
+                                    (product) =>
+                                        product.eancode !==
+                                        this.product?.eancode
+                                )
+                            )
+                        }
+
+                        this.toastService.success(
+                            "Le produit a bien été supprimé"
+                        )
+                    },
+                    error: (err) => {
+                        console.error(err)
+                        this.toastService.error(
+                            "Une erreur est survenue lors de la suppression du produit"
+                        )
+                    },
+                })
         }
     }
 }
