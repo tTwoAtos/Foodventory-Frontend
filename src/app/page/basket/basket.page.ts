@@ -19,12 +19,13 @@ import { LargeButtonComponent } from "../../molecule/large-button/large-button.c
     styleUrls: ["./basket.page.scss"],
     standalone: true,
     imports: [
-        IonicModule,
-        CommonModule,
-        ProductCardComponent,
-        HeaderComponent,
-        FooterComponent,
-    ],
+    IonicModule,
+    CommonModule,
+    ProductCardComponent,
+    HeaderComponent,
+    FooterComponent,
+    LargeButtonComponent
+],
 })
 export class BasketPage implements OnInit {
     productList: ProductCardType[] = []
